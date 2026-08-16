@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Daniel Valdés</title>
+</head>
+
+<body class="home-page">
+    <header class="scrolled">
+        <a href="index.html" class="logo">
+            <span class="logo-text">DV</span>
+        </a>
+
+        <button class="menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <a href="./documents/Daniel_Valdes_CV.pdf" download="" class="download-cv">Download CV</a>
+            <a href="index.html" class="active">About Me</a>
+            <a href="writeups.html">Writeups</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-img">
+            <img src="https://github.com/danielvaldess.png" alt="Profile picture of Daniel Valdés">
+        </div>
+
+        <div class="home-content">
+            <h1>Hey, My Name is <span>Daniel Valdés</span></h1>
+            <h3 class="typing-text">I'm <span id="typing"></span></h3>
+
+            <p>
+                A cybersecurity technician based in Panama City, Panama.<br>
+                I focus on bridging development and defense — building, optimizing, and
+                securing digital infrastructures with an analytical mindset.<br>
+                <br>
+                I love to learn and build something new, robust, and secure every single day.
+                Beyond tech, I enjoy ping pong, gaming, music, and a good book.
+            </p>
+
+            <div class="social-icons">
+                <a href="https://github.com/danielvaldess" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/daniel--valdes" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+
+            <a href="writeups.html" class="btn">View Writeups</a>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const textElement = document.getElementById("typing");
+            const words = ["a cybersecurity technician",
+                           "a builder of secure systems",
+                           "a vulnerability hunter",
+                           "an analytical thinker"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typeEffect() {
+                let currentWord = words[wordIndex];
+                let currentText = currentWord.substring(0, charIndex);
+                textElement.textContent = currentText;
+
+                if (!isDeleting && charIndex < currentWord.length) {
+                    charIndex++;
+                    setTimeout(typeEffect, 100);
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex--;
+                    setTimeout(typeEffect, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
+                    setTimeout(typeEffect, 1000);
+                }
+            }
+            typeEffect();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+
+            menuToggle.addEventListener('click', () => {
+                const isActive = nav.classList.contains('active');
+                if (isActive) {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    nav.classList.add('active');
+                    menuToggle.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
+    <script src="scripts/songs.js"></script>
+</body>
+</html>
