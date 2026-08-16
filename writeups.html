@@ -67,7 +67,7 @@
             'Pentesting': 'fa-user-secret', 'Cripto': 'fa-lock', 'Binarios': 'fa-microchip', 'General': 'fa-folder'
         };
         const catColors = {
-            'Web': '#b43f26', 'Forense': '#e67e22', 'Misc': '#9b59b6',
+            'Web': '#e74c3c', 'Forense': '#e67e22', 'Misc': '#9b59b6',
             'Pentesting': '#2ecc71', 'Cripto': '#3498db', 'Binarios': '#f39c12', 'General': '#95a5a6'
         };
 
@@ -126,7 +126,8 @@
         });
 
         function renderCards(filter) {
-            const list = filter === 'all' ? WRITEUPS : WRITEUPS.filter(w => w.category === filter);
+            const list = (filter === 'all' ? [...WRITEUPS] : WRITEUPS.filter(w => w.category === filter))
+                .sort((a, b) => a.points - b.points);
             grid.innerHTML = '';
             list.forEach(w => {
                 const card = document.createElement('div');
