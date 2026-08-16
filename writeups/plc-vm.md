@@ -1,9 +1,9 @@
 # PLC VM
 
+**Flag:** `WHOAMI{vm_plc_s3ctor14}`
+
 > Ladder mini-VM in `plc_ladder` (ELF Linux x64). Retrieve the master key `WHOAMI{...}`.
 > **Hint:** `chmod +x`. Identify the interpretation loop in the disassembly.
-
-**Flag:** `WHOAMI{vm_plc_s3ctor14}`
 
 ---
 

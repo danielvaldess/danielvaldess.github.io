@@ -1,9 +1,9 @@
 # Shift Shadow
 
+**Flag:** `WHOAMI{sh4d0w_turn0_n0rt3}`
+
 > Partial /etc/shadow backup from the console server. The operador.turno password also opens the ZIP. Retrieve `WHOAMI{...}`.
 > **Hint:** the hash starts with `$6$` → sha512crypt.
-
-**Flag:** `WHOAMI{sh4d0w_turn0_n0rt3}`
 
 ---
 

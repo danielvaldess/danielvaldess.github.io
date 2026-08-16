@@ -1,12 +1,12 @@
 # Field Radio
 
+**Flag:** `WHOAMI{rad10_camp0_n14}`
+
 > Sector 14 field radio node. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh`
 > `./startlab.sh blackout-pt03.tar`
 > The script displays the lab IP (172.18.0.2). Enumerate with nmap. Do not expose the container to the internet.
 > **Tip:** start with nmap. A TCP-only scan misses management services.
-
-**Flag:** `WHOAMI{rad10_camp0_n14}`
 
 ---
 
