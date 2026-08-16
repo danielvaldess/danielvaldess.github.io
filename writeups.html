@@ -246,13 +246,18 @@
             html = html.replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*<hr>/g, '<hr>');
             html = html.replace(/<hr>\s*<\/p>/g, '<hr>');
-            // Clean multiple <br> around block elements
+            // Clean <br> around block elements
             html = html.replace(/<br>\s*(<h[34]>)/g, '$1');
             html = html.replace(/<br>\s*(<div class="terminal)/g, '$1');
             html = html.replace(/<br>\s*(<table>)/g, '$1');
             html = html.replace(/<br>\s*(<ul>)/g, '$1');
             html = html.replace(/<br>\s*(<blockquote>)/g, '$1');
             html = html.replace(/<br>\s*<hr>/g, '<hr>');
+            html = html.replace(/<\/blockquote>\s*<br>\s*(<h[34]>)/g, '</blockquote>$1');
+            html = html.replace(/<\/p>\s*<br>\s*(<h[34]>)/g, '</p>$1');
+            html = html.replace(/<\/div>\s*<br>\s*(<h[34]>)/g, '</div>$1');
+            html = html.replace(/\*"[^"]*"\*<br>(<h[34]>)/g, '$1');
+            html = html.replace(/\*"[^"]*"\*\s*(<h[34]>)/g, '$1');
             return html;
         }
 
