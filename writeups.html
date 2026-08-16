@@ -197,7 +197,7 @@
                     <h2 class="wup-title">${w.title}</h2>
                     ${filesHtml}
                 </div>
-                <div class="wup-body">${renderMarkdown(w.content.replace(/\\`/g, '`').replace(/\\n/g, '\n'))}</div>
+                <div class="wup-body">${renderMarkdown(w.content)}</div>
             `;
             window.scrollTo(0, 0);
         }
