@@ -263,36 +263,263 @@ span {
     margin-bottom: 4rem;
 }
 
-.coming-soon-box {
-    background-color: #1c1c1c;
-    border: 2px solid var(--nav-color);
+/* Filter bar */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    padding: 0.6rem 1.8rem;
+    background: transparent;
+    border: 2px solid #333;
+    border-radius: 4rem;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--nav-color);
+    color: var(--nav-color);
+}
+
+.filter-btn.active {
+    background: var(--nav-color);
+    border-color: var(--nav-color);
+    color: white;
+    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.4);
+}
+
+/* Writeup cards grid */
+.writeups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 4rem;
+}
+
+.writeup-card {
+    background: #111;
+    border: 1px solid #222;
     border-radius: 12px;
-    padding: 4rem;
-    max-width: 600px;
-    box-shadow: 0 0 25px rgba(var(--nav-color-rgb), 0.2);
-    transition: transform 0.3s ease;
+    padding: 2rem;
+    text-align: left;
+    transition: all 0.3s ease;
+    cursor: default;
 }
 
-.coming-soon-box:hover {
-    transform: translateY(-5px);
+.writeup-card:hover {
+    border-color: var(--nav-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(var(--nav-color-rgb), 0.15);
 }
 
-.coming-soon-box i {
-    font-size: 3.5rem;
-    color: var(--nav-color);
-    margin-bottom: 1.5rem;
-}
-
-.coming-soon-box h2 {
-    font-size: 2.8rem;
-    color: var(--nav-color);
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
-.coming-soon-box p {
+.card-cat {
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+}
+
+.card-pts {
+    font-size: 1.4rem;
+    color: #555;
+    background: #1a1a1a;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4rem;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+}
+
+.card-desc {
+    font-size: 1.6rem;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    min-height: 4rem;
+}
+
+.card-btn {
+    font-family: 'VT323', monospace;
+    font-size: 1.7rem;
+    background: transparent;
+    border: 2px solid;
+    border-radius: 4rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-btn:hover {
+    background: var(--nav-color);
+    border-color: var(--nav-color) !important;
+    color: white !important;
+}
+
+/* Individual writeup view */
+.writeup-view {
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+}
+
+.back-btn {
+    font-family: 'VT323', monospace;
     font-size: 2rem;
+    background: transparent;
+    border: 2px solid #333;
+    border-radius: 4rem;
+    color: #888;
+    padding: 0.6rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.back-btn:hover {
+    border-color: var(--nav-color);
+    color: var(--nav-color);
+}
+
+.wup-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #222;
+}
+
+.wup-cat {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.wup-title {
+    font-size: 3.2rem;
+    color: white;
+    font-weight: 400;
+}
+
+.wup-body {
+    font-family: 'Fira Mono', monospace;
+    font-size: 1.5rem;
     color: #ccc;
     line-height: 1.8;
+}
+
+.wup-body h3 {
+    font-family: 'VT323', monospace;
+    font-size: 2.4rem;
+    color: var(--nav-color);
+    margin: 2.5rem 0 1rem;
+}
+
+.wup-body h4 {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: #e0e0e0;
+    margin: 2rem 0 0.8rem;
+}
+
+.wup-body pre {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-left: 3px solid var(--nav-color);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.wup-body code {
+    font-family: 'Fira Mono', monospace;
+}
+
+.wup-body code.inline {
+    background: #1a1a1a;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    color: var(--nav-color);
+}
+
+.wup-body blockquote {
+    border-left: 3px solid var(--nav-color);
+    padding: 0.8rem 1.2rem;
+    margin: 1rem 0;
+    background: rgba(var(--nav-color-rgb), 0.05);
+    border-radius: 0 6px 6px 0;
+    color: #aaa;
+    font-style: italic;
+}
+
+.wup-body strong {
+    color: white;
+}
+
+.wup-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+}
+
+.wup-body th {
+    background: #1a1a1a;
+    color: var(--nav-color);
+    padding: 0.6rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--nav-color);
+}
+
+.wup-body td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #222;
+}
+
+.wup-body tr:hover td {
+    background: rgba(var(--nav-color-rgb), 0.05);
+}
+
+.wup-body ul {
+    padding-left: 2rem;
+    margin: 0.8rem 0;
+}
+
+.wup-body li {
+    margin-bottom: 0.4rem;
+}
+
+.wup-body hr {
+    border: none;
+    border-top: 1px solid #222;
+    margin: 2rem 0;
 }
 
 @media (max-width: 995px) {
@@ -427,11 +654,28 @@ span {
     .writeups-page {
         padding: 8rem var(--mobile-padding) 5rem;
     }
-    .coming-soon-box {
-        padding: 3rem;
-        width: 100%;
-    }
     .page-title {
         font-size: 3rem;
+    }
+    .writeups-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .filter-bar {
+        gap: 0.6rem;
+    }
+    .filter-btn {
+        font-size: 1.5rem;
+        padding: 0.4rem 1.2rem;
+    }
+    .wup-title {
+        font-size: 2.4rem;
+    }
+    .wup-body {
+        font-size: 1.4rem;
+    }
+    .wup-body pre {
+        font-size: 1.2rem;
+        padding: 1rem;
     }
 }
