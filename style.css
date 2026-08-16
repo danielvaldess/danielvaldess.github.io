@@ -74,19 +74,18 @@ header.scrolled {
     margin-right: auto;
 }
 
-.logo-text {
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--nav-color);
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
     border: 2px solid var(--nav-color);
-    padding: 0.2rem 1rem;
-    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
-.logo:hover .logo-text {
-    color: black;
-    background-color: var(--nav-color);
+.logo:hover .logo-img {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.5);
 }
 
 section {
