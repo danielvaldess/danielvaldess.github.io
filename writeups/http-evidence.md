@@ -55,4 +55,6 @@ When facing a PCAP with file transfers, use `--export-objects http` to extract t
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

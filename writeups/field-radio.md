@@ -120,4 +120,6 @@ Two key takeaways: (1) a TCP-only scan misses SNMP and other UDP services — al
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

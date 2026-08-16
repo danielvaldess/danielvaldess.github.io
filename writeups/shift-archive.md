@@ -116,4 +116,6 @@ A challenge's material can live outside the index: `robots.txt` and directory li
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

@@ -76,4 +76,6 @@ SSRF with `localhost` blocking protects nothing: it is bypassed with alternative
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

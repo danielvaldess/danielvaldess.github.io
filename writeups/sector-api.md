@@ -121,4 +121,6 @@ A REST endpoint that uses a direct resource ID (`/api/sector/{id}`) must validat
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).
