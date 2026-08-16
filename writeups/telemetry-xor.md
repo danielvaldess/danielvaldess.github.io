@@ -1,7 +1,6 @@
 # Telemetry XOR
 
 > `telemetry_decode` utility (ELF Linux x64). Prints hex payload; retrieve `WHOAMI{...}`.
->
 > **Hint:** `chmod +x` and run the binary. If Permission denied, the execution bit is not set.
 
 **Flag:** `WHOAMI{x0r_t3l3m3tr14}`
@@ -9,6 +8,8 @@
 ---
 
 ## Solution
+
+The binary prints its own metadata revealing the cipher (XOR), the key, and the encrypted payload in hex. Running the binary and then decoding the XOR-encrypted payload with the provided key recovers the flag.
 
 ### 1. Run the Binary
 

@@ -1,7 +1,6 @@
 # PLC VM
 
 > Ladder mini-VM in `plc_ladder` (ELF Linux x64). Retrieve the master key `WHOAMI{...}`.
->
 > **Hint:** `chmod +x`. Identify the interpretation loop in the disassembly.
 
 **Flag:** `WHOAMI{vm_plc_s3ctor14}`
@@ -9,6 +8,8 @@
 ---
 
 ## Solution
+
+The binary implements a mini virtual machine that validates a master key character by character using a ladder-style bytecode program. By identifying the dispatch loop, mapping each opcode to its action, and extracting the bytecode from `.rodata`, the validation logic can be reversed to recover the key.
 
 ### 1. Run and Observe
 

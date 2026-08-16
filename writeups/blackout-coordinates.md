@@ -1,10 +1,9 @@
 # Blackout Coordinates
 
-> Incomplete verification map package (sector 14). Reassemble the map and submit `WHOAMI{...}`.
->
-> **Hint:** three images are a single piece split apart.
-
 **Flag:** `WHOAMI{m4p4_bl4ck0ut_c00rd3n4d4s}`
+
+> Incomplete verification map package (sector 14). Reassemble the map and submit `WHOAMI{...}`.
+> **Hint:** three images are a single piece split apart.
 
 ---
 

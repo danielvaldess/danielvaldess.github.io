@@ -1,7 +1,6 @@
 # DNS Exfiltration
 
 > Anomalous DNS queries to `exfil.blackout.redlatam`. Reconstruct the sequence and submit `WHOAMI{...}`.
->
 > **Hint:** filter `dns.qry.name` or DNS protocol in Wireshark.
 
 **Flag:** `WHOAMI{dns_3xf1l_bl4ck0ut}`

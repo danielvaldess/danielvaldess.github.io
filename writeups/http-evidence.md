@@ -1,7 +1,6 @@
 # HTTP Evidence
 
 > Download the PNG from the forensic portal captured in the control room. Extract the file from the PCAP and submit `WHOAMI{...}`.
->
 > **Hint:** there is an HTTP transfer with `Content-Type: image/png`.
 
 **Flag:** `WHOAMI{pcp4_c4rv3_4nd_m3rg3}`
@@ -9,6 +8,8 @@
 ---
 
 ## Solution
+
+The challenge involves analyzing a PCAP capture to extract a hidden PNG file transferred over HTTP, then reading its metadata to recover the flag.
 
 ### 1. Examine the traffic
 

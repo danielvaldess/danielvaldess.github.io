@@ -1,10 +1,9 @@
 # Substation Sign
 
-> During the LATAM blackout, an operator documented the North substation. Analyze the photo and find `WHOAMI{...}`.
->
-> **Tip:** cameras and SCADA systems usually store more data than what is visible in the image.
-
 **Flag:** `WHOAMI{3x1f_r3v34l4d_sub3st4c10n}`
+
+> During the LATAM blackout, an operator documented the North substation. Analyze the photo and find `WHOAMI{...}`.
+> **Tip:** cameras and SCADA systems usually store more data than what is visible in the image.
 
 ---
 

@@ -1,7 +1,6 @@
 # SCADA Relay
 
 > SCADA relay firmware SN-441 (ELF Linux x64). Retrieve the token `WHOAMI{...}`.
->
 > **Hint:** `strings`, `file` and `chmod +x`. Run on Kali/WSL/Linux VM.
 
 **Flag:** `WHOAMI{str1ngs_4nd_b64}`
@@ -9,6 +8,8 @@
 ---
 
 ## Solution
+
+The challenge provides a stripped SCADA relay binary that asks for an authorization code. By examining its strings and symbols, the expected token can be found encoded in base64 and decoded without any disassembly.
 
 ### 1. Binary Reconnaissance
 
