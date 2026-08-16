@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Writeups | Daniel Valdés</title>
+</head>
+
+<body class="home-page">
+    <header class="scrolled">
+        <a href="index.html" class="logo">
+            <span class="logo-text">DV</span>
+        </a>
+
+        <button class="menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <a href="./documents/Daniel_Valdes_CV.pdf" download="" class="download-cv">Download CV</a>
+            <a href="index.html">About Me</a>
+            <a href="writeups.html" class="active">Writeups</a>
+        </nav>
+    </header>
+
+    <section class="writeups-page">
+        <h1 class="page-title">WRITEUPS</h1>
+        <p class="page-sub">
+            CTF challenge writeups, lab walkthroughs, and security research.
+        </p>
+
+        <div class="coming-soon-box">
+            <i class="fa-solid fa-code"></i>
+            <h2>Coming Soon</h2>
+            <p>Writeups will be published here as I document my journey through CTFs, labs, and security research.</p>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+
+            menuToggle.addEventListener('click', () => {
+                const isActive = nav.classList.contains('active');
+                if (isActive) {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    nav.classList.add('active');
+                    menuToggle.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
+    <script src="scripts/songs.js"></script>
+</body>
+</html>
