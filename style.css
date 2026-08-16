@@ -594,6 +594,10 @@ span {
     line-height: 1.9;
 }
 
+.wup-body p {
+    color: #ccc;
+}
+
 .wup-body h3 {
     font-size: 2.4rem;
     font-weight: 600;
