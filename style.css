@@ -525,7 +525,7 @@ span {
 
 .wup-title {
     font-size: 3.2rem;
-    color: #f0f0f0;
+    color: #e0e0e0;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -590,7 +590,7 @@ span {
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.6rem;
-    color: #f0f0f0;
+    color: #ccc;
     line-height: 1.9;
 }
 
@@ -606,7 +606,7 @@ span {
 .wup-body h4 {
     font-size: 1.9rem;
     font-weight: 500;
-    color: #eee;
+    color: #ddd;
     margin: 2rem 0 0.8rem;
 }
 
@@ -651,7 +651,7 @@ span {
     margin: 0;
     font-size: 1.5rem;
     line-height: 1.7;
-    color: #e0e0e0;
+    color: #ccc;
 }
 
 .wup-body code {
@@ -672,13 +672,13 @@ span {
     margin: 1.2rem 0;
     background: rgba(255,255,255,0.03);
     border-radius: 0 6px 6px 0;
-    color: #c0c0c0;
+    color: #bbb;
     font-style: italic;
     font-size: 1.5rem;
 }
 
 .wup-body strong {
-    color: #f5f5f5;
+    color: #ddd;
     font-weight: 600;
 }
 
@@ -700,7 +700,7 @@ span {
 .wup-body td {
     padding: 0.5rem 1.2rem;
     border-bottom: 1px solid #1a1a1a;
-    color: #e8e8e8;
+    color: #ccc;
 }
 
 .wup-body tr:hover td {
@@ -715,6 +715,7 @@ span {
 .wup-body li {
     margin-bottom: 0.5rem;
     font-size: 1.55rem;
+    color: #ccc;
 }
 
 .wup-body hr {
