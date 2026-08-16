@@ -1,10 +1,10 @@
 # Link Diagnostics
 
-**Flag:** `WHOAMI{cmd1_enlac3_n0rt3}`
-
 > North substation link diagnostic viewer. Download the lab zip and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh && ./startlab.sh blackout-web04.tar` → lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP.
 > **Hint:** enumerate the lab IP with nmap. There is a node diagnostic viewer.
+
+**Flag:** `WHOAMI{cmd1_enlac3_n0rt3}`
 
 ---
 

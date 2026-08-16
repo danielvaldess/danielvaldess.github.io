@@ -1,10 +1,10 @@
 # Sector 14 Report
 
-**Flag:** `WHOAMI{lf1_d0c_s3ct0r14}`
-
 > LATAM Energía Red left a report query portal after the sector 14 blackout. Download the lab zip and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh && ./startlab.sh blackout-web01.tar` → lab IP on the Docker network (172.18.0.2). Enumerate with nmap and attack via HTTP.
 > **Hint:** enumerate the lab IP with nmap. The portal exposes several internal sections.
+
+**Flag:** `WHOAMI{lf1_d0c_s3ct0r14}`
 
 ---
 

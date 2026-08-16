@@ -1,9 +1,9 @@
 # Control Traffic
 
-**Flag:** `WHOAMI{http_pl41nt3xt_4p4g0n}`
-
 > Partial PCAP from the SCADA portal during the blackout. The operator authenticated in plaintext; retrieve `WHOAMI{...}`.
 > **Hint:** filter HTTP traffic on port 80.
+
+**Flag:** `WHOAMI{http_pl41nt3xt_4p4g0n}`
 
 ---
 

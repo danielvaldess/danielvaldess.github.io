@@ -1,15 +1,15 @@
 # Sector API
 
-**Flag:** `WHOAMI{id0r_s3ct0r21}`
-
 > Field telemetry dashboard. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh` `./startlab.sh blackout-web03.tar`
 > The script displays the lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP. Do not expose the container to the internet.
 > **Tip:** enumerate the lab IP with nmap. The field dashboard loads telemetry for your zone.
 
+**Flag:** `WHOAMI{id0r_s3ct0r21}`
+
 ---
 
-## Resolution
+## Solution
 
 The lab is a web application for energy telemetry (LATAM Energy Grid). Each operator is assigned a "sector" and the field dashboard displays telemetry for their zone through an API. The flaw is that the API does not verify whether the sector you request belongs to your operator: requesting a restricted sector reveals the flag.
 

@@ -1,9 +1,9 @@
 # Telemetry XOR
 
-**Flag:** `WHOAMI{x0r_t3l3m3tr14}`
-
 > `telemetry_decode` utility (ELF Linux x64). Prints hex payload; retrieve `WHOAMI{...}`.
 > **Hint:** `chmod +x` and run the binary. If Permission denied, the execution bit is not set.
+
+**Flag:** `WHOAMI{x0r_t3l3m3tr14}`
 
 ---
 
