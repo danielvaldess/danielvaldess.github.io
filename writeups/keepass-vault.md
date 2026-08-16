@@ -1,13 +1,13 @@
 # KeePass Vault
 
-**Flag:** `WHOAMI{k33p4ss_b0v3d4_14}`
-
 > KeePass vault (ingeniero.kdbx) containing the recovery keys for sector 14. Open the entry and submit `WHOAMI{...}`.
 > **Tip:** KeePassXC + politica_acceso.txt, or keepass2john / hashcat -m 13400.
 
+**Flag:** `WHOAMI{k33p4ss_b0v3d4_14}`
+
 ---
 
-## Resolution
+## Solution
 
 The pack contains a KeePass vault (`ingeniero.kdbx`) and a `politica_acceso.txt` file that provides the key to derive the vault's master password. If the vault is opened, the "Recuperación sector 14" entry stores the flag.
 

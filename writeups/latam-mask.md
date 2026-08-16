@@ -1,13 +1,13 @@
 # LATAM Mask
 
-**Flag:** `WHOAMI{m4sk_r3gl4s_s3ct0r14}`
-
 > SCADA timer master key documented only as SHA256. The same key protects `boveda.zip`. Recover `WHOAMI{...}`.
 > **Tip:** SHA256 without salt → dictionary or mask attack (`hashcat -m 1400`).
 
+**Flag:** `WHOAMI{m4sk_r3gl4s_s3ct0r14}`
+
 ---
 
-## Walkthrough
+## Solution
 
 The package contains the SHA256 hash of the master key and `boveda.zip` (protected with the same key). The engineer hint reveals the key format.
 

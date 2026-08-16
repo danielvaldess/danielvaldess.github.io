@@ -1,9 +1,9 @@
 # HTTP Evidence
 
-**Flag:** `WHOAMI{pcp4_c4rv3_4nd_m3rg3}`
-
 > Download the PNG from the forensic portal captured in the control room. Extract the file from the PCAP and submit `WHOAMI{...}`.
 > **Hint:** there is an HTTP transfer with `Content-Type: image/png`.
+
+**Flag:** `WHOAMI{pcp4_c4rv3_4nd_m3rg3}`
 
 ---
 

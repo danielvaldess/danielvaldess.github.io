@@ -1,13 +1,13 @@
 # Blackout Log
 
-**Flag:** `WHOAMI{b17ac0r4_4ud10_m0r53}`
-
 > Partial SCADA shift export + audio alarm. Reconstruct the sequence and submit `WHOAMI{...}`.
 > **Tip:** not all `[SYNC-FRAG]` lines are useful.
 
+**Flag:** `WHOAMI{b17ac0r4_4ud10_m0r53}`
+
 ---
 
-## Resolution
+## Solution
 
 The package contains two files: a log (`turno.log`) and an audio alarm (`alerta.wav`). The first step is to check what they are before touching anything:
 

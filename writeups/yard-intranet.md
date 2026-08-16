@@ -1,15 +1,15 @@
 # Yard Intranet
 
-**Flag:** `WHOAMI{1ntr4n3t_p4t10_n14}`
-
 > North Yard Intranet (cash register, shifts, and inventory). Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh` `./startlab.sh blackout-pt04.tar`
 > The script displays the lab IP (172.18.0.2). Enumerate with nmap. Do not expose the container to the internet.
 > **Tip:** start with nmap. There is more than one service and more than one account.
 
+**Flag:** `WHOAMI{1ntr4n3t_p4t10_n14}`
+
 ---
 
-## Walkthrough
+## Solution
 
 The challenge mixes several services (SNMP, FTP, SSH, web) and several accounts. Each step chains credentials until reaching a misconfigured SUID binary that grants root.
 
