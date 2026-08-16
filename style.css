@@ -670,9 +670,9 @@ span {
     border-left: 2px solid;
     padding: 1rem 1.4rem;
     margin: 1.2rem 0;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     border-radius: 0 6px 6px 0;
-    color: #aaa;
+    color: #c0c0c0;
     font-style: italic;
     font-size: 1.5rem;
 }
