@@ -146,7 +146,7 @@ section {
 nav a {
     font-size: 1.8rem;
     font-weight: 400;
-    color: #ccc;
+    color: #ddd;
     margin-left: 3rem;
     transition: 0.3s ease;
     border-bottom: 2px solid transparent;
@@ -154,7 +154,7 @@ nav a {
 }
 
 nav a.download-cv {
-    color: #888;
+    color: #aaa;
 }
 
 nav a.download-cv:hover {
@@ -200,7 +200,7 @@ span {
 .home-content p {
     font-size: 1.7rem;
     line-height: 1.9;
-    color: #999;
+    color: #ccc;
 }
 
 .home-content p a {
@@ -314,7 +314,7 @@ span {
 
 .page-sub {
     font-size: 1.8rem;
-    color: #777;
+    color: #aaa;
     margin-bottom: 3rem;
 }
 
@@ -333,9 +333,9 @@ span {
     font-weight: 500;
     padding: 0.6rem 1.8rem;
     background: transparent;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 4rem;
-    color: #666;
+    color: #999;
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: 0.02em;
@@ -399,7 +399,7 @@ span {
 
 .card-pts {
     font-size: 1.2rem;
-    color: #444;
+    color: #666;
     background: #111;
     padding: 0.2rem 0.6rem;
     border-radius: 4rem;
@@ -416,7 +416,7 @@ span {
 
 .card-desc {
     font-size: 1.5rem;
-    color: #999;
+    color: #bbb;
     line-height: 1.6;
     margin-bottom: 1.2rem;
     min-height: 3.5rem;
@@ -437,7 +437,7 @@ span {
 .file-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.15rem;
-    color: #555;
+    color: #777;
     background: #0f0f12;
     padding: 0.15rem 0.5rem;
     border-radius: 3px;
@@ -490,9 +490,9 @@ span {
     font-size: 1.6rem;
     font-weight: 500;
     background: transparent;
-    border: 1px solid #222;
+    border: 1px solid #333;
     border-radius: 4rem;
-    color: #666;
+    color: #999;
     padding: 0.6rem 1.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -543,7 +543,7 @@ span {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
     font-weight: 500;
-    color: #666;
+    color: #888;
     margin: 0 0 0.5rem;
     display: flex;
     align-items: center;
@@ -559,7 +559,7 @@ span {
 .wup-file-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.25rem;
-    color: #888;
+    color: #aaa;
     background: #0f0f12;
     border: 1px solid #1a1a1a;
     padding: 0.3rem 0.7rem;
@@ -582,7 +582,7 @@ span {
 
 .file-original {
     font-size: 1rem;
-    color: #555;
+    color: #777;
     opacity: 0.6;
 }
 
@@ -590,7 +590,7 @@ span {
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.6rem;
-    color: #d0d0d0;
+    color: #e0e0e0;
     line-height: 1.9;
 }
 
@@ -638,7 +638,7 @@ span {
 .terminal-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
-    color: #444;
+    color: #666;
     margin-left: 0.4rem;
 }
 
@@ -671,7 +671,7 @@ span {
     margin: 1.2rem 0;
     background: rgba(255,255,255,0.02);
     border-radius: 0 6px 6px 0;
-    color: #888;
+    color: #aaa;
     font-style: italic;
     font-size: 1.5rem;
 }
@@ -820,7 +820,7 @@ span {
     nav a {
         display: block;
         font-size: 1.7rem;
-        color: #aaa;
+        color: #bbb;
         padding: 1.2rem;
         margin: 0.3rem 0;
         border-radius: 0.5rem;
