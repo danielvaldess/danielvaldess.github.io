@@ -37,15 +37,12 @@
             CTF challenge writeups, lab walkthroughs, and security research.
         </p>
 
-        <!-- Category filters -->
         <div class="filter-bar" id="filterBar">
             <button class="filter-btn active" data-cat="all">All</button>
         </div>
 
-        <!-- Cards grid -->
         <div class="writeups-grid" id="writeupsGrid"></div>
 
-        <!-- Individual writeup view -->
         <div class="writeup-view" id="writeupView" style="display:none;">
             <button class="back-btn" id="backBtn">
                 <i class="fa-solid fa-arrow-left"></i> Back to Writeups
@@ -72,48 +69,25 @@
         };
 
         const fileLabels = {
-            'startlab.sh': 'Lab launcher',
-            'blackout-web01.tar': 'Web lab #1',
-            'blackout-web02.tar': 'Web lab #2',
-            'blackout-web03.tar': 'Web lab #3',
-            'blackout-web04.tar': 'Web lab #4',
-            'blackout-web05.tar': 'Web lab #5',
-            'blackout-web06.tar': 'Web lab #6',
-            'blackout-pt01.tar': 'Pentest lab #1',
-            'blackout-pt02.tar': 'Pentest lab #2',
-            'blackout-pt03.tar': 'Pentest lab #3',
-            'blackout-pt04.tar': 'Pentest lab #4',
-            'turno.log': 'Shift log',
-            'alerta.wav': 'Audio alert',
-            'spectrogram.png': 'Spectrogram',
-            'ingeniero.kdbx': 'KeePass vault',
-            'politica_acceso.txt': 'Access policy',
-            'subestacion.jpg': 'Substation photo',
-            'qr_a.png': 'QR piece A',
-            'qr_b.png': 'QR piece B',
-            'qr_c.png': 'QR piece C',
-            'comunicado.html': 'Briefing',
-            'cargas.csv': 'Load data CSV',
-            'sala_control.pcap': 'Network capture',
-            'exfil_dns.pcap': 'DNS capture',
-            'boveda.zip': 'Encrypted vault',
-            'hash_maestra.sha256': 'Master hash',
-            'pista_ingeniero.txt': 'Engineer hint',
-            'pin_operador.hash': 'PIN hash',
-            'leeme.txt': 'Readme',
-            'nota_recuperacion.zip': 'Recovery note',
-            'scada_relay': 'SCADA relay binary',
-            'shadow_turno.txt': 'Shadow dump',
-            'export_consola.txt': 'Console export',
-            'consola.zip': 'Console archive',
-            'telemetry_decode': 'Telemetry decoder',
-            'blackout_control.pcap': 'Control capture',
-            'turno_guard': 'Shift guard binary',
-            'plc_ladder': 'PLC ladder binary',
-            'pin.hash': 'PIN hash',
-            'flag.txt': 'Flag file',
-            'shadow.hash': 'Shadow hash',
-            'evidencia.dat': 'Evidence data',
+            'startlab.sh': 'Lab launcher', 'blackout-web01.tar': 'Web lab #1',
+            'blackout-web02.tar': 'Web lab #2', 'blackout-web03.tar': 'Web lab #3',
+            'blackout-web04.tar': 'Web lab #4', 'blackout-web05.tar': 'Web lab #5',
+            'blackout-web06.tar': 'Web lab #6', 'blackout-pt01.tar': 'Pentest lab #1',
+            'blackout-pt02.tar': 'Pentest lab #2', 'blackout-pt03.tar': 'Pentest lab #3',
+            'blackout-pt04.tar': 'Pentest lab #4', 'turno.log': 'Shift log',
+            'alerta.wav': 'Audio alert', 'spectrogram.png': 'Spectrogram',
+            'ingeniero.kdbx': 'KeePass vault', 'politica_acceso.txt': 'Access policy',
+            'subestacion.jpg': 'Substation photo', 'qr_a.png': 'QR piece A',
+            'qr_b.png': 'QR piece B', 'qr_c.png': 'QR piece C',
+            'comunicado.html': 'Briefing', 'cargas.csv': 'Load data CSV',
+            'sala_control.pcap': 'Network capture', 'exfil_dns.pcap': 'DNS capture',
+            'boveda.zip': 'Encrypted vault', 'hash_maestra.sha256': 'Master hash',
+            'pista_ingeniero.txt': 'Engineer hint', 'pin_operador.hash': 'PIN hash',
+            'leeme.txt': 'Readme', 'nota_recuperacion.zip': 'Recovery note',
+            'scada_relay': 'SCADA relay binary', 'shadow_turno.txt': 'Shadow dump',
+            'export_consola.txt': 'Console export', 'consola.zip': 'Console archive',
+            'telemetry_decode': 'Telemetry decoder', 'blackout_control.pcap': 'Control capture',
+            'turno_guard': 'Shift guard binary', 'plc_ladder': 'PLC ladder binary',
         };
 
         const categories = [...new Set(WRITEUPS.map(w => w.category))].sort();
@@ -142,7 +116,7 @@
                         <span class="card-pts">${w.points} pts</span>
                     </div>
                     <h3 class="card-title">${w.title}</h3>
-                    <p class="card-desc">${getFirstLine(w.content)}</p>
+                    <p class="card-desc">${w.desc || 'Challenge walkthrough and analysis.'}</p>
                     <div class="card-bottom">
                         ${filesHtml}
                         <button class="card-btn" style="border-color:${color}; color:${color}">
@@ -155,23 +129,9 @@
             });
         }
 
-        function getFirstLine(content) {
-            const lines = content.split('\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('**Flag') && !l.startsWith('---') && !l.startsWith('**Categor'));
-            for (const line of lines) {
-                let clean = line.trim();
-                if (clean.length > 20) {
-                    if (clean.length <= 180) return clean;
-                    const cut = clean.substring(0, 180);
-                    const lastSpace = cut.lastIndexOf(' ');
-                    return (lastSpace > 100 ? cut.substring(0, lastSpace) : cut) + '...';
-                }
-            }
-            return 'Challenge walkthrough and analysis.';
-        }
-
         let currentColor = '#b43f26';
 
-        function showWriteup(id) {
+        async function showWriteup(id) {
             const w = WRITEUPS.find(x => x.id === id);
             if (!w) return;
             currentColor = catColors[w.category] || '#b43f26';
@@ -197,16 +157,24 @@
                     <h2 class="wup-title">${w.title}</h2>
                     ${filesHtml}
                 </div>
-                <div class="wup-body">${renderMarkdown(w.content)}</div>
+                <div class="wup-body" style="text-align:center; color:#555;">Loading writeup...</div>
             `;
             window.scrollTo(0, 0);
+
+            try {
+                const resp = await fetch(`writeups/${w.slug}.md`);
+                if (!resp.ok) throw new Error('Not found');
+                const md = await resp.text();
+                writeupContent.querySelector('.wup-body').innerHTML = renderMarkdown(md);
+                writeupContent.querySelector('.wup-body').style.textAlign = '';
+            } catch (e) {
+                writeupContent.querySelector('.wup-body').innerHTML = '<p style="color:#666;">Writeup not available.</p>';
+            }
         }
 
         function renderMarkdown(md) {
             let html = md;
-            // Normalize line endings
             html = html.replace(/\r\n/g, '\n');
-            // Code blocks with terminal style
             html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
                 `<div class="terminal-block"><div class="terminal-bar"><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-title">${lang || 'terminal'}</span></div><pre><code>${escapeHtml(code.trim())}</code></pre></div>`
             );
@@ -216,7 +184,6 @@
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
             html = html.replace(/^> (.+)$/gm, `<blockquote style="border-left-color:${currentColor}">$1</blockquote>`);
             html = html.replace(/^---$/gm, '<hr>');
-            // Tables
             html = html.replace(/^\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/gm, (_, header, body) => {
                 const ths = header.split('|').map(h => `<th style="border-bottom-color:${currentColor}">${h.trim()}</th>`).join('');
                 const rows = body.trim().split('\n').map(row => {
@@ -227,13 +194,10 @@
             });
             html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
             html = html.replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
-            // Paragraphs: double newlines
             html = html.replace(/\n\n+/g, '</p><p>');
             html = html.replace(/\n/g, '<br>');
             html = '<p>' + html + '</p>';
-            // Clean empty paragraphs
             html = html.replace(/<p>\s*<\/p>/g, '');
-            // Remove <p> before block elements
             html = html.replace(/<p>\s*(<h[34]>)/g, '$1');
             html = html.replace(/(<\/h[34]>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*(<div class="terminal)/g, '$1');
@@ -246,18 +210,12 @@
             html = html.replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*<hr>/g, '<hr>');
             html = html.replace(/<hr>\s*<\/p>/g, '<hr>');
-            // Clean <br> around block elements
             html = html.replace(/<br>\s*(<h[34]>)/g, '$1');
             html = html.replace(/<br>\s*(<div class="terminal)/g, '$1');
             html = html.replace(/<br>\s*(<table>)/g, '$1');
             html = html.replace(/<br>\s*(<ul>)/g, '$1');
             html = html.replace(/<br>\s*(<blockquote>)/g, '$1');
             html = html.replace(/<br>\s*<hr>/g, '<hr>');
-            html = html.replace(/<\/blockquote>\s*<br>\s*(<h[34]>)/g, '</blockquote>$1');
-            html = html.replace(/<\/p>\s*<br>\s*(<h[34]>)/g, '</p>$1');
-            html = html.replace(/<\/div>\s*<br>\s*(<h[34]>)/g, '</div>$1');
-            html = html.replace(/\*"[^"]*"\*<br>(<h[34]>)/g, '$1');
-            html = html.replace(/\*"[^"]*"\*\s*(<h[34]>)/g, '$1');
             return html;
         }
 
