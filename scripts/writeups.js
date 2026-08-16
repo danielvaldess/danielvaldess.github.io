@@ -121,9 +121,7 @@ $ echo "V0hPQU1Je2lkMHJfczNjdDByMjF9" | base64 -d
 WHOAMI{id0r_s3ct0r21}
 \`\`\`
 
-*"idor sector 21"* en leetspeak — la flag era justamente la referencia al fallo de acceso a ese sector.
-
-## Lección
+*"idor sector 21"## Lección
 
 Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe validar que ese ID pertenece al usuario; solo autenticar la sesión no basta, porque permite leer recursos ajenos enumerando IDs (IDOR).`},
   {id:"archivo-de-turnos",title:"Archivo de turnos",category:"Pentesting",points:300,slug:"archivo-de-turnos",files:["startlab.sh", "blackout-pt02.tar"],content:`# Archivo de turnos
@@ -242,9 +240,7 @@ $ cat /tmp/f
 WHOAMI{arch1v0_turn0s}
 \`\`\`
 
-*"archivo turnos"* en leetspeak.
-
-## Lección
+*"archivo turnos"## Lección
 
 El material de un reto puede vivir fuera del index: \`robots.txt\` y el listado de directorios destapan lo que el portal no muestra. Y cuando un dump SQL filtra la **política de generación de claves**, esa política permite derivar la credencial real (aquí, contra el SHA256 del usuario). Luego, un sudo sin contraseña sobre \`tar\` (GTFObins) convierte el acceso en root.`},
   {id:"bitacora-del-blackout",title:"Bitácora del blackout",category:"Misc",points:300,slug:"bitacora-del-blackout",files:["turno.log", "alerta.wav", "spectrogram.png"],content:`# Bitácora del blackout
@@ -314,9 +310,7 @@ Ordenando por hora: \`WHOAMI{\` + \`b17ac0r4_\` + \`4ud10_\` + \`m0r53}\`
 WHOAMI{b17ac0r4_4ud10_m0r53}
 \`\`\`
 
-*"bitacora audio morse"* en leetspeak — la bitácora, el audio y el Morse eran todo el desafío.
-
-## Lección
+*"bitacora audio morse"## Lección
 
 Cuando un reto mezcle log + audio, mira qué hay *dentro* del audio (espectrograma/Morse) antes de adivinar el orden: suele contener la instrucción de cómo combinar los fragmentos del log.`},
   {id:"boveda-keepass",title:"Bóveda KeePass",category:"Cripto",points:500,slug:"boveda-keepass",files:["ingeniero.kdbx", "politica_acceso.txt"],content:`# Bóveda KeePass
@@ -383,9 +377,7 @@ URL:
 Notes: Solo usar si el SCADA central no responde.
 \`\`\`
 
-La flag estaba en el campo \`Password\` de la entrada. *"keepass boveda 14"* en leetspeak.
-
-## Lección
+La flag estaba en el campo \`Password\` de la entrada. *"keepass boveda 14"## Lección
 
 Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de esa contraseña sigue una política corporativa predecible (\`RolDominio.Año\`) y el archivo de política se filtra junto a la bóveda, la "protección" desaparece. Además, la flag en campos protegidos se lee con \`--show-protected\`.`},
   {id:"carga-de-evidencias",title:"Carga de evidencias",category:"Web",points:425,slug:"carga-de-evidencias",files:["startlab.sh", "blackout-web05.tar"],content:`# Carga de evidencias
@@ -518,9 +510,7 @@ $ echo "V0hPQU1Je3VwMTBhZF8zdjFkM25jMTR9" | base64 -d
 WHOAMI{up10ad_3v1d3nc14}
 \`\`\`
 
-*"upload evidencia"* en leetspeak — la flag apunta a la subida de evidencias.
-
-## Lección
+*"upload evidencia"## Lección
 
 Una subida de archivos que valida \`getimagesize()\` pero no limita qué extensiones ejecuta Apache es vulnerable: \`.phtml\`/\`.php7\`/\`.pht\` no suelen estar en el blocklist y se interpretan como PHP. Un poliglota (GIF válido + payload PHP) combina ambas cosas y da RCE.`},
   {id:"cartel-en-la-subestacion",title:"Cartel en la subestación",category:"Misc",points:100,slug:"cartel-en-la-subestacion",files:["subestacion.jpg"],content:`# Cartel en la subestación
@@ -632,9 +622,7 @@ WHOAMI{ + m4p4_ + bl4ck0 + ut_c0 + 0rd3n + 4d4s}
 
 **\`WHOAMI{m4p4_bl4ck0ut_c00rd3n4d4s}\`**
 
-> La flag en leetspeak dice *"mapa blackout coordenadas"*.
-
-## Lección
+>## Lección
 
 Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -append\`) y decodifica con \`zbarimg\` antes de analizar nada más — el código puede contener el orden de lectura de los datos.`},
   {id:"diagnostico-de-enlace",title:"Diagnóstico de enlace",category:"Web",points:350,slug:"diagnostico-de-enlace",files:["startlab.sh", "blackout-web04.tar"],content:`# Diagnóstico de enlace
@@ -719,9 +707,7 @@ $ echo "V0hPQU1Je2NtZDFfZW5sYWMzX24wcnQzfQ==" | base64 -d
 WHOAMI{cmd1_enlac3_n0rt3}
 \`\`\`
 
-*"cmd inyección enlace norte"* en leetspeak.
-
-## Lección
+*"cmd inyección enlace norte"## Lección
 
 Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \`&\`, prueba \`|\` (pipe): ejecuta un comando adicional sin necesitar terminador. Luego, explora \`/var/lib\` o directorios de la app: ahí suelen esconder archivos \`.dat\` con la flag en base64.`},
   {id:"evidencia-en-http",title:"Evidencia en HTTP",category:"Forense",points:500,slug:"evidencia-en-http",files:["sala_control.pcap"],content:`# Evidencia en HTTP
@@ -833,9 +819,7 @@ Concatenando \`01\` → \`02\` → \`03\`:
 WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
 \`\`\`
 
-*"dns exfil blackout"* en leetspeak — la exfiltración por DNS del blackout.
-
-## Lección
+*"dns exfil blackout"## Lección
 
 En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios raros con prefijos numerados y decodifica cada fragmento: la exfiltración por DNS suele esconder la flag en base32/base64 dentro de los nombres consultados.`},
   {id:"gateway-scada",title:"Gateway SCADA",category:"Web",points:500,slug:"gateway-scada",files:["startlab.sh", "blackout-web06.tar"],content:`# Gateway SCADA
@@ -908,9 +892,7 @@ $ echo "ZKRDPL{vvui_so4qw4_q0uw3}" | tr 'A-Za-z' 'X-ZA-Wx-za-w'
 WHOAMI{ssrf_pl4nt4_n0rt3}
 \`\`\`
 
-*"ssrf planta norte"* en leetspeak.
-
-> **Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`WHOAMI{docker_exec_detected_n1ce_try}\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
+*"ssrf planta norte"> **Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`WHOAMI{docker_exec_detected_n1ce_try}\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
 
 ## Lección
 
@@ -981,9 +963,7 @@ $ echo "V0hPQU1Je2xmMV9kMGNfczNjdDByMTR9" | base64 -d
 WHOAMI{lf1_d0c_s3ct0r14}
 \`\`\`
 
-*"lfi doc sector14"* en leetspeak.
-
-## Lección
+*"lfi doc sector14"## Lección
 
 Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path traversal (\`../\`) para escapar del directorio permitido y leer archivos sensibles. Si el valor se decodifica a texto raro, suele ser base64.`},
   {id:"intranet-del-patio",title:"Intranet del patio",category:"Pentesting",points:500,slug:"intranet-del-patio",files:["startlab.sh", "blackout-pt04.tar"],content:`# Intranet del patio
@@ -1129,9 +1109,7 @@ $ cat /tmp/f
 WHOAMI{1ntr4n3t_p4t10_n14}
 \`\`\`
 
-*"intranet patio n14"* en leetspeak.
-
-## Lección
+*"intranet patio n14"## Lección
 
 Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra una política de claves → la política deriva credenciales FTP y SSH → un binario SUID que ejecuta \`system()\` sobre un archivo controlado por el usuario (\`$HOME/.inrc\`) convierte el acceso en root. Y un detalle importante: forzar \`PreferredAuthentications=password\` evita fallos espurios de autenticación por pubkey.`},
   {id:"login-del-operador",title:"Login del operador",category:"Web",points:175,slug:"login-del-operador",files:["startlab.sh", "blackout-web02.tar"],content:`# Login del operador
@@ -1219,9 +1197,7 @@ $ echo "V0hPQU1Je3NxbDFfZzNyM250M19uMHJ0M30=" | base64 -d
 WHOAMI{sql1_g3r3nt3_n0rt3}
 \`\`\`
 
-*"sql gerente norte"* en leetspeak.
-
-## Lección
+*"sql gerente norte"## Lección
 
 Los formularios de login con intercalación directa de variables en SQL son un blanco clásico de inyección. La SQLi (\`' OR '1'='1' --\`) permite entrar sin credenciales, y a veces la flag vive en otra fila/tabla de la base — conviene inspeccionarla entera, no solo la primera coincidencia.`},
   {id:"mascara-latam",title:"Máscara LATAM",category:"Cripto",points:400,slug:"mascara-latam",files:["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],content:`# Máscara LATAM
@@ -1510,9 +1486,7 @@ $ cat flag.txt
 WHOAMI{md5_p1n_0p3r4d0r}
 \`\`\`
 
-*"md5 pin operador"* en leetspeak — la flag resume todo el flujo del reto.
-
-## Lección
+*"md5 pin operador"## Lección
 
 Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash MD5 sin sal mediante fuerza bruta incremental, por lo que nunca debe usarse para cifrar datos sensibles.`},
   {id:"radio-de-campo",title:"Radio de campo",category:"Pentesting",points:400,slug:"radio-de-campo",files:["startlab.sh", "blackout-pt03.tar"],content:`# Radio de campo
@@ -1634,9 +1608,7 @@ $ cat /tmp/f
 WHOAMI{rad10_camp0_n14}
 \`\`\`
 
-*"radio campo n14"* en leetspeak.
-
-## Lección
+*"radio campo n14"## Lección
 
 Dos puntos clave: (1) un escaneo solo TCP se pierde SNMP y demás servicios UDP — siempre escanea UDP en pentesting; y (2) un binario SUID que llama \`system()\` con un comando por nombre sin ruta absoluta es vulnerable a **path hijacking**: si el atacante controla el \`PATH\`, un ejecutable malicioso del mismo nombre se ejecuta como root.`},
   {id:"rele-scada",title:"Relé SCADA",category:"Binarios",points:125,slug:"rele-scada",files:["scada_relay"],content:`# Relé SCADA
@@ -1704,9 +1676,7 @@ $ echo "V0hPQU1Je3N0cjFuZ3NfNG5kX2I2NH0=" | base64 -d
 WHOAMI{str1ngs_4nd_b64}
 \`\`\`
 
-El token en leetspeak dice *"strings and b64"* — justo la técnica usada.
-
-### 5. Confirmar
+El token### 5. Confirmar
 
 \`\`\`bash
 $ echo "WHOAMI{str1ngs_4nd_b64}" | ./scada_relay
@@ -1783,9 +1753,7 @@ $ cat flag.txt
 WHOAMI{sh4d0w_turn0_n0rt3}
 \`\`\`
 
-*"shadow turno norte"* en leetspeak — el turno de guardia del sector norte y el origen del hash (\`/etc/shadow\`).
-
-## Lección
+*"shadow turno norte"## Lección
 
 Un hash \`$6$\` (sha512crypt) de \`/etc/shadow\` no se puede invertir matemáticamente: se adivina. Con una contraseña débil en un diccionario, \`john --format=sha512crypt\` la recupera al instante, y esa misma clave suele reutilizarse para desbloquear otros archivos del reto.`},
   {id:"telemetria-xor",title:"Telemetría XOR",category:"Binarios",points:300,slug:"telemetria-xor",files:["telemetry_decode"],content:`# Telemetría XOR
@@ -1832,9 +1800,7 @@ print(bytes(payload[i] ^ key[i % len(key)] for i in range(len(payload))).decode(
 WHOAMI{x0r_t3l3m3tr14}
 \`\`\`
 
-*"xor telemetria"* en leetspeak.
-
-## Lección
+*"xor telemetria"## Lección
 
 Cuando un binario imprima metadatos con \`cipher=xor\` y \`key=...\`, ejecútalo antes de desensamblar: a veces la solución está en la propia salida. XOR por byte con la clave en ciclo (\`. \` i % len(key)\`) decodifica el payload.`},
   {id:"trafico-de-control",title:"Tráfico de control",category:"Forense",points:125,slug:"trafico-de-control",files:["blackout_control.pcap"],content:`# Tráfico de control
