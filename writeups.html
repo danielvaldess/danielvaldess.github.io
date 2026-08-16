@@ -71,6 +71,51 @@
             'Pentesting': '#2ecc71', 'Cripto': '#3498db', 'Binarios': '#f39c12', 'General': '#95a5a6'
         };
 
+        const fileLabels = {
+            'startlab.sh': 'Lab launcher',
+            'blackout-web01.tar': 'Web lab #1',
+            'blackout-web02.tar': 'Web lab #2',
+            'blackout-web03.tar': 'Web lab #3',
+            'blackout-web04.tar': 'Web lab #4',
+            'blackout-web05.tar': 'Web lab #5',
+            'blackout-web06.tar': 'Web lab #6',
+            'blackout-pt01.tar': 'Pentest lab #1',
+            'blackout-pt02.tar': 'Pentest lab #2',
+            'blackout-pt03.tar': 'Pentest lab #3',
+            'blackout-pt04.tar': 'Pentest lab #4',
+            'turno.log': 'Shift log',
+            'alerta.wav': 'Audio alert',
+            'spectrogram.png': 'Spectrogram',
+            'ingeniero.kdbx': 'KeePass vault',
+            'politica_acceso.txt': 'Access policy',
+            'subestacion.jpg': 'Substation photo',
+            'qr_a.png': 'QR piece A',
+            'qr_b.png': 'QR piece B',
+            'qr_c.png': 'QR piece C',
+            'comunicado.html': 'Briefing',
+            'cargas.csv': 'Load data CSV',
+            'sala_control.pcap': 'Network capture',
+            'exfil_dns.pcap': 'DNS capture',
+            'boveda.zip': 'Encrypted vault',
+            'hash_maestra.sha256': 'Master hash',
+            'pista_ingeniero.txt': 'Engineer hint',
+            'pin_operador.hash': 'PIN hash',
+            'leeme.txt': 'Readme',
+            'nota_recuperacion.zip': 'Recovery note',
+            'scada_relay': 'SCADA relay binary',
+            'shadow_turno.txt': 'Shadow dump',
+            'export_consola.txt': 'Console export',
+            'consola.zip': 'Console archive',
+            'telemetry_decode': 'Telemetry decoder',
+            'blackout_control.pcap': 'Control capture',
+            'turno_guard': 'Shift guard binary',
+            'plc_ladder': 'PLC ladder binary',
+            'pin.hash': 'PIN hash',
+            'flag.txt': 'Flag file',
+            'shadow.hash': 'Shadow hash',
+            'evidencia.dat': 'Evidence data',
+        };
+
         const categories = [...new Set(WRITEUPS.map(w => w.category))].sort();
         categories.forEach(cat => {
             const btn = document.createElement('button');
@@ -88,7 +133,7 @@
                 card.className = 'writeup-card';
                 const color = catColors[w.category] || '#95a5a6';
                 const icon = catIcons[w.category] || 'fa-folder';
-                const filesHtml = w.files.length ? `<div class="card-files">${w.files.map(f => `<span class="file-tag"><i class="fa-solid fa-file"></i> ${f}</span>`).join('')}</div>` : '';
+                const filesHtml = w.files.length ? `<div class="card-files">${w.files.map(f => `<span class="file-tag"><i class="fa-solid fa-file"></i> ${fileLabels[f] || f}</span>`).join('')}</div>` : '';
 
                 card.innerHTML = `
                     <div class="card-header">
@@ -108,10 +153,15 @@
         }
 
         function getFirstLine(content) {
-            const lines = content.split('\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('**Flag') && !l.startsWith('---'));
+            const lines = content.split('\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('**Flag') && !l.startsWith('---') && !l.startsWith('**Categor'));
             for (const line of lines) {
                 const clean = line.replace(/`[^`]*`/g, '').replace(/\[REDACTED\]/g, '').trim();
-                if (clean.length > 20) return clean.substring(0, 120) + (clean.length > 120 ? '...' : '');
+                if (clean.length > 20) {
+                    if (clean.length <= 180) return clean;
+                    const cut = clean.substring(0, 180);
+                    const lastSpace = cut.lastIndexOf(' ');
+                    return (lastSpace > 100 ? cut.substring(0, lastSpace) : cut) + '...';
+                }
             }
             return 'Challenge walkthrough and analysis.';
         }
@@ -131,7 +181,7 @@
                 <div class="wup-files">
                     <h4><i class="fa-solid fa-paperclip"></i> Challenge Files</h4>
                     <div class="wup-files-list">
-                        ${w.files.map(f => `<span class="wup-file-tag"><i class="fa-solid fa-file"></i> ${f}</span>`).join('')}
+                        ${w.files.map(f => `<span class="wup-file-tag"><i class="fa-solid fa-file"></i> ${fileLabels[f] || f} <span class="file-original">(${f})</span></span>`).join('')}
                     </div>
                 </div>
             ` : '';

@@ -108,9 +108,9 @@ header.scrolled {
 }
 
 section {
-    padding-top: 8rem;
+    padding-top: 10rem;
     min-height: 100vh;
-    padding: 4rem 9%;
+    padding: 10rem 9% 4rem;
     box-sizing: border-box;
 }
 
@@ -543,6 +543,12 @@ span {
     opacity: 0.4;
 }
 
+.file-original {
+    font-size: 1rem;
+    color: #555;
+    opacity: 0.6;
+}
+
 /* Writeup body */
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
@@ -795,7 +801,7 @@ span {
 
 @media (max-width: 768px) {
     .writeups-page {
-        padding: 8rem var(--mobile-padding) 5rem;
+        padding: 10rem var(--mobile-padding) 5rem;
     }
     .page-title {
         font-size: 2.8rem;
