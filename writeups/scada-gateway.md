@@ -1,9 +1,7 @@
 # SCADA Gateway
 
 > Telemetry query gateway. Download the lab zip and run it on Kali/Linux with Docker.
->
 > `chmod +x startlab.sh && ./startlab.sh blackout-web06.tar` → lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP.
->
 > **Hint:** enumerate the lab IP with nmap. There is a gateway that queries a node URL.
 
 **Flag:** `WHOAMI{ssrf_pl4nt4_n0rt3}`
@@ -11,6 +9,8 @@
 ---
 
 ## Solution
+
+The challenge involves exploiting an SSRF vulnerability in a telemetry gateway that blocks localhost access, bypassing the filter with an alternative IP representation to reach an internal service and decode a Caesar-encrypted flag.
 
 ### 1. Spin up and enumerate
 

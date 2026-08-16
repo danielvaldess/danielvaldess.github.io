@@ -1,9 +1,7 @@
 # Operator Login
 
 > North substation guard portal. Download the lab zip and run it on Kali/Linux with Docker.
->
 > `chmod +x startlab.sh && ./startlab.sh blackout-web02.tar` → displays the lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP.
->
 > **Tip:** enumerate the lab IP with nmap. The portal requires guard identification.
 
 **Flag:** `WHOAMI{sql1_g3r3nt3_n0rt3}`
@@ -11,6 +9,8 @@
 ---
 
 ## Walkthrough
+
+The challenge involves exploiting a login form with SQL injection to bypass authentication, then inspecting the database to find the flag in a base64-encoded note.
 
 ### 1. Start the lab with Docker
 

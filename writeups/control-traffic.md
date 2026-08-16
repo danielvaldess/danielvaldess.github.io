@@ -1,7 +1,6 @@
 # Control Traffic
 
 > Partial PCAP from the SCADA portal during the blackout. The operator authenticated in plaintext; retrieve `WHOAMI{...}`.
->
 > **Hint:** filter HTTP traffic on port 80.
 
 **Flag:** `WHOAMI{http_pl41nt3xt_4p4g0n}`
@@ -10,7 +9,7 @@
 
 ## Solution
 
-The clue points to HTTP traffic on port 80. The PCAP is very short: a single TCP connection and one POST request to the SCADA portal.
+The PCAP captures a single HTTP POST request to the SCADA authentication endpoint in plaintext. By filtering for HTTP traffic and extracting the POST body, the operator's credentials and the flag can be recovered directly.
 
 ### 1. View the Packets
 

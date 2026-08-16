@@ -1,7 +1,6 @@
 # Shift Validator
 
 > `turno_guard` validator (ELF Linux x64). Only accepts an exact token `WHOAMI{...}`.
->
 > **Hint:** `chmod +x`. Try Ghidra, Cutter or `objdump -d`.
 
 **Flag:** `WHOAMI{k3yg3n_bl4ck0ut}`
@@ -9,6 +8,8 @@
 ---
 
 ## Solution
+
+The binary is a flag checker that validates input against an expected token using a progressive XOR cipher. By disassembling the validation routine, the XOR key sequence and the masked expected value can be extracted from the binary, then reversed to recover the flag.
 
 ### 1. Run
 

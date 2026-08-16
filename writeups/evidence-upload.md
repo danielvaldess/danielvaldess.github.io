@@ -1,15 +1,11 @@
 # Evidence Upload
 
-> Field evidence tray. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
->
-> `chmod +x startlab.sh`
-> `./startlab.sh blackout-web05.tar`
->
-> The script displays the lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP. Do not expose the container to the internet.
->
-> **Tip:** enumerate the lab IP with nmap. There is a tray for archiving field evidence.
-
 **Flag:** `WHOAMI{up10ad_3v1d3nc14}`
+
+> Field evidence tray. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
+> `chmod +x startlab.sh` `./startlab.sh blackout-web05.tar`
+> The script displays the lab IP (172.18.0.2). Enumerate with nmap and attack via HTTP. Do not expose the container to the internet.
+> **Tip:** enumerate the lab IP with nmap. There is a tray for archiving field evidence.
 
 ---
 

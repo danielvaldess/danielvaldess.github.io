@@ -1,9 +1,7 @@
 # Sector 14 Report
 
 > LATAM Energía Red left a report query portal after the sector 14 blackout. Download the lab zip and run it on Kali/Linux with Docker.
->
 > `chmod +x startlab.sh && ./startlab.sh blackout-web01.tar` → lab IP on the Docker network (172.18.0.2). Enumerate with nmap and attack via HTTP.
->
 > **Hint:** enumerate the lab IP with nmap. The portal exposes several internal sections.
 
 **Flag:** `WHOAMI{lf1_d0c_s3ct0r14}`
@@ -11,6 +9,8 @@
 ---
 
 ## Solution
+
+The challenge involves exploiting a Local File Inclusion vulnerability in a report portal to read an internal data file, then decoding its base64-encoded contents to recover the flag.
 
 ### 1. Start the lab
 
