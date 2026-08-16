@@ -89,6 +89,23 @@ header.scrolled {
     align-items: center;
     transition: all 0.3s ease;
     margin-right: auto;
+    gap: 0.8rem;
+}
+
+.logo-terminal {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--nav-color);
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 10px rgba(var(--nav-color-rgb), 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-terminal i {
+    font-size: 1.3rem;
+    opacity: 0.8;
 }
 
 .logo-img {
