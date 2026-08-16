@@ -45,7 +45,7 @@
         <!-- Cards grid -->
         <div class="writeups-grid" id="writeupsGrid"></div>
 
-        <!-- Individual writeup view (hidden by default) -->
+        <!-- Individual writeup view -->
         <div class="writeup-view" id="writeupView" style="display:none;">
             <button class="back-btn" id="backBtn">
                 <i class="fa-solid fa-arrow-left"></i> Back to Writeups
@@ -62,31 +62,16 @@
         const writeupContent = document.getElementById('writeupContent');
         const backBtn = document.getElementById('backBtn');
 
-        // Category icons
         const catIcons = {
-            'Web': 'fa-globe',
-            'Forense': 'fa-magnifying-glass',
-            'Misc': 'fa-puzzle-piece',
-            'Pentesting': 'fa-user-secret',
-            'Cripto': 'fa-lock',
-            'Binarios': 'fa-microchip',
-            'General': 'fa-folder'
+            'Web': 'fa-globe', 'Forense': 'fa-magnifying-glass', 'Misc': 'fa-puzzle-piece',
+            'Pentesting': 'fa-user-secret', 'Cripto': 'fa-lock', 'Binarios': 'fa-microchip', 'General': 'fa-folder'
         };
-
-        // Category colors (matching theme)
         const catColors = {
-            'Web': '#b43f26',
-            'Forense': '#e67e22',
-            'Misc': '#9b59b6',
-            'Pentesting': '#2ecc71',
-            'Cripto': '#3498db',
-            'Binarios': '#f39c12',
-            'General': '#95a5a6'
+            'Web': '#b43f26', 'Forense': '#e67e22', 'Misc': '#9b59b6',
+            'Pentesting': '#2ecc71', 'Cripto': '#3498db', 'Binarios': '#f39c12', 'General': '#95a5a6'
         };
 
-        // Build filter buttons
-        const categories = [...new Set(WRITEUPS.map(w => w.category))];
-        categories.sort();
+        const categories = [...new Set(WRITEUPS.map(w => w.category))].sort();
         categories.forEach(cat => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
@@ -95,27 +80,24 @@
             filterBar.appendChild(btn);
         });
 
-        // Render cards
         function renderCards(filter) {
             const list = filter === 'all' ? WRITEUPS : WRITEUPS.filter(w => w.category === filter);
             grid.innerHTML = '';
             list.forEach(w => {
                 const card = document.createElement('div');
                 card.className = 'writeup-card';
-                card.dataset.id = w.id;
-
-                const icon = catIcons[w.category] || 'fa-folder';
                 const color = catColors[w.category] || '#95a5a6';
+                const icon = catIcons[w.category] || 'fa-folder';
+                const filesHtml = w.files.length ? `<div class="card-files">${w.files.map(f => `<span class="file-tag"><i class="fa-solid fa-file"></i> ${f}</span>`).join('')}</div>` : '';
 
                 card.innerHTML = `
                     <div class="card-header">
-                        <span class="card-cat" style="color:${color}">
-                            <i class="fa-solid ${icon}"></i> ${w.category}
-                        </span>
+                        <span class="card-cat" style="color:${color}"><i class="fa-solid ${icon}"></i> ${w.category}</span>
                         <span class="card-pts">${w.points} pts</span>
                     </div>
                     <h3 class="card-title">${w.title}</h3>
                     <p class="card-desc">${getFirstLine(w.content)}</p>
+                    ${filesHtml}
                     <button class="card-btn" style="border-color:${color}; color:${color}">
                         View Writeup <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -134,68 +116,70 @@
             return 'Challenge walkthrough and analysis.';
         }
 
-        // Show individual writeup
+        let currentColor = '#b43f26';
+
         function showWriteup(id) {
             const w = WRITEUPS.find(x => x.id === id);
             if (!w) return;
+            currentColor = catColors[w.category] || '#b43f26';
 
             grid.style.display = 'none';
             filterBar.style.display = 'none';
             writeupView.style.display = 'block';
 
-            const color = catColors[w.category] || '#95a5a6';
+            const filesHtml = w.files.length ? `
+                <div class="wup-files">
+                    <h4><i class="fa-solid fa-paperclip"></i> Challenge Files</h4>
+                    <div class="wup-files-list">
+                        ${w.files.map(f => `<span class="wup-file-tag"><i class="fa-solid fa-file"></i> ${f}</span>`).join('')}
+                    </div>
+                </div>
+            ` : '';
+
             writeupContent.innerHTML = `
-                <div class="wup-header">
-                    <span class="wup-cat" style="color:${color}">
+                <div class="wup-header" style="border-bottom-color: ${currentColor}">
+                    <span class="wup-cat" style="color:${currentColor}">
                         <i class="fa-solid ${catIcons[w.category] || 'fa-folder'}"></i> ${w.category} · ${w.points} pts
                     </span>
                     <h2 class="wup-title">${w.title}</h2>
+                    ${filesHtml}
                 </div>
                 <div class="wup-body">${renderMarkdown(w.content)}</div>
             `;
-
             window.scrollTo(0, 0);
         }
 
-        // Simple markdown renderer
         function renderMarkdown(md) {
             let html = md;
-            // Code blocks
+            // Code blocks with terminal style
             html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
-                `<pre><code>${escapeHtml(code.trim())}</code></pre>`
+                `<div class="terminal-block"><div class="terminal-bar"><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-title">${lang || 'terminal'}</span></div><pre><code>${escapeHtml(code.trim())}</code></pre></div>`
             );
-            // Inline code
-            html = html.replace(/`([^`]+)`/g, '<code class="inline">$1</code>');
-            // Headers
-            html = html.replace(/^### (.+)$/gm, '<h4>$1</h4>');
-            html = html.replace(/^## (.+)$/gm, '<h3>$1</h3>');
-            // Bold
+            html = html.replace(/`([^`]+)`/g, `<code class="inline" style="color:${currentColor}">$1</code>`);
+            html = html.replace(/^### (.+)$/gm, `<h4 style="color:${currentColor}">$1</h4>`);
+            html = html.replace(/^## (.+)$/gm, `<h3 style="color:${currentColor}">$1</h3>`);
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-            // Blockquotes
-            html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
-            // Horizontal rules
+            html = html.replace(/^> (.+)$/gm, `<blockquote style="border-left-color:${currentColor}">$1</blockquote>`);
             html = html.replace(/^---$/gm, '<hr>');
             // Tables
             html = html.replace(/^\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/gm, (_, header, body) => {
-                const ths = header.split('|').map(h => `<th>${h.trim()}</th>`).join('');
+                const ths = header.split('|').map(h => `<th style="border-bottom-color:${currentColor}">${h.trim()}</th>`).join('');
                 const rows = body.trim().split('\n').map(row => {
                     const tds = row.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
                     return `<tr>${tds}</tr>`;
                 }).join('');
                 return `<table><thead><tr>${ths}</tr></thead><tbody>${rows}</tbody></table>`;
             });
-            // Lists
             html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
             html = html.replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
             // Paragraphs
             html = html.replace(/\n\n/g, '</p><p>');
             html = '<p>' + html + '</p>';
-            // Clean empty paragraphs
             html = html.replace(/<p>\s*<\/p>/g, '');
             html = html.replace(/<p>\s*(<h[34]>)/g, '$1');
             html = html.replace(/(<\/h[34]>)\s*<\/p>/g, '$1');
-            html = html.replace(/<p>\s*(<pre>)/g, '$1');
-            html = html.replace(/(<\/pre>)\s*<\/p>/g, '$1');
+            html = html.replace(/<p>\s*(<div class="terminal)/g, '$1');
+            html = html.replace(/(<\/div>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*(<table>)/g, '$1');
             html = html.replace(/(<\/table>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*(<ul>)/g, '$1');
@@ -211,7 +195,6 @@
             return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
 
-        // Go back to grid
         backBtn.addEventListener('click', () => {
             writeupView.style.display = 'none';
             grid.style.display = '';
@@ -219,7 +202,6 @@
             window.scrollTo(0, 0);
         });
 
-        // Filter buttons
         filterBar.addEventListener('click', e => {
             if (!e.target.classList.contains('filter-btn')) return;
             filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -227,51 +209,30 @@
             renderCards(e.target.dataset.cat);
         });
 
-        // Hash routing
         function handleHash() {
             const hash = window.location.hash.replace('#', '');
-            if (hash) {
-                showWriteup(hash);
-            } else {
-                writeupView.style.display = 'none';
-                grid.style.display = '';
-                filterBar.style.display = '';
-            }
+            if (hash) { showWriteup(hash); }
+            else { writeupView.style.display = 'none'; grid.style.display = ''; filterBar.style.display = ''; }
         }
         window.addEventListener('hashchange', handleHash);
 
-        // Init
         renderCards('all');
         handleHash();
 
-        // Scroll header
         window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
+            document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav');
             menuToggle.addEventListener('click', () => {
                 const isActive = nav.classList.contains('active');
-                if (isActive) {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    document.body.style.overflow = '';
-                } else {
-                    nav.classList.add('active');
-                    menuToggle.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
+                if (isActive) { nav.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; }
+                else { nav.classList.add('active'); menuToggle.classList.add('active'); document.body.style.overflow = 'hidden'; }
             });
             document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
+                link.addEventListener('click', () => { nav.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; });
             });
         });
     </script>
