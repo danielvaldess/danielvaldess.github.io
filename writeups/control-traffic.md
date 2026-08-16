@@ -52,3 +52,7 @@ The flag is in `nota_recuperacion`. "HTTP in plaintext = blackout", confirming t
 ## Lesson
 
 In a PCAP, always filter by protocol (`http`) and inspect POST bodies — plaintext authentication exposes sensitive data (and flags). To decode form-urlencoded, extract `http.file_data` and revert the hex.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

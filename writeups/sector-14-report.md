@@ -67,3 +67,7 @@ WHOAMI{lf1_d0c_s3ct0r14}
 ## Lesson
 
 When a parameter includes files (`?informe=xxx.php`), try path traversal (`../`) to escape the allowed directory and read sensitive files. If the value decodes to garbled text, it is usually base64.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

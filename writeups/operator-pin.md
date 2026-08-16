@@ -99,3 +99,7 @@ WHOAMI{md5_p1n_0p3r4d0r}
 ## Lesson
 
 A short, predictable PIN (like `sector14`) is recovered in seconds from its unsalted MD5 hash via incremental brute force, so it should never be used to encrypt sensitive data.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

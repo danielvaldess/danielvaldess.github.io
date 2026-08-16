@@ -30,3 +30,7 @@ The flag was directly in the `User Comment` field. The remaining fields (`Softwa
 ## Lesson
 
 Before looking for steganography or performing heavy analysis, always check the metadata: `exiftool -a -u -g1 <file>`. Many forensics/misc challenges hide the flag in fields like `User Comment`, `Artist`, `Software`, or `Copyright`.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

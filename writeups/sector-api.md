@@ -118,3 +118,7 @@ WHOAMI{id0r_s3ct0r21}
 ## Lesson
 
 A REST endpoint that uses a direct resource ID (`/api/sector/{id}`) must validate that the ID belongs to the authenticated user; session authentication alone is not enough, because it allows reading other users' resources by enumerating IDs (IDOR).
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

@@ -78,3 +78,7 @@ WHOAMI{ + m4p4_ + bl4ck0 + ut_c0 + 0rd3n + 4d4s}
 ## Lesson
 
 When a challenge provides multiple image strips, join them first (`convert -append`) and decode with `zbarimg` before analyzing anything else — the code may contain the reading order for the data.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

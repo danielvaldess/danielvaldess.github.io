@@ -89,3 +89,7 @@ $ echo "WHOAMI{k3yg3n_bl4ck0ut}" | ./turno_guard
 ## Lesson
 
 A comparator with a "progressive key" (XOR with counter) is easily reversed: reconstruct the key sequence (`7, 20, 33, 46, …`) and apply `masked[i] ^ key[i]`. The final counter value (`0x32`) also reveals the exact token length.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

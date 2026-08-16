@@ -86,3 +86,7 @@ WHOAMI{sql1_g3r3nt3_n0rt3}
 ## Lesson
 
 Login forms with direct variable interpolation in SQL are a classic injection target. SQLi (`' OR '1'='1' --`) allows access without credentials, and sometimes the flag lives in another row/table of the database — it is worth inspecting the entire database, not just the first match.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

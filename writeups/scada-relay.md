@@ -76,3 +76,7 @@ $ echo "WHOAMI{str1ngs_4nd_b64}" | ./scada_relay
 ## Lesson
 
 Before opening a decompiler, always run `strings` on the binary and look for revealing variable/constant names (like `TOKEN_B64`): many "binary" category challenges are just base64/hex-encoded text hidden in `.rodata`.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

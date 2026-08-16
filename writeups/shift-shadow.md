@@ -67,3 +67,7 @@ WHOAMI{sh4d0w_turn0_n0rt3}
 ## Lesson
 
 A `$6$` (sha512crypt) hash from `/etc/shadow` cannot be mathematically inverted: it must be guessed. With a weak password in a dictionary, `john --format=sha512crypt` recovers it instantly, and that same key is often reused to unlock other challenge files.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

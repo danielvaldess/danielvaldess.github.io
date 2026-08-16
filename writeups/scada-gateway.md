@@ -73,3 +73,7 @@ WHOAMI{ssrf_pl4nt4_n0rt3}
 ## Lesson
 
 SSRF with `localhost` blocking protects nothing: it is bypassed with alternative IP representations (`0x7f000001`, decimal, octal…). Then explore internal ports and routes of the reachable service. And watch out for trap strings in container binaries.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

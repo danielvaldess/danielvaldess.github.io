@@ -117,3 +117,7 @@ WHOAMI{rad10_camp0_n14}
 ## Lesson
 
 Two key takeaways: (1) a TCP-only scan misses SNMP and other UDP services — always scan UDP in pentesting; and (2) a SUID binary that calls `system()` with a command by name (no absolute path) is vulnerable to **path hijacking**: if the attacker controls `PATH`, a malicious executable with the same name runs as root.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
