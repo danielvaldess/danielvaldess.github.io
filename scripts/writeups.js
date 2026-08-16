@@ -1,83 +1,83 @@
 // Challenge metadata — content loaded from writeups/*.md on demand
 const WRITEUPS = [
   {
-    "id": "api-de-sectores",
-    "title": "API de sectores",
+    "id": "sector-api",
+    "title": "Sector API",
     "category": "Web",
     "points": 250,
-    "slug": "api-de-sectores",
+    "slug": "sector-api",
     "files": [
       "startlab.sh",
       "blackout-web03.tar"
     ],
-    "desc": "Tablero de telemetría de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker."
+    "desc": "Field telemetry dashboard. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker."
   },
   {
-    "id": "archivo-de-turnos",
-    "title": "Archivo de turnos",
+    "id": "shift-archive",
+    "title": "Shift Archive",
     "category": "Pentesting",
     "points": 300,
-    "slug": "archivo-de-turnos",
+    "slug": "shift-archive",
     "files": [
       "startlab.sh",
       "blackout-pt02.tar"
     ],
-    "desc": "Nodo de archivo de turnos del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker."
+    "desc": "Sector 14 shift archive node. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker."
   },
   {
-    "id": "bitacora-del-blackout",
-    "title": "Bitácora del blackout",
+    "id": "blackout-log",
+    "title": "Blackout Log",
     "category": "Misc",
     "points": 300,
-    "slug": "bitacora-del-blackout",
+    "slug": "blackout-log",
     "files": [
       "turno.log",
       "alerta.wav",
       "spectrogram.png"
     ],
-    "desc": "Export parcial del turno SCADA + alarma de audio. Reconstruye la secuencia y envía ."
+    "desc": "Partial SCADA shift export + audio alarm. Reconstruct the sequence and submit."
   },
   {
-    "id": "boveda-keepass",
-    "title": "Bóveda KeePass",
-    "category": "Cripto",
+    "id": "keepass-vault",
+    "title": "KeePass Vault",
+    "category": "Crypto",
     "points": 500,
-    "slug": "boveda-keepass",
+    "slug": "keepass-vault",
     "files": [
       "ingeniero.kdbx",
       "politica_acceso.txt"
     ],
-    "desc": "Bóveda KeePass (ingeniero.kdbx) con las claves de recuperación del sector 14. Abre la entrada y envía ."
+    "desc": "KeePass vault (ingeniero.kdbx) with sector 14 recovery keys. Open the entry and submit."
   },
   {
-    "id": "carga-de-evidencias",
-    "title": "Carga de evidencias",
+    "id": "evidence-upload",
+    "title": "Evidence Upload",
     "category": "Web",
     "points": 425,
-    "slug": "carga-de-evidencias",
+    "slug": "evidence-upload",
     "files": [
       "startlab.sh",
       "blackout-web05.tar"
     ],
-    "desc": "Bandeja de evidencias de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker."
+    "desc": "Field evidence tray. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker."
   },
   {
-    "id": "cartel-en-la-subestacion",
-    "title": "Cartel en la subestación",
+    "id": "substation-sign",
+    "title": "Substation Sign",
     "category": "Misc",
     "points": 100,
-    "slug": "cartel-en-la-subestacion",
+    "slug": "substation-sign",
     "files": [
       "subestacion.jpg"
     ],
-    "desc": "Durante el apagón LATAM, un operador documentó la subestación Norte. Analiza la foto y encuentra ."
+    "desc": "During the LATAM blackout, an operator documented the North substation. Analyze the photo and find."
   },
   {
-    "id": "coordenadas-del-apagon",
-    "title": "Coordenadas del apagón",
+    "id": "blackout-coordinates",
+    "title": "Blackout Coordinates",
     "category": "Misc",
     "points": 500,
-    "slug": "coordenadas-del-apagon",
+    "slug": "blackout-coordinates",
     "files": [
       "qr_a.png",
       "qr_b.png",
@@ -85,206 +85,206 @@ const WRITEUPS = [
       "comunicado.html",
       "cargas.csv"
     ],
-    "desc": "Paquete incompleto del mapa de verificación (sector 14). Recompone el mapa y envía ."
+    "desc": "Incomplete verification map package (sector 14). Reassemble the map and submit."
   },
   {
-    "id": "diagnostico-de-enlace",
-    "title": "Diagnóstico de enlace",
+    "id": "link-diagnostics",
+    "title": "Link Diagnostics",
     "category": "Web",
     "points": 350,
-    "slug": "diagnostico-de-enlace",
+    "slug": "link-diagnostics",
     "files": [
       "startlab.sh",
       "blackout-web04.tar"
     ],
-    "desc": "Visor de diagnóstico de enlace de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker."
+    "desc": "North substation link diagnostics viewer. Download the lab zip and run it on Kali/Linux with Docker."
   },
   {
-    "id": "evidencia-en-http",
-    "title": "Evidencia en HTTP",
-    "category": "Forense",
+    "id": "http-evidence",
+    "title": "HTTP Evidence",
+    "category": "Forensics",
     "points": 500,
-    "slug": "evidencia-en-http",
+    "slug": "http-evidence",
     "files": [
       "sala_control.pcap"
     ],
-    "desc": "Descarga PNG desde el portal forense capturada en sala de control. Extrae el archivo del PCAP y envía ."
+    "desc": "PNG download from the forensics portal captured in the control room. Extract the file from the PCAP and submit."
   },
   {
-    "id": "exfiltracion-dns",
-    "title": "Exfiltración DNS",
-    "category": "Forense",
+    "id": "dns-exfiltration",
+    "title": "DNS Exfiltration",
+    "category": "Forensics",
     "points": 300,
-    "slug": "exfiltracion-dns",
+    "slug": "dns-exfiltration",
     "files": [
       "exfil_dns.pcap"
     ],
-    "desc": "Consultas DNS anómalas hacia . Reconstruye la secuencia y envía ."
+    "desc": "Anomalous DNS queries to exfil.blackout.redlatam. Reconstruct the sequence and submit."
   },
   {
-    "id": "gateway-scada",
-    "title": "Gateway SCADA",
+    "id": "scada-gateway",
+    "title": "SCADA Gateway",
     "category": "Web",
     "points": 500,
-    "slug": "gateway-scada",
+    "slug": "scada-gateway",
     "files": [
       "startlab.sh",
       "blackout-web06.tar"
     ],
-    "desc": "Gateway de consulta de telemetría. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker."
+    "desc": "Telemetry query gateway. Download the lab zip and run it on Kali/Linux with Docker."
   },
   {
-    "id": "informe-sector-14",
-    "title": "Informe sector 14",
+    "id": "sector-14-report",
+    "title": "Sector 14 Report",
     "category": "Web",
     "points": 125,
-    "slug": "informe-sector-14",
+    "slug": "sector-14-report",
     "files": [
       "startlab.sh",
       "blackout-web01.tar"
     ],
-    "desc": "LATAM Energía Red dejó un portal de consulta de informes tras el apagón del sector 14. Descarga el zip del lab y ejecútalo en Kali/Linux..."
+    "desc": "LATAM Energia Red left a report query portal after the sector 14 blackout. Download the lab zip and run it on Kali/Linux."
   },
   {
-    "id": "intranet-del-patio",
-    "title": "Intranet del patio",
+    "id": "yard-intranet",
+    "title": "Yard Intranet",
     "category": "Pentesting",
     "points": 500,
-    "slug": "intranet-del-patio",
+    "slug": "yard-intranet",
     "files": [
       "startlab.sh",
       "blackout-pt04.tar"
     ],
-    "desc": "Intranet del patio Norte (caja, turnos e inventario). Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker."
+    "desc": "North yard intranet (cashier, shifts, and inventory). Download the lab zip (Google Drive) and run it on Kali/Linux with Docker."
   },
   {
-    "id": "login-del-operador",
-    "title": "Login del operador",
+    "id": "operator-login",
+    "title": "Operator Login",
     "category": "Web",
     "points": 175,
-    "slug": "login-del-operador",
+    "slug": "operator-login",
     "files": [
       "startlab.sh",
       "blackout-web02.tar"
     ],
-    "desc": "Portal de guardia de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker."
+    "desc": "North substation guard portal. Download the lab zip and run it on Kali/Linux with Docker."
   },
   {
-    "id": "mascara-latam",
-    "title": "Máscara LATAM",
-    "category": "Cripto",
+    "id": "latam-mask",
+    "title": "LATAM Mask",
+    "category": "Crypto",
     "points": 400,
-    "slug": "mascara-latam",
+    "slug": "latam-mask",
     "files": [
       "boveda.zip",
       "hash_maestra.sha256",
       "pista_ingeniero.txt"
     ],
-    "desc": "Clave maestra del temporizador SCADA documentada solo como SHA256. La misma clave protege . Recupera ."
+    "desc": "SCADA timer master key documented only as SHA256. The same key protects boveda.zip. Recover."
   },
   {
-    "id": "nodo-del-patio-norte",
-    "title": "Nodo del patio Norte",
+    "id": "north-yard-node",
+    "title": "North Yard Node",
     "category": "Pentesting",
     "points": 125,
-    "slug": "nodo-del-patio-norte",
+    "slug": "north-yard-node",
     "files": [
       "startlab.sh",
       "blackout-pt01.tar"
     ],
-    "desc": "LATAM Energía Red dejó el nodo del patio Norte en modo recuperación. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con..."
+    "desc": "LATAM Energia Red left the north yard node in recovery mode. Download the lab zip (Google Drive) and run it on Kali/Linux."
   },
   {
-    "id": "pin-operador",
-    "title": "PIN del operador",
-    "category": "Cripto",
+    "id": "operator-pin",
+    "title": "Operator PIN",
+    "category": "Crypto",
     "points": 125,
-    "slug": "pin-operador",
+    "slug": "operator-pin",
     "files": [
       "pin_operador.hash",
       "leeme.txt",
       "nota_recuperacion.zip"
     ],
-    "desc": "Hash MD5 del PIN del panel local de la subestación Norte y un ZIP cifrado con esa misma clave. Recupera ."
+    "desc": "MD5 hash of the North substation local panel PIN and a ZIP encrypted with the same key. Recover."
   },
   {
-    "id": "radio-de-campo",
-    "title": "Radio de campo",
+    "id": "field-radio",
+    "title": "Field Radio",
     "category": "Pentesting",
     "points": 400,
-    "slug": "radio-de-campo",
+    "slug": "field-radio",
     "files": [
       "startlab.sh",
       "blackout-pt03.tar"
     ],
-    "desc": "Nodo de radio de campo del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker."
+    "desc": "Sector 14 field radio node. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker."
   },
   {
-    "id": "rele-scada",
-    "title": "Relé SCADA",
-    "category": "Binarios",
+    "id": "scada-relay",
+    "title": "SCADA Relay",
+    "category": "Binary",
     "points": 125,
-    "slug": "rele-scada",
+    "slug": "scada-relay",
     "files": [
       "scada_relay"
     ],
-    "desc": "Firmware del relé SCADA SN-441 (ELF Linux x64). Recupera el token ."
+    "desc": "SCADA relay SN-441 firmware (ELF Linux x64). Recover the token."
   },
   {
-    "id": "shadow-del-turno",
-    "title": "Shadow del turno",
-    "category": "Cripto",
+    "id": "shift-shadow",
+    "title": "Shift Shadow",
+    "category": "Crypto",
     "points": 300,
-    "slug": "shadow-del-turno",
+    "slug": "shift-shadow",
     "files": [
       "shadow_turno.txt",
       "export_consola.txt",
       "consola.zip"
     ],
-    "desc": "Backup parcial de /etc/shadow del servidor de consola. El password de operador.turno también abre el ZIP. Recupera ."
+    "desc": "Partial /etc/shadow backup from the console server. The operador.turno password also opens the ZIP. Recover."
   },
   {
-    "id": "telemetria-xor",
-    "title": "Telemetría XOR",
-    "category": "Binarios",
+    "id": "telemetry-xor",
+    "title": "Telemetry XOR",
+    "category": "Binary",
     "points": 300,
-    "slug": "telemetria-xor",
+    "slug": "telemetry-xor",
     "files": [
       "telemetry_decode"
     ],
-    "desc": "Utilitario (ELF Linux x64). Imprime payload en hex; recupera ."
+    "desc": "Telemetry decoder utility (ELF Linux x64). Prints hex payload; recover."
   },
   {
-    "id": "trafico-de-control",
-    "title": "Tráfico de control",
-    "category": "Forense",
+    "id": "control-traffic",
+    "title": "Control Traffic",
+    "category": "Forensics",
     "points": 125,
-    "slug": "trafico-de-control",
+    "slug": "control-traffic",
     "files": [
       "blackout_control.pcap"
     ],
-    "desc": "PCAP parcial del portal SCADA durante el apagón. El operador autenticó en claro; recupera ."
+    "desc": "Partial SCADA portal PCAP during the blackout. The operator authenticated in plaintext; recover."
   },
   {
-    "id": "validador-de-turno",
-    "title": "Validador de turno",
-    "category": "Binarios",
+    "id": "shift-validator",
+    "title": "Shift Validator",
+    "category": "Binary",
     "points": 400,
-    "slug": "validador-de-turno",
+    "slug": "shift-validator",
     "files": [
       "turno_guard"
     ],
-    "desc": "Validador (ELF Linux x64). Solo acepta un token exacto ."
+    "desc": "Shift guard validator (ELF Linux x64). Only accepts an exact token."
   },
   {
-    "id": "vm-plc",
-    "title": "VM PLC",
-    "category": "Binarios",
+    "id": "plc-vm",
+    "title": "PLC VM",
+    "category": "Binary",
     "points": 500,
-    "slug": "vm-plc",
+    "slug": "plc-vm",
     "files": [
       "plc_ladder"
     ],
-    "desc": "Mini-VM ladder en (ELF Linux x64). Recupera la clave maestra ."
+    "desc": "PLC ladder mini-VM (ELF Linux x64). Recover the master key."
   }
 ];
