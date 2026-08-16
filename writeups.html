@@ -129,12 +129,12 @@
             });
         }
 
-        let currentColor = '#b43f26';
+        let currentColor = '#00d4ff';
 
         async function showWriteup(id) {
             const w = WRITEUPS.find(x => x.id === id);
             if (!w) return;
-            currentColor = catColors[w.category] || '#b43f26';
+            currentColor = catColors[w.category] || '#00d4ff';
 
             grid.style.display = 'none';
             filterBar.style.display = 'none';
