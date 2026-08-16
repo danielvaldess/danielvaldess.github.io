@@ -1,11 +1,11 @@
 # North Yard Node
 
+**Flag:** `WHOAMI{ftp_p4t10_n0rt3}`
+
 > LATAM Energy Grid left the North Yard node in recovery mode. Download the lab zip (Google Drive) and run it on Kali/Linux with Docker.
 > `chmod +x startlab.sh` `./startlab.sh blackout-pt01.tar`
 > The script displays the lab IP (172.18.0.2). Enumerate with nmap. Do not expose the container to the internet.
 > **Tip:** start with a full nmap scan of the lab IP. Do not assume a single port.
-
-**Flag:** `WHOAMI{ftp_p4t10_n0rt3}`
 
 ---
 

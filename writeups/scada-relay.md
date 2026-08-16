@@ -1,9 +1,9 @@
 # SCADA Relay
 
+**Flag:** `WHOAMI{str1ngs_4nd_b64}`
+
 > SCADA relay firmware SN-441 (ELF Linux x64). Retrieve the token `WHOAMI{...}`.
 > **Hint:** `strings`, `file` and `chmod +x`. Run on Kali/WSL/Linux VM.
-
-**Flag:** `WHOAMI{str1ngs_4nd_b64}`
 
 ---
 

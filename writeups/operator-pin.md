@@ -1,9 +1,9 @@
 # Operator PIN
 
+**Flag:** `WHOAMI{md5_p1n_0p3r4d0r}`
+
 > MD5 hash of the PIN from the North substation local panel and a ZIP encrypted with the same key. Recover `WHOAMI{...}`.
 > **Tip:** identify the hash type (`hashid`, `john --format=`) and work with the three files in the pack.
-
-**Flag:** `WHOAMI{md5_p1n_0p3r4d0r}`
 
 ---
 
