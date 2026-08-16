@@ -2,9 +2,9 @@
     --nav-color: #b43f26;
     --nav-color-rgb: 180, 63, 38;
     --mobile-padding: 2rem;
-    --neon-glow: 0 0 10px rgba(var(--nav-color-rgb), 0.6), 0 0 30px rgba(var(--nav-color-rgb), 0.3);
-    --neon-glow-strong: 0 0 10px rgba(var(--nav-color-rgb), 0.8), 0 0 40px rgba(var(--nav-color-rgb), 0.4), 0 0 80px rgba(var(--nav-color-rgb), 0.2);
-    --border-glow: 0 0 5px rgba(var(--nav-color-rgb), 0.5), inset 0 0 5px rgba(var(--nav-color-rgb), 0.1);
+    --neon-glow: 0 0 10px rgba(var(--nav-color-rgb), 0.6), 0 0 40px rgba(var(--nav-color-rgb), 0.3), 0 0 80px rgba(var(--nav-color-rgb), 0.15);
+    --neon-glow-strong: 0 0 10px rgba(var(--nav-color-rgb), 0.9), 0 0 40px rgba(var(--nav-color-rgb), 0.5), 0 0 80px rgba(var(--nav-color-rgb), 0.25), 0 0 120px rgba(var(--nav-color-rgb), 0.1);
+    --border-glow: 0 0 8px rgba(var(--nav-color-rgb), 0.6), inset 0 0 8px rgba(var(--nav-color-rgb), 0.15);
 }
 
 @media (max-width: 768px) {
@@ -40,7 +40,7 @@ body {
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background-color: #050508;
+    background-color: #0e0e12;
     color: #e0e0e0;
 }
 
@@ -115,7 +115,7 @@ section {
 }
 
 nav a {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: #aaa;
     margin-left: 3rem;
@@ -146,13 +146,13 @@ nav a.active {
     justify-content: center;
     align-items: center;
     gap: 8rem;
-    background-color: #050508;
+    background-color: #0e0e12;
     margin-top: 0;
     padding-top: 3rem;
 }
 
 .home .home-content h1 {
-    font-size: 3.6rem;
+    font-size: 4.2rem;
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: -0.02em;
@@ -163,13 +163,13 @@ span {
 }
 
 .home-content h3 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     margin-bottom: 1rem;
     font-weight: 400;
 }
 
 .home-content p {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     line-height: 1.9;
     color: #999;
 }
@@ -203,11 +203,11 @@ span {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 5rem;
+    height: 5rem;
     background-color: transparent;
     border: 1.5px solid rgba(var(--nav-color-rgb), 0.5);
-    font-size: 2rem;
+    font-size: 2.2rem;
     border-radius: 50%;
     margin: 3rem 1.2rem 3rem 0;
     transition: 0.3s ease;
@@ -215,19 +215,19 @@ span {
 }
 
 .social-icons a:hover {
-    color: #050508;
-    transform: scale(1.2) translateY(-3px);
+    color: #0e0e12;
+    transform: scale(1.3) translateY(-3px);
     background-color: var(--nav-color);
-    box-shadow: var(--neon-glow);
+    box-shadow: var(--neon-glow-strong);
     border-color: var(--nav-color);
 }
 
 .btn {
     display: inline-block;
-    padding: 1rem 3rem;
+    padding: 1.2rem 3.5rem;
     background-color: transparent;
     border-radius: 4rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 500;
     color: var(--nav-color);
     letter-spacing: 0.05rem;
@@ -237,14 +237,14 @@ span {
 }
 
 .btn:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
     background-color: var(--nav-color);
-    color: #050508;
-    box-shadow: var(--neon-glow);
+    color: #0e0e12;
+    box-shadow: var(--neon-glow-strong);
 }
 
 .typing-text {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     font-weight: 400;
     min-width: 280px;
 }
@@ -270,21 +270,21 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #050508;
+    background-color: #0e0e12;
     text-align: center;
 }
 
 .page-title {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     font-weight: 600;
     color: var(--nav-color);
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
-    text-shadow: 0 0 20px rgba(var(--nav-color-rgb), 0.3);
+    text-shadow: 0 0 30px rgba(var(--nav-color-rgb), 0.4);
 }
 
 .page-sub {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #777;
     margin-bottom: 3rem;
 }
@@ -300,9 +300,9 @@ span {
 
 .filter-btn {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.8rem;
     background: transparent;
     border: 1px solid #222;
     border-radius: 4rem;
@@ -315,13 +315,14 @@ span {
 .filter-btn:hover {
     border-color: var(--nav-color);
     color: var(--nav-color);
+    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.2);
 }
 
 .filter-btn.active {
     background: rgba(var(--nav-color-rgb), 0.15);
     border-color: var(--nav-color);
     color: var(--nav-color);
-    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.2);
+    box-shadow: 0 0 20px rgba(var(--nav-color-rgb), 0.3);
 }
 
 /* Writeup cards grid */
@@ -358,14 +359,14 @@ span {
 }
 
 .card-cat {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
 }
 
 .card-pts {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #444;
     background: #111;
     padding: 0.2rem 0.6rem;
@@ -374,7 +375,7 @@ span {
 }
 
 .card-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: #e0e0e0;
     margin-bottom: 0.6rem;
     font-weight: 600;
@@ -382,7 +383,7 @@ span {
 }
 
 .card-desc {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #666;
     line-height: 1.6;
     margin-bottom: 1.2rem;
@@ -398,7 +399,7 @@ span {
 
 .file-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: #555;
     background: #0f0f12;
     padding: 0.15rem 0.5rem;
@@ -410,18 +411,18 @@ span {
 }
 
 .file-tag i {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     opacity: 0.5;
 }
 
 .card-btn {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     background: transparent;
     border: 1px solid;
     border-radius: 4rem;
-    padding: 0.4rem 1.2rem;
+    padding: 0.5rem 1.4rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
@@ -433,8 +434,8 @@ span {
 .card-btn:hover {
     background: var(--nav-color);
     border-color: var(--nav-color) !important;
-    color: #050508 !important;
-    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.3);
+    color: #0e0e12 !important;
+    box-shadow: var(--neon-glow);
 }
 
 /* ============================================
@@ -449,13 +450,13 @@ span {
 
 .back-btn {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     background: transparent;
     border: 1px solid #222;
     border-radius: 4rem;
     color: #666;
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 2rem;
@@ -467,6 +468,7 @@ span {
 .back-btn:hover {
     border-color: var(--nav-color);
     color: var(--nav-color);
+    box-shadow: 0 0 15px rgba(var(--nav-color-rgb), 0.2);
 }
 
 .wup-header {
@@ -476,7 +478,7 @@ span {
 }
 
 .wup-cat {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     display: block;
     margin-bottom: 0.5rem;
@@ -485,7 +487,7 @@ span {
 }
 
 .wup-title {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     color: #e0e0e0;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -502,7 +504,7 @@ span {
 
 .wup-files h4 {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #666;
     margin: 0 0 0.5rem;
@@ -519,11 +521,11 @@ span {
 
 .wup-file-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: #888;
     background: #0f0f12;
     border: 1px solid #1a1a1a;
-    padding: 0.25rem 0.7rem;
+    padding: 0.3rem 0.7rem;
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
@@ -537,27 +539,27 @@ span {
 }
 
 .wup-file-tag i {
-    font-size: 0.9rem;
+    font-size: 1rem;
     opacity: 0.4;
 }
 
 /* Writeup body */
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: #bbb;
     line-height: 1.9;
 }
 
 .wup-body h3 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 600;
     margin: 2.5rem 0 1rem;
     letter-spacing: -0.01em;
 }
 
 .wup-body h4 {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     font-weight: 500;
     color: #ddd;
     margin: 2rem 0 0.8rem;
@@ -599,10 +601,10 @@ span {
     background: transparent;
     border: none;
     border-radius: 0;
-    padding: 1rem 1.2rem;
+    padding: 1.2rem 1.5rem;
     overflow-x: auto;
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.7;
 }
 
@@ -612,21 +614,21 @@ span {
 
 .wup-body code.inline {
     background: #0f0f12;
-    padding: 0.15rem 0.5rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 3px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     border: 1px solid #1a1a1a;
 }
 
 .wup-body blockquote {
     border-left: 2px solid;
-    padding: 0.8rem 1.2rem;
+    padding: 1rem 1.4rem;
     margin: 1.2rem 0;
     background: rgba(255,255,255,0.02);
     border-radius: 0 6px 6px 0;
     color: #888;
     font-style: italic;
-    font-size: 1.35rem;
+    font-size: 1.5rem;
 }
 
 .wup-body strong {
@@ -638,19 +640,19 @@ span {
     width: 100%;
     border-collapse: collapse;
     margin: 1.2rem 0;
-    font-size: 1.3rem;
+    font-size: 1.45rem;
 }
 
 .wup-body th {
     background: #0f0f12;
-    padding: 0.6rem 1rem;
+    padding: 0.7rem 1.2rem;
     text-align: left;
     font-weight: 600;
     border-bottom: 2px solid;
 }
 
 .wup-body td {
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.2rem;
     border-bottom: 1px solid #1a1a1a;
 }
 
@@ -664,8 +666,8 @@ span {
 }
 
 .wup-body li {
-    margin-bottom: 0.4rem;
-    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.55rem;
 }
 
 .wup-body hr {
@@ -684,10 +686,10 @@ span {
         margin: 5rem 4rem;
     }
     .home .home-content h3 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     .home-content h1 {
-        font-size: 2.8rem;
+        font-size: 3rem;
     }
     .home-img img {
         width: 55vw;
@@ -772,7 +774,7 @@ span {
 
     nav a {
         display: block;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         color: #aaa;
         padding: 1.2rem;
         margin: 0.3rem 0;
@@ -787,6 +789,7 @@ span {
         color: var(--nav-color);
         background: rgba(var(--nav-color-rgb), 0.08);
         transform: translateX(3px);
+        text-shadow: 0 0 10px rgba(var(--nav-color-rgb), 0.3);
     }
 }
 
@@ -795,7 +798,7 @@ span {
         padding: 8rem var(--mobile-padding) 5rem;
     }
     .page-title {
-        font-size: 2.4rem;
+        font-size: 2.8rem;
     }
     .writeups-grid {
         grid-template-columns: 1fr;
@@ -805,16 +808,16 @@ span {
         gap: 0.5rem;
     }
     .filter-btn {
-        font-size: 1.1rem;
-        padding: 0.4rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.4rem 1.2rem;
     }
     .wup-title {
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
     .wup-body {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
     }
     .terminal-block pre {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
     }
 }
