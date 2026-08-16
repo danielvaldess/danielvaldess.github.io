@@ -15,7 +15,6 @@
 <body>
     <header class="scrolled">
         <a href="index.html" class="logo">
-            <img src="images/avatar.png" alt="Daniel Valdés Logo" class="logo-img">
             <span class="logo-terminal"><i class="fa-solid fa-terminal"></i> daninho@terminal</span>
         </a>
 
@@ -169,17 +168,29 @@
                 writeupContent.querySelector('.wup-body').innerHTML = renderMarkdown(md);
                 writeupContent.querySelector('.wup-body').style.textAlign = '';
             } catch (e) {
-                writeupContent.querySelector('.wup-body').innerHTML = '<p style="color:#666;">Writeup not available.</p>';
+                writeupContent.querySelector('.wup-body').innerHTML = '<p style="color:#888;">Writeup not available.</p>';
             }
         }
 
         function renderMarkdown(md) {
             let html = md;
             html = html.replace(/\r\n/g, '\n');
-            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
-                `<div class="terminal-block"><div class="terminal-bar"><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-title">${lang || 'terminal'}</span></div><pre><code>${escapeHtml(code.trim())}</code></pre></div>`
-            );
-            html = html.replace(/`([^`]+)`/g, `<code class="inline" style="color:${currentColor}">$1</code>`);
+            // Protect code blocks and inline code from markdown processing
+            const codeBlocks = [];
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+                const i = codeBlocks.length;
+                codeBlocks.push(`<div class="terminal-block"><div class="terminal-bar"><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-title">${lang || 'terminal'}</span></div><pre><code>${escapeHtml(code.trim())}</code></pre></div>`);
+                return `\x00CB${i}\x00`;
+            });
+            const inlineCodes = [];
+            html = html.replace(/`([^`]+)`/g, (_, code) => {
+                const i = inlineCodes.length;
+                inlineCodes.push(`<code class="inline" style="color:${currentColor}">${code}</code>`);
+                return `\x00IC${i}\x00`;
+            });
+            // Escape underscores so they don't become italic
+            html = html.replace(/_/g, '\\_');
+            // Now process markdown
             html = html.replace(/^### (.+)$/gm, `<h4 style="color:${currentColor}">$1</h4>`);
             html = html.replace(/^## (.+)$/gm, `<h3 style="color:${currentColor}">$1</h3>`);
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -217,6 +228,9 @@
             html = html.replace(/<br>\s*(<ul>)/g, '$1');
             html = html.replace(/<br>\s*(<blockquote>)/g, '$1');
             html = html.replace(/<br>\s*<hr>/g, '<hr>');
+            // Restore code blocks and inline code
+            html = html.replace(/\x00CB(\d+)\x00/g, (_, i) => codeBlocks[i]);
+            html = html.replace(/\x00IC(\d+)\x00/g, (_, i) => inlineCodes[i]);
             return html;
         }
 

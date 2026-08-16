@@ -146,7 +146,7 @@ section {
 nav a {
     font-size: 1.8rem;
     font-weight: 400;
-    color: #aaa;
+    color: #ccc;
     margin-left: 3rem;
     transition: 0.3s ease;
     border-bottom: 2px solid transparent;
@@ -154,7 +154,7 @@ nav a {
 }
 
 nav a.download-cv {
-    color: #555;
+    color: #888;
 }
 
 nav a.download-cv:hover {
@@ -416,7 +416,7 @@ span {
 
 .card-desc {
     font-size: 1.5rem;
-    color: #666;
+    color: #999;
     line-height: 1.6;
     margin-bottom: 1.2rem;
     min-height: 3.5rem;
@@ -590,7 +590,7 @@ span {
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.6rem;
-    color: #bbb;
+    color: #d0d0d0;
     line-height: 1.9;
 }
 
