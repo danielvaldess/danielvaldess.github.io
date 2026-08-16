@@ -107,4 +107,6 @@ Mini-VMs in CTFs are solved by reading the *dispatch loop*: identify the `jmp` v
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

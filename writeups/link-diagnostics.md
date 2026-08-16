@@ -86,4 +86,6 @@ A field that goes into `shell_exec` is gold. If the filter blocks `;` and `&`, t
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).

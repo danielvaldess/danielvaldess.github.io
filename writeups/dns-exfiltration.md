@@ -59,4 +59,6 @@ In a PCAP with suspicious DNS, filter by `dns.qry.name`, look for odd domains wi
 
 ---
 
-*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
+### Credits
+
+This writeup is part of the **Blackout LATAM** CTF hosted by [Whoami-Labs](https://whoami-labs.com/).
