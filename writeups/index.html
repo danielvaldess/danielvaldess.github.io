@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
     <title>Writeups | Daniel Valdés</title>
 </head>
 
 <body>
     <header class="scrolled">
-        <a href="index.html" class="logo">
+        <a href="../index.html" class="logo">
             <span class="logo-terminal"><i class="fa-solid fa-terminal"></i> daninho@terminal</span>
         </a>
 
@@ -25,9 +25,9 @@
         </button>
 
         <nav>
-            <a href="./documents/Daniel_Valdes_CV.pdf" download="" class="download-cv">Download CV</a>
-            <a href="index.html">About Me</a>
-            <a href="writeups.html" class="active">Writeups</a>
+            <a href="../documents/Daniel_Valdes_CV.pdf" download="" class="download-cv">Download CV</a>
+            <a href="../index.html">About Me</a>
+            <a href="." class="active">Writeups</a>
         </nav>
     </header>
 
@@ -51,7 +51,7 @@
         </div>
     </section>
 
-    <script src="scripts/writeups.js"></script>
+    <script src="../scripts/writeups.js"></script>
     <script>
         const grid = document.getElementById('writeupsGrid');
         const filterBar = document.getElementById('filterBar');
@@ -162,7 +162,7 @@
             window.scrollTo(0, 0);
 
             try {
-                const resp = await fetch(`writeups/${w.slug}.md`);
+                const resp = await fetch(`${w.slug}.md`);
                 if (!resp.ok) throw new Error('Not found');
                 const md = await resp.text();
                 writeupContent.querySelector('.wup-body').innerHTML = renderMarkdown(md);
@@ -285,6 +285,6 @@
             });
         });
     </script>
-    <script src="scripts/songs.js"></script>
+    <script src="../scripts/songs.js"></script>
 </body>
 </html>
