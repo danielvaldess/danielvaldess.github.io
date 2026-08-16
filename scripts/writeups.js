@@ -1,15 +1,6 @@
 // Auto-generated writeup data
 const WRITEUPS = [
-  {
-    id: "api-de-sectores",
-    title: "API de sectores",
-    category: "Web",
-    points: 250,
-    slug: "api-de-sectores",
-    files: ["startlab.sh", "blackout-web03.tar"],
-    content: `# API de sectores
-
-**Categoría:** Web · **Puntos:** 250
+  {id:"api-de-sectores",title:"API de sectores",category:"Web",points:250,slug:"api-de-sectores",files:["startlab.sh", "blackout-web03.tar"],content:`# API de sectores
 
 > Tablero de telemetría de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -134,18 +125,8 @@ WHOAMI{id0r_s3ct0r21}
 
 ## Lección
 
-Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe validar que ese ID pertenece al usuario; solo autenticar la sesión no basta, porque permite leer recursos ajenos enumerando IDs (IDOR).`
-  },
-  {
-    id: "archivo-de-turnos",
-    title: "Archivo de turnos",
-    category: "Pentesting",
-    points: 300,
-    slug: "archivo-de-turnos",
-    files: ["startlab.sh", "blackout-pt02.tar"],
-    content: `# Archivo de turnos
-
-**Categoría:** Pentesting · **Puntos:** 300
+Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe validar que ese ID pertenece al usuario; solo autenticar la sesión no basta, porque permite leer recursos ajenos enumerando IDs (IDOR).`},
+  {id:"archivo-de-turnos",title:"Archivo de turnos",category:"Pentesting",points:300,slug:"archivo-de-turnos",files:["startlab.sh", "blackout-pt02.tar"],content:`# Archivo de turnos
 
 > Nodo de archivo de turnos del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -265,18 +246,8 @@ WHOAMI{arch1v0_turn0s}
 
 ## Lección
 
-El material de un reto puede vivir fuera del index: \`robots.txt\` y el listado de directorios destapan lo que el portal no muestra. Y cuando un dump SQL filtra la **política de generación de claves**, esa política permite derivar la credencial real (aquí, contra el SHA256 del usuario). Luego, un sudo sin contraseña sobre \`tar\` (GTFObins) convierte el acceso en root.`
-  },
-  {
-    id: "bitacora-del-blackout",
-    title: "Bitácora del blackout",
-    category: "Misc",
-    points: 300,
-    slug: "bitacora-del-blackout",
-    files: ["turno.log", "alerta.wav", "spectrogram.png"],
-    content: `# Bitácora del blackout
-
-**Categoría:** Misc · **Puntos:** 300
+El material de un reto puede vivir fuera del index: \`robots.txt\` y el listado de directorios destapan lo que el portal no muestra. Y cuando un dump SQL filtra la **política de generación de claves**, esa política permite derivar la credencial real (aquí, contra el SHA256 del usuario). Luego, un sudo sin contraseña sobre \`tar\` (GTFObins) convierte el acceso en root.`},
+  {id:"bitacora-del-blackout",title:"Bitácora del blackout",category:"Misc",points:300,slug:"bitacora-del-blackout",files:["turno.log", "alerta.wav", "spectrogram.png"],content:`# Bitácora del blackout
 
 > Export parcial del turno SCADA + alarma de audio. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
@@ -347,18 +318,8 @@ WHOAMI{b17ac0r4_4ud10_m0r53}
 
 ## Lección
 
-Cuando un reto mezcle log + audio, mira qué hay *dentro* del audio (espectrograma/Morse) antes de adivinar el orden: suele contener la instrucción de cómo combinar los fragmentos del log.`
-  },
-  {
-    id: "boveda-keepass",
-    title: "Bóveda KeePass",
-    category: "Cripto",
-    points: 500,
-    slug: "boveda-keepass",
-    files: ["ingeniero.kdbx", "politica_acceso.txt"],
-    content: `# Bóveda KeePass
-
-**Categoría:** Cripto · **Puntos:** 500
+Cuando un reto mezcle log + audio, mira qué hay *dentro* del audio (espectrograma/Morse) antes de adivinar el orden: suele contener la instrucción de cómo combinar los fragmentos del log.`},
+  {id:"boveda-keepass",title:"Bóveda KeePass",category:"Cripto",points:500,slug:"boveda-keepass",files:["ingeniero.kdbx", "politica_acceso.txt"],content:`# Bóveda KeePass
 
 > Bóveda KeePass (ingeniero.kdbx) con las claves de recuperación del sector 14. Abre la entrada y envía \`WHOAMI{...}\`.
 >
@@ -426,18 +387,8 @@ La flag estaba en el campo \`Password\` de la entrada. *"keepass boveda 14"* en 
 
 ## Lección
 
-Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de esa contraseña sigue una política corporativa predecible (\`RolDominio.Año\`) y el archivo de política se filtra junto a la bóveda, la "protección" desaparece. Además, la flag en campos protegidos se lee con \`--show-protected\`.`
-  },
-  {
-    id: "carga-de-evidencias",
-    title: "Carga de evidencias",
-    category: "Web",
-    points: 425,
-    slug: "carga-de-evidencias",
-    files: ["startlab.sh", "blackout-web05.tar"],
-    content: `# Carga de evidencias
-
-**Categoría:** Web · **Puntos:** 425
+Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de esa contraseña sigue una política corporativa predecible (\`RolDominio.Año\`) y el archivo de política se filtra junto a la bóveda, la "protección" desaparece. Además, la flag en campos protegidos se lee con \`--show-protected\`.`},
+  {id:"carga-de-evidencias",title:"Carga de evidencias",category:"Web",points:425,slug:"carga-de-evidencias",files:["startlab.sh", "blackout-web05.tar"],content:`# Carga de evidencias
 
 > Bandeja de evidencias de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -571,18 +522,8 @@ WHOAMI{up10ad_3v1d3nc14}
 
 ## Lección
 
-Una subida de archivos que valida \`getimagesize()\` pero no limita qué extensiones ejecuta Apache es vulnerable: \`.phtml\`/\`.php7\`/\`.pht\` no suelen estar en el blocklist y se interpretan como PHP. Un poliglota (GIF válido + payload PHP) combina ambas cosas y da RCE.`
-  },
-  {
-    id: "cartel-en-la-subestacion",
-    title: "Cartel en la subestación",
-    category: "Misc",
-    points: 100,
-    slug: "cartel-en-la-subestacion",
-    files: ["subestacion.jpg"],
-    content: `# Cartel en la subestación
-
-**Categoría:** Misc · **Puntos:** 100
+Una subida de archivos que valida \`getimagesize()\` pero no limita qué extensiones ejecuta Apache es vulnerable: \`.phtml\`/\`.php7\`/\`.pht\` no suelen estar en el blocklist y se interpretan como PHP. Un poliglota (GIF válido + payload PHP) combina ambas cosas y da RCE.`},
+  {id:"cartel-en-la-subestacion",title:"Cartel en la subestación",category:"Misc",points:100,slug:"cartel-en-la-subestacion",files:["subestacion.jpg"],content:`# Cartel en la subestación
 
 > Durante el apagón LATAM, un operador documentó la subestación Norte. Analiza la foto y encuentra \`WHOAMI{...}\`.
 >
@@ -614,18 +555,8 @@ La flag estaba directamente en el campo \`User Comment\`. Los demás campos (\`S
 
 ## Lección
 
-Antes de buscar estego o hacer análisis pesado, revisa siempre los metadatos: \`exiftool -a -u -g1 archivo\`. Muchos retos de forensics/misc esconden la flag en campos como \`User Comment\`, \`Artist\`, \`Software\` o \`Copyright\`.`
-  },
-  {
-    id: "coordenadas-del-apagon",
-    title: "Coordenadas del apagón",
-    category: "Misc",
-    points: 500,
-    slug: "coordenadas-del-apagon",
-    files: ["qr_a.png", "qr_b.png", "qr_c.png", "comunicado.html", "cargas.csv"],
-    content: `# Coordenadas del apagón
-
-**Categoría:** Misc · **Puntos:** 500
+Antes de buscar estego o hacer análisis pesado, revisa siempre los metadatos: \`exiftool -a -u -g1 archivo\`. Muchos retos de forensics/misc esconden la flag en campos como \`User Comment\`, \`Artist\`, \`Software\` o \`Copyright\`.`},
+  {id:"coordenadas-del-apagon",title:"Coordenadas del apagón",category:"Misc",points:500,slug:"coordenadas-del-apagon",files:["qr_a.png", "qr_b.png", "qr_c.png", "comunicado.html", "cargas.csv"],content:`# Coordenadas del apagón
 
 > Paquete incompleto del mapa de verificación (sector 14). Recompone el mapa y envía \`WHOAMI{...}\`.
 >
@@ -705,18 +636,8 @@ WHOAMI{ + m4p4_ + bl4ck0 + ut_c0 + 0rd3n + 4d4s}
 
 ## Lección
 
-Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -append\`) y decodifica con \`zbarimg\` antes de analizar nada más — el código puede contener el orden de lectura de los datos.`
-  },
-  {
-    id: "diagnostico-de-enlace",
-    title: "Diagnóstico de enlace",
-    category: "Web",
-    points: 350,
-    slug: "diagnostico-de-enlace",
-    files: ["startlab.sh", "blackout-web04.tar"],
-    content: `# Diagnóstico de enlace
-
-**Categoría:** Web · **Puntos:** 350
+Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -append\`) y decodifica con \`zbarimg\` antes de analizar nada más — el código puede contener el orden de lectura de los datos.`},
+  {id:"diagnostico-de-enlace",title:"Diagnóstico de enlace",category:"Web",points:350,slug:"diagnostico-de-enlace",files:["startlab.sh", "blackout-web04.tar"],content:`# Diagnóstico de enlace
 
 > Visor de diagnóstico de enlace de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -802,18 +723,8 @@ WHOAMI{cmd1_enlac3_n0rt3}
 
 ## Lección
 
-Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \`&\`, prueba \`|\` (pipe): ejecuta un comando adicional sin necesitar terminador. Luego, explora \`/var/lib\` o directorios de la app: ahí suelen esconder archivos \`.dat\` con la flag en base64.`
-  },
-  {
-    id: "evidencia-en-http",
-    title: "Evidencia en HTTP",
-    category: "Forense",
-    points: 500,
-    slug: "evidencia-en-http",
-    files: ["sala_control.pcap"],
-    content: `# Evidencia en HTTP
-
-**Categoría:** Forense · **Puntos:** 500
+Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \`&\`, prueba \`|\` (pipe): ejecuta un comando adicional sin necesitar terminador. Luego, explora \`/var/lib\` o directorios de la app: ahí suelen esconder archivos \`.dat\` con la flag en base64.`},
+  {id:"evidencia-en-http",title:"Evidencia en HTTP",category:"Forense",points:500,slug:"evidencia-en-http",files:["sala_control.pcap"],content:`# Evidencia en HTTP
 
 > Descarga PNG desde el portal forense capturada en sala de control. Extrae el archivo del PCAP y envía \`WHOAMI{...}\`.
 >
@@ -865,18 +776,8 @@ La flag está en el campo \`Comment\` del PNG. *"pcap carve and merge"* — extr
 
 ## Lección
 
-Ante un PCAP con transferencia de archivos, usa \`--export-objects http\` para extraer los archivos y luego lee sus metadatos (EXIF/\`Comment\`): los retos forenses suelen esconder la flag ahí y no en los píxeles.`
-  },
-  {
-    id: "exfiltracion-dns",
-    title: "Exfiltración DNS",
-    category: "Forense",
-    points: 300,
-    slug: "exfiltracion-dns",
-    files: ["exfil_dns.pcap"],
-    content: `# Exfiltración DNS
-
-**Categoría:** Forense · **Puntos:** 300
+Ante un PCAP con transferencia de archivos, usa \`--export-objects http\` para extraer los archivos y luego lee sus metadatos (EXIF/\`Comment\`): los retos forenses suelen esconder la flag ahí y no en los píxeles.`},
+  {id:"exfiltracion-dns",title:"Exfiltración DNS",category:"Forense",points:300,slug:"exfiltracion-dns",files:["exfil_dns.pcap"],content:`# Exfiltración DNS
 
 > Consultas DNS anómalas hacia \`exfil.blackout.redlatam\`. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
@@ -936,18 +837,8 @@ WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
 
 ## Lección
 
-En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios raros con prefijos numerados y decodifica cada fragmento: la exfiltración por DNS suele esconder la flag en base32/base64 dentro de los nombres consultados.`
-  },
-  {
-    id: "gateway-scada",
-    title: "Gateway SCADA",
-    category: "Web",
-    points: 500,
-    slug: "gateway-scada",
-    files: ["startlab.sh", "blackout-web06.tar"],
-    content: `# Gateway SCADA
-
-**Categoría:** Web · **Puntos:** 500
+En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios raros con prefijos numerados y decodifica cada fragmento: la exfiltración por DNS suele esconder la flag en base32/base64 dentro de los nombres consultados.`},
+  {id:"gateway-scada",title:"Gateway SCADA",category:"Web",points:500,slug:"gateway-scada",files:["startlab.sh", "blackout-web06.tar"],content:`# Gateway SCADA
 
 > Gateway de consulta de telemetría. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -1023,18 +914,8 @@ WHOAMI{ssrf_pl4nt4_n0rt3}
 
 ## Lección
 
-El SSRF con bloqueo de \`localhost\` no protege nada: se bypasea con representaciones alternas de la IP (\`0x7f000001\`, decimal, octal…). Luego explora puertos internos y rutas del servicio alcanzado. Y ojo con las cadenas trampa en los binarios del contenedor.`
-  },
-  {
-    id: "informe-sector-14",
-    title: "Informe sector 14",
-    category: "Web",
-    points: 125,
-    slug: "informe-sector-14",
-    files: ["startlab.sh", "blackout-web01.tar"],
-    content: `# Informe sector 14
-
-**Categoría:** Web · **Puntos:** 125
+El SSRF con bloqueo de \`localhost\` no protege nada: se bypasea con representaciones alternas de la IP (\`0x7f000001\`, decimal, octal…). Luego explora puertos internos y rutas del servicio alcanzado. Y ojo con las cadenas trampa en los binarios del contenedor.`},
+  {id:"informe-sector-14",title:"Informe sector 14",category:"Web",points:125,slug:"informe-sector-14",files:["startlab.sh", "blackout-web01.tar"],content:`# Informe sector 14
 
 > LATAM Energía Red dejó un portal de consulta de informes tras el apagón del sector 14. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -1104,18 +985,8 @@ WHOAMI{lf1_d0c_s3ct0r14}
 
 ## Lección
 
-Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path traversal (\`../\`) para escapar del directorio permitido y leer archivos sensibles. Si el valor se decodifica a texto raro, suele ser base64.`
-  },
-  {
-    id: "intranet-del-patio",
-    title: "Intranet del patio",
-    category: "Pentesting",
-    points: 500,
-    slug: "intranet-del-patio",
-    files: ["startlab.sh", "blackout-pt04.tar"],
-    content: `# Intranet del patio
-
-**Categoría:** Pentesting · **Puntos:** 500
+Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path traversal (\`../\`) para escapar del directorio permitido y leer archivos sensibles. Si el valor se decodifica a texto raro, suele ser base64.`},
+  {id:"intranet-del-patio",title:"Intranet del patio",category:"Pentesting",points:500,slug:"intranet-del-patio",files:["startlab.sh", "blackout-pt04.tar"],content:`# Intranet del patio
 
 > Intranet del patio Norte (caja, turnos e inventario). Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1262,18 +1133,8 @@ WHOAMI{1ntr4n3t_p4t10_n14}
 
 ## Lección
 
-Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra una política de claves → la política deriva credenciales FTP y SSH → un binario SUID que ejecuta \`system()\` sobre un archivo controlado por el usuario (\`$HOME/.inrc\`) convierte el acceso en root. Y un detalle importante: forzar \`PreferredAuthentications=password\` evita fallos espurios de autenticación por pubkey.`
-  },
-  {
-    id: "login-del-operador",
-    title: "Login del operador",
-    category: "Web",
-    points: 175,
-    slug: "login-del-operador",
-    files: ["startlab.sh", "blackout-web02.tar"],
-    content: `# Login del operador
-
-**Categoría:** Web · **Puntos:** 175
+Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra una política de claves → la política deriva credenciales FTP y SSH → un binario SUID que ejecuta \`system()\` sobre un archivo controlado por el usuario (\`$HOME/.inrc\`) convierte el acceso en root. Y un detalle importante: forzar \`PreferredAuthentications=password\` evita fallos espurios de autenticación por pubkey.`},
+  {id:"login-del-operador",title:"Login del operador",category:"Web",points:175,slug:"login-del-operador",files:["startlab.sh", "blackout-web02.tar"],content:`# Login del operador
 
 > Portal de guardia de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -1362,18 +1223,8 @@ WHOAMI{sql1_g3r3nt3_n0rt3}
 
 ## Lección
 
-Los formularios de login con intercalación directa de variables en SQL son un blanco clásico de inyección. La SQLi (\`' OR '1'='1' --\`) permite entrar sin credenciales, y a veces la flag vive en otra fila/tabla de la base — conviene inspeccionarla entera, no solo la primera coincidencia.`
-  },
-  {
-    id: "mascara-latam",
-    title: "Máscara LATAM",
-    category: "Cripto",
-    points: 400,
-    slug: "mascara-latam",
-    files: ["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],
-    content: `# Máscara LATAM
-
-**Categoría:** Cripto · **Puntos:** 400
+Los formularios de login con intercalación directa de variables en SQL son un blanco clásico de inyección. La SQLi (\`' OR '1'='1' --\`) permite entrar sin credenciales, y a veces la flag vive en otra fila/tabla de la base — conviene inspeccionarla entera, no solo la primera coincidencia.`},
+  {id:"mascara-latam",title:"Máscara LATAM",category:"Cripto",points:400,slug:"mascara-latam",files:["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],content:`# Máscara LATAM
 
 > Clave maestra del temporizador SCADA documentada solo como SHA256. La misma clave protege \`boveda.zip\`. Recupera \`WHOAMI{...}\`.
 >
@@ -1439,18 +1290,8 @@ WHOAMI{m4sk_r3gl4s_s3ct0r14}
 
 ## Lección
 
-Ante un SHA256 sin salt, no hay que invertirlo matemáticamente: se adivina. Si hay una pista de formato (prefijo + dígitos), un ataque por máscara (\`hashcat -m 1400 -a 3\`) con la forma exacta resuelve en segundos.`
-  },
-  {
-    id: "nodo-del-patio-norte",
-    title: "Nodo del patio Norte",
-    category: "Pentesting",
-    points: 125,
-    slug: "nodo-del-patio-norte",
-    files: ["startlab.sh", "blackout-pt01.tar"],
-    content: `# Nodo del patio Norte
-
-**Categoría:** Pentesting · **Puntos:** 125
+Ante un SHA256 sin salt, no hay que invertirlo matemáticamente: se adivina. Si hay una pista de formato (prefijo + dígitos), un ataque por máscara (\`hashcat -m 1400 -a 3\`) con la forma exacta resuelve en segundos.`},
+  {id:"nodo-del-patio-norte",title:"Nodo del patio Norte",category:"Pentesting",points:125,slug:"nodo-del-patio-norte",files:["startlab.sh", "blackout-pt01.tar"],content:`# Nodo del patio Norte
 
 > LATAM Energía Red dejó el nodo del patio Norte en modo recuperación. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1569,18 +1410,8 @@ WHOAMI{ftp_p4t10_n0rt3}
 
 ## Lección
 
-En pentesting no hay que asumir un único servicio: el nmap completo (\`-p-\`) destapa la cadena completa. Aquí FTP anónimo filtró una llave SSH, y el sudo sin contraseña sobre \`less\` (GTFOBins) dio root con \`!\`. Y ojo con los honeypots: una flag en \`/root/flag.txt\` accesible por \`docker exec\` puede ser un señuelo, la real está en la vía de ataque pensada para el reto.`
-  },
-  {
-    id: "pin-operador",
-    title: "PIN del operador",
-    category: "Cripto",
-    points: 125,
-    slug: "pin-operador",
-    files: ["pin_operador.hash", "leeme.txt", "nota_recuperacion.zip"],
-    content: `# PIN del operador
-
-**Categoría:** Cripto · **Puntos:** 125
+En pentesting no hay que asumir un único servicio: el nmap completo (\`-p-\`) destapa la cadena completa. Aquí FTP anónimo filtró una llave SSH, y el sudo sin contraseña sobre \`less\` (GTFOBins) dio root con \`!\`. Y ojo con los honeypots: una flag en \`/root/flag.txt\` accesible por \`docker exec\` puede ser un señuelo, la real está en la vía de ataque pensada para el reto.`},
+  {id:"pin-operador",title:"PIN del operador",category:"Cripto",points:125,slug:"pin-operador",files:["pin_operador.hash", "leeme.txt", "nota_recuperacion.zip"],content:`# PIN del operador
 
 > Hash MD5 del PIN del panel local de la subestación Norte y un ZIP cifrado con esa misma clave. Recupera \`WHOAMI{...}\`.
 >
@@ -1683,18 +1514,8 @@ WHOAMI{md5_p1n_0p3r4d0r}
 
 ## Lección
 
-Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash MD5 sin sal mediante fuerza bruta incremental, por lo que nunca debe usarse para cifrar datos sensibles.`
-  },
-  {
-    id: "radio-de-campo",
-    title: "Radio de campo",
-    category: "Pentesting",
-    points: 400,
-    slug: "radio-de-campo",
-    files: ["startlab.sh", "blackout-pt03.tar"],
-    content: `# Radio de campo
-
-**Categoría:** Pentesting · **Puntos:** 400
+Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash MD5 sin sal mediante fuerza bruta incremental, por lo que nunca debe usarse para cifrar datos sensibles.`},
+  {id:"radio-de-campo",title:"Radio de campo",category:"Pentesting",points:400,slug:"radio-de-campo",files:["startlab.sh", "blackout-pt03.tar"],content:`# Radio de campo
 
 > Nodo de radio de campo del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1817,18 +1638,8 @@ WHOAMI{rad10_camp0_n14}
 
 ## Lección
 
-Dos puntos clave: (1) un escaneo solo TCP se pierde SNMP y demás servicios UDP — siempre escanea UDP en pentesting; y (2) un binario SUID que llama \`system()\` con un comando por nombre sin ruta absoluta es vulnerable a **path hijacking**: si el atacante controla el \`PATH\`, un ejecutable malicioso del mismo nombre se ejecuta como root.`
-  },
-  {
-    id: "rele-scada",
-    title: "Relé SCADA",
-    category: "Binarios",
-    points: 125,
-    slug: "rele-scada",
-    files: ["scada_relay"],
-    content: `# Relé SCADA
-
-**Categoría:** Binarios · **Puntos:** 125
+Dos puntos clave: (1) un escaneo solo TCP se pierde SNMP y demás servicios UDP — siempre escanea UDP en pentesting; y (2) un binario SUID que llama \`system()\` con un comando por nombre sin ruta absoluta es vulnerable a **path hijacking**: si el atacante controla el \`PATH\`, un ejecutable malicioso del mismo nombre se ejecuta como root.`},
+  {id:"rele-scada",title:"Relé SCADA",category:"Binarios",points:125,slug:"rele-scada",files:["scada_relay"],content:`# Relé SCADA
 
 > Firmware del relé SCADA SN-441 (ELF Linux x64). Recupera el token \`WHOAMI{...}\`.
 >
@@ -1904,18 +1715,8 @@ $ echo "WHOAMI{str1ngs_4nd_b64}" | ./scada_relay
 
 ## Lección
 
-Antes de abrir un decompilador, pasa siempre \`strings\` por el binario y busca nombres de variables/constantes reveladores (como \`TOKEN_B64\`): muchos retos de categoría "binarios" son solo un texto en base64/hex escondido en \`.rodata\`.`
-  },
-  {
-    id: "shadow-del-turno",
-    title: "Shadow del turno",
-    category: "Cripto",
-    points: 300,
-    slug: "shadow-del-turno",
-    files: ["shadow_turno.txt", "export_consola.txt", "consola.zip"],
-    content: `# Shadow del turno
-
-**Categoría:** Cripto · **Puntos:** 300
+Antes de abrir un decompilador, pasa siempre \`strings\` por el binario y busca nombres de variables/constantes reveladores (como \`TOKEN_B64\`): muchos retos de categoría "binarios" son solo un texto en base64/hex escondido en \`.rodata\`.`},
+  {id:"shadow-del-turno",title:"Shadow del turno",category:"Cripto",points:300,slug:"shadow-del-turno",files:["shadow_turno.txt", "export_consola.txt", "consola.zip"],content:`# Shadow del turno
 
 > Backup parcial de /etc/shadow del servidor de consola. El password de operador.turno también abre el ZIP. Recupera \`WHOAMI{...}\`.
 >
@@ -1986,18 +1787,8 @@ WHOAMI{sh4d0w_turn0_n0rt3}
 
 ## Lección
 
-Un hash \`$6$\` (sha512crypt) de \`/etc/shadow\` no se puede invertir matemáticamente: se adivina. Con una contraseña débil en un diccionario, \`john --format=sha512crypt\` la recupera al instante, y esa misma clave suele reutilizarse para desbloquear otros archivos del reto.`
-  },
-  {
-    id: "telemetria-xor",
-    title: "Telemetría XOR",
-    category: "Binarios",
-    points: 300,
-    slug: "telemetria-xor",
-    files: ["telemetry_decode"],
-    content: `# Telemetría XOR
-
-**Categoría:** Binarios · **Puntos:** 300
+Un hash \`$6$\` (sha512crypt) de \`/etc/shadow\` no se puede invertir matemáticamente: se adivina. Con una contraseña débil en un diccionario, \`john --format=sha512crypt\` la recupera al instante, y esa misma clave suele reutilizarse para desbloquear otros archivos del reto.`},
+  {id:"telemetria-xor",title:"Telemetría XOR",category:"Binarios",points:300,slug:"telemetria-xor",files:["telemetry_decode"],content:`# Telemetría XOR
 
 > Utilitario \`telemetry_decode\` (ELF Linux x64). Imprime payload en hex; recupera \`WHOAMI{...}\`.
 >
@@ -2045,18 +1836,8 @@ WHOAMI{x0r_t3l3m3tr14}
 
 ## Lección
 
-Cuando un binario imprima metadatos con \`cipher=xor\` y \`key=...\`, ejecútalo antes de desensamblar: a veces la solución está en la propia salida. XOR por byte con la clave en ciclo (\`. \` i % len(key)\`) decodifica el payload.`
-  },
-  {
-    id: "trafico-de-control",
-    title: "Tráfico de control",
-    category: "Forense",
-    points: 125,
-    slug: "trafico-de-control",
-    files: ["blackout_control.pcap"],
-    content: `# Tráfico de control
-
-**Categoría:** Forense · **Puntos:** 125
+Cuando un binario imprima metadatos con \`cipher=xor\` y \`key=...\`, ejecútalo antes de desensamblar: a veces la solución está en la propia salida. XOR por byte con la clave en ciclo (\`. \` i % len(key)\`) decodifica el payload.`},
+  {id:"trafico-de-control",title:"Tráfico de control",category:"Forense",points:125,slug:"trafico-de-control",files:["blackout_control.pcap"],content:`# Tráfico de control
 
 > PCAP parcial del portal SCADA durante el apagón. El operador autenticó en claro; recupera \`WHOAMI{...}\`.
 >
@@ -2110,18 +1891,8 @@ La flag está en \`nota_recuperacion\`. "HTTP en claro (plaintext) = apagón", c
 
 ## Lección
 
-En un PCAP siempre filtra por protocolo (\`http\`) y mira los cuerpos de los POST — la autenticación en claro deja datos sensibles (y flags) a la vista. Para decodificar form-urlencoded, extrae \`http.file_data\` y revierte el hexadecimal.`
-  },
-  {
-    id: "validador-de-turno",
-    title: "Validador de turno",
-    category: "Binarios",
-    points: 400,
-    slug: "validador-de-turno",
-    files: ["turno_guard"],
-    content: `# Validador de turno
-
-**Categoría:** Binarios · **Puntos:** 400
+En un PCAP siempre filtra por protocolo (\`http\`) y mira los cuerpos de los POST — la autenticación en claro deja datos sensibles (y flags) a la vista. Para decodificar form-urlencoded, extrae \`http.file_data\` y revierte el hexadecimal.`},
+  {id:"validador-de-turno",title:"Validador de turno",category:"Binarios",points:400,slug:"validador-de-turno",files:["turno_guard"],content:`# Validador de turno
 
 > Validador \`turno_guard\` (ELF Linux x64). Solo acepta un token exacto \`WHOAMI{...}\`.
 >
@@ -2210,18 +1981,8 @@ $ echo "WHOAMI{k3yg3n_bl4ck0ut}" | ./turno_guard
 
 ## Lección
 
-Un comparador con "clave progresiva" (XOR con contador) se revierte fácil: reconstruye la secuencia de claves (\`7, 20, 33, 46, …\`) y aplica \`masked[i] ^ key[i]\`. El valor final del contador (\`0x32\`) también delata la longitud exacta del token.`
-  },
-  {
-    id: "vm-plc",
-    title: "VM PLC",
-    category: "Binarios",
-    points: 500,
-    slug: "vm-plc",
-    files: ["plc_ladder"],
-    content: `# VM PLC
-
-**Categoría:** Binarios · **Puntos:** 500
+Un comparador con "clave progresiva" (XOR con contador) se revierte fácil: reconstruye la secuencia de claves (\`7, 20, 33, 46, …\`) y aplica \`masked[i] ^ key[i]\`. El valor final del contador (\`0x32\`) también delata la longitud exacta del token.`},
+  {id:"vm-plc",title:"VM PLC",category:"Binarios",points:500,slug:"vm-plc",files:["plc_ladder"],content:`# VM PLC
 
 > Mini-VM ladder en \`plc_ladder\` (ELF Linux x64). Recupera la clave maestra \`WHOAMI{...}\`.
 >
@@ -2325,6 +2086,5 @@ $ echo "WHOAMI{vm_plc_s3ctor14}" | ./plc_ladder
 
 ## Lección
 
-Las mini-VM en CTF se resuelven leyendo el *dispatch loop*: identifica el \`jmp\` por jump table, mapea cada opcode a su acción (load/xor/compare…), extrae el bytecode y reconstruye la operación inversa. Aquí, XOR con operando → la clave es \`esperado ^ key\`.`
-  }
+Las mini-VM en CTF se resuelven leyendo el *dispatch loop*: identifica el \`jmp\` por jump table, mapea cada opcode a su acción (load/xor/compare…), extrae el bytecode y reconstruye la operación inversa. Aquí, XOR con operando → la clave es \`esperado ^ key\`.`}
 ];
