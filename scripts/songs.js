@@ -1,11 +1,12 @@
 // =============================================
 // songs.js — Left Slide Music Player (Song Box)
-// Placeholder: no songs added yet.
 // To add a song, drop an mp3 + cover in /songs and
-// uncomment the SONGS array below.
+// add an entry to the SONGS array below.
 // =============================================
 
-const SONGS = [];
+const SONGS = [
+    { src: "songs/under-pressure.mp3", cover: "songs/under-pressure.jpg", title: "Under Pressure", artist: "Queen & David Bowie" },
+];
 
 // ── Inject HTML + Styles ─────────────────────────
 
@@ -19,9 +20,9 @@ const SONGS = [];
 
         <div id="song-box-panel">
             <div id="sb-disc-container">
-                <div id="sb-disc-outer">
+                    <div id="sb-disc-outer">
                     <div id="sb-disc-rings"></div>
-                    <div id="sb-cover"><i class="fa-solid fa-music"></i></div>
+                    <img id="sb-cover" alt="Album cover">
                     <div id="sb-disc-center"></div>
                 </div>
             </div>
@@ -173,12 +174,10 @@ const SONGS = [];
             width: 42px;
             height: 42px;
             border-radius: 50%;
+            object-fit: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--nav-color);
-            color: white;
-            font-size: 16px;
             position: relative;
             z-index: 2;
             animation: disc-spin 4s linear infinite;
