@@ -590,12 +590,12 @@ span {
 .wup-body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.6rem;
-    color: #ccc;
+    color: #ccc !important;
     line-height: 1.9;
 }
 
 .wup-body p {
-    color: #ccc;
+    color: #ccc !important;
 }
 
 .wup-body h3 {
