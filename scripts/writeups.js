@@ -121,7 +121,6 @@ $ echo "V0hPQU1Je2lkMHJfczNjdDByMjF9" | base64 -d
 WHOAMI{id0r_s3ct0r21}
 \`\`\`
 
-*"idor sector 21"
 
 ## Lección
 
@@ -242,7 +241,6 @@ $ cat /tmp/f
 WHOAMI{arch1v0_turn0s}
 \`\`\`
 
-*"archivo turnos"
 
 ## Lección
 
@@ -314,7 +312,6 @@ Ordenando por hora: \`WHOAMI{\` + \`b17ac0r4_\` + \`4ud10_\` + \`m0r53}\`
 WHOAMI{b17ac0r4_4ud10_m0r53}
 \`\`\`
 
-*"bitacora audio morse"
 
 ## Lección
 
@@ -383,7 +380,7 @@ URL:
 Notes: Solo usar si el SCADA central no responde.
 \`\`\`
 
-La flag estaba en el campo \`Password\` de la entrada. *"keepass boveda 14"
+La flag estaba en el campo \`Password\` de la entrada. 
 
 ## Lección
 
@@ -426,13 +423,8 @@ Solo el puerto 80 → el ataque es por HTTP.
 
 ### 2. Explorar la app y localizar la subida
 
-En el menú aparece \`/carga.php\`, un formulario de subida de archivos con \`accept="image/*"\`:
-
-\`\`\`bash
-$ curl -s http://172.17.0.2/carga.php
-<form method="post" action="/carga.php" enctype="multipart/form-data">
- <input type="file" name="evidencia" accept="image/*">
- <button type="submit">Subir evidencia</button>
+En el menú aparece \`/carga.php\`, un formulario de subida de archivos con \`accept="image/post" action="/carga.php" enctype="multipart/form-data">
+ <input type="file" name="evidencia" accept="image/submit">Subir evidencia</button>
 </form>
 \`\`\`
 
@@ -518,7 +510,6 @@ $ echo "V0hPQU1Je3VwMTBhZF8zdjFkM25jMTR9" | base64 -d
 WHOAMI{up10ad_3v1d3nc14}
 \`\`\`
 
-*"upload evidencia"
 
 ## Lección
 
@@ -719,7 +710,6 @@ $ echo "V0hPQU1Je2NtZDFfZW5sYWMzX24wcnQzfQ==" | base64 -d
 WHOAMI{cmd1_enlac3_n0rt3}
 \`\`\`
 
-*"cmd inyección enlace norte"
 
 ## Lección
 
@@ -831,7 +821,6 @@ Concatenando \`01\` → \`02\` → \`03\`:
 WHOAMI{ + dns_ + 3xf1l_bl4ck0ut} = WHOAMI{dns_3xf1l_bl4ck0ut}
 \`\`\`
 
-*"dns exfil blackout"
 
 ## Lección
 
@@ -906,7 +895,7 @@ $ echo "ZKRDPL{vvui_so4qw4_q0uw3}" | tr 'A-Za-z' 'X-ZA-Wx-za-w'
 WHOAMI{ssrf_pl4nt4_n0rt3}
 \`\`\`
 
-*"ssrf planta norte"> **Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`WHOAMI{docker_exec_detected_n1ce_try}\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
+**Nota anti-trampa:** el binario interno \`/sbin/sys-daemon\` contiene otra cadena \`WHOAMI{docker_exec_detected_n1ce_try}\` — es un **honeypot** para quien haga \`docker exec cat /root/flag.txt\` en vez de resolver el SSRF. La flag real solo sale por el servicio interno.
 
 ## Lección
 
@@ -977,7 +966,6 @@ $ echo "V0hPQU1Je2xmMV9kMGNfczNjdDByMTR9" | base64 -d
 WHOAMI{lf1_d0c_s3ct0r14}
 \`\`\`
 
-*"lfi doc sector14"
 
 ## Lección
 
@@ -1095,17 +1083,7 @@ uid=1001(octavio.enlace)
 **Herramienta:** \`find -perm -4000\`. **Por qué:** localizar binarios SUID (corren con permisos de su dueño root).
 
 \`\`\`bash
-$ find / -perm -4000 -not -path "/proc/*" 2>/dev/null
-/usr/lib/latam/in_apply ← SUID root
-/usr/local/sbin/latam-backup
-/usr/local/sbin/rf_sync
-\`\`\`
-
-**\`in_apply\` es explotable.** Se desensambla con \`objdump\`:
-
-\`\`\`bash
-$ objdump -d -M intel in_apply | sed -n '/<main>:/,/^$/p'
-call getenv("HOME") # HOME controlado por el usuario
+$ find / -perm -4000 -not -path "/proc/HOME") # HOME controlado por el usuario
 snprintf("%s/.inrc", HOME) # ruta: $HOME/.inrc
 fgets(...) # lee la primera línea del archivo
 call setuid(0); call setgid(0) # sube a root
@@ -1125,7 +1103,6 @@ $ cat /tmp/f
 WHOAMI{1ntr4n3t_p4t10_n14}
 \`\`\`
 
-*"intranet patio n14"
 
 ## Lección
 
@@ -1215,7 +1192,6 @@ $ echo "V0hPQU1Je3NxbDFfZzNyM250M19uMHJ0M30=" | base64 -d
 WHOAMI{sql1_g3r3nt3_n0rt3}
 \`\`\`
 
-*"sql gerente norte"
 
 ## Lección
 
@@ -1502,7 +1478,6 @@ $ cat flag.txt
 WHOAMI{md5_p1n_0p3r4d0r}
 \`\`\`
 
-*"md5 pin operador"
 
 ## Lección
 
@@ -1626,7 +1601,6 @@ $ cat /tmp/f
 WHOAMI{rad10_camp0_n14}
 \`\`\`
 
-*"radio campo n14"
 
 ## Lección
 
@@ -1773,7 +1747,6 @@ $ cat flag.txt
 WHOAMI{sh4d0w_turn0_n0rt3}
 \`\`\`
 
-*"shadow turno norte"
 
 ## Lección
 
@@ -1822,7 +1795,6 @@ print(bytes(payload[i] ^ key[i % len(key)] for i in range(len(payload))).decode(
 WHOAMI{x0r_t3l3m3tr14}
 \`\`\`
 
-*"xor telemetria"
 
 ## Lección
 
