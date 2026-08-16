@@ -34,7 +34,7 @@ Use la clave del operador para XOR y recuperar el token.
 
 **Parameters/logic:** `bytes.fromhex(...)` converts the hex payload to bytes; `payload[i] ^ key[i % len(key)]` applies the key `LATAM!` cyclically to each byte; `.decode()` displays the text.
 
-```bash
+```python
 $ python3 -c "
 payload = bytes.fromhex('1b091b0000683739643312557f2d672c7e553e70603c')
 key = b'LATAM!'

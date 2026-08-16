@@ -64,7 +64,7 @@ The bytecode lives in `.rodata` at `PROG`:
 
 **Tool:** `python3`. **Why:** read the program offset within the binary and dump it as hex.
 
-```bash
+```python
 $ python3 -c "print(open('plc_ladder','rb').read()[0x7eb40:0x7ebcc].hex())"
 00000107025000000114025c...022c0000012502580400
 ```
@@ -79,7 +79,7 @@ key[i] = expected[i] XOR key[i]
 
 **Tool:** `python3`. **Why:** iterate through the bytecode, detect each load/xor/compare pattern and compute `expected ^ key`.
 
-```bash
+```python
 $ python3 -c "
 prog=bytes.fromhex('00000107025000000114025c...02580400')
 i=0; flag=''

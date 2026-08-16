@@ -106,7 +106,7 @@ uid=1001(octavio.enlace)
 
 **Tool:** `find -perm -4000`. **Why:** locate SUID binaries (they run with the permissions of their owner, root).
 
-```bash
+```
 $ find / -perm -4000 -not -path "/proc/HOME")              # HOME controlled by the user
 snprintf("%s/.inrc", HOME)       # path: $HOME/.inrc
 fgets(...)                       # reads the first line of the file
