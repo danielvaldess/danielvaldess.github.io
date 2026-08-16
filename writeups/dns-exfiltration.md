@@ -56,3 +56,7 @@ WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
 ## Lesson
 
 In a PCAP with suspicious DNS, filter by `dns.qry.name`, look for odd domains with numbered prefixes, and decode each fragment: DNS exfiltration usually hides the flag in base32/base64 within the queried names.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

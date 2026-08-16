@@ -104,3 +104,7 @@ $ echo "WHOAMI{vm_plc_s3ctor14}" | ./plc_ladder
 ## Lesson
 
 Mini-VMs in CTFs are solved by reading the *dispatch loop*: identify the `jmp` via jump table, map each opcode to its action (load/xor/compare…), extract the bytecode and reconstruct the inverse operation. Here, XOR with operand → the key is `expected ^ key`.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

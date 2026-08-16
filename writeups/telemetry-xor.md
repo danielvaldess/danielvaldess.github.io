@@ -46,3 +46,7 @@ WHOAMI{x0r_t3l3m3tr14}
 ## Lesson
 
 When a binary prints metadata with `cipher=xor` and `key=...`, run it before disassembling: sometimes the solution is in the output itself. Byte-wise XOR with a cycling key (`i % len(key)`) decodes the payload.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

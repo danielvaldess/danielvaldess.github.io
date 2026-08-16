@@ -52,3 +52,7 @@ The flag is in the PNG's `Comment` field — carve the object from the PCAP and 
 ## Lesson
 
 When facing a PCAP with file transfers, use `--export-objects http` to extract the files and then read their metadata (EXIF/`Comment`): forensic challenges usually hide the flag there, not in the pixels.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

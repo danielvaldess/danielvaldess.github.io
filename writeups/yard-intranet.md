@@ -130,3 +130,7 @@ WHOAMI{1ntr4n3t_p4t10_n14}
 ## Lesson
 
 Classic pentesting chain: SNMP leaks context → source code leaks a password policy → the policy derives FTP and SSH credentials → a SUID binary that calls `system()` on a user-controlled file (`$HOME/.inrc`) converts access to root. And an important detail: forcing `PreferredAuthentications=password` prevents spurious pubkey authentication failures.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

@@ -83,3 +83,7 @@ WHOAMI{cmd1_enlac3_n0rt3}
 ## Lesson
 
 A field that goes into `shell_exec` is gold. If the filter blocks `;` and `&`, try `|` (pipe): it executes an additional command without needing a terminator. Then explore `/var/lib` or application directories — that is where `.dat` files with base64-encoded flags are often hidden.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

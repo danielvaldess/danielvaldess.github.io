@@ -124,3 +124,7 @@ WHOAMI{up10ad_3v1d3nc14}
 ## Lesson
 
 A file upload that validates `getimagesize()` but does not restrict which extensions Apache executes is vulnerable: `.phtml`/`.php7`/`.pht` are typically not in the blocklist and are interpreted as PHP. A polyglot (valid GIF + PHP payload) combines both requirements and yields RCE.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

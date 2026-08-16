@@ -114,3 +114,7 @@ WHOAMI{ftp_p4t10_n0rt3}
 ## Lesson
 
 In pentesting, do not assume a single service: the full nmap scan (`-p-`) uncovers the complete chain. Here anonymous FTP leaked an SSH key, and passwordless sudo on `less` (GTFOBins) gave root via `!`. Watch out for honeypots: a flag in `/root/flag.txt` accessible via `docker exec` can be a decoy — the real one is on the intended attack path for the challenge.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

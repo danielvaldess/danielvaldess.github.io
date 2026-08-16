@@ -66,3 +66,7 @@ The flag was in the `Password` field of the entry.
 ## Lesson
 
 A KeePass vault is only as secure as its master password: if the password format follows a predictable corporate policy (`RolDominio.Año`) and the policy file is leaked alongside the vault, the "protection" becomes meaningless. Furthermore, flags in protected fields can be read with `--show-protected`.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

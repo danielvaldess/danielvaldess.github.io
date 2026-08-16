@@ -113,3 +113,7 @@ WHOAMI{arch1v0_turn0s}
 ## Lesson
 
 A challenge's material can live outside the index: `robots.txt` and directory listing expose what the portal does not show. And when an SQL dump leaks the **key generation policy**, that policy allows deriving the real credential (here, against the SHA256 hash of the user). Then, a passwordless sudo on `tar` (GTFObins) converts the access to root.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

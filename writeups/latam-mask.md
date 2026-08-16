@@ -62,3 +62,7 @@ WHOAMI{m4sk_r3gl4s_s3ct0r14}
 ## Lesson
 
 When faced with a SHA256 without salt, do not try to reverse it mathematically: guess it. If there is a format hint (prefix + digits), a mask attack (`hashcat -m 1400 -a 3`) with the exact shape resolves it in seconds.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*

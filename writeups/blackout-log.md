@@ -67,3 +67,7 @@ WHOAMI{b17ac0r4_4ud10_m0r53}
 ## Lesson
 
 When a challenge combines log + audio, look at what is *inside* the audio (spectrogram/Morse) before guessing the order: it usually contains the instruction on how to combine the log fragments.
+
+---
+
+*Part of the **Blackout LATAM** CTF by [Whoami-Labs](https://whoami-labs.com/).*
