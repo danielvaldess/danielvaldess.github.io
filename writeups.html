@@ -204,6 +204,8 @@
 
         function renderMarkdown(md) {
             let html = md;
+            // Normalize line endings
+            html = html.replace(/\r\n/g, '\n');
             // Code blocks with terminal style
             html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
                 `<div class="terminal-block"><div class="terminal-bar"><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-dot" style="background:${currentColor}"></span><span class="terminal-title">${lang || 'terminal'}</span></div><pre><code>${escapeHtml(code.trim())}</code></pre></div>`
@@ -225,10 +227,13 @@
             });
             html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
             html = html.replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
-            // Paragraphs
-            html = html.replace(/\n\n/g, '</p><p>');
+            // Paragraphs: double newlines
+            html = html.replace(/\n\n+/g, '</p><p>');
+            html = html.replace(/\n/g, '<br>');
             html = '<p>' + html + '</p>';
+            // Clean empty paragraphs
             html = html.replace(/<p>\s*<\/p>/g, '');
+            // Remove <p> before block elements
             html = html.replace(/<p>\s*(<h[34]>)/g, '$1');
             html = html.replace(/(<\/h[34]>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*(<div class="terminal)/g, '$1');
@@ -241,6 +246,13 @@
             html = html.replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
             html = html.replace(/<p>\s*<hr>/g, '<hr>');
             html = html.replace(/<hr>\s*<\/p>/g, '<hr>');
+            // Clean multiple <br> around block elements
+            html = html.replace(/<br>\s*(<h[34]>)/g, '$1');
+            html = html.replace(/<br>\s*(<div class="terminal)/g, '$1');
+            html = html.replace(/<br>\s*(<table>)/g, '$1');
+            html = html.replace(/<br>\s*(<ul>)/g, '$1');
+            html = html.replace(/<br>\s*(<blockquote>)/g, '$1');
+            html = html.replace(/<br>\s*<hr>/g, '<hr>');
             return html;
         }
 
