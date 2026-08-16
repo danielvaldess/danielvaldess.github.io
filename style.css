@@ -342,6 +342,9 @@ span {
     text-align: left;
     transition: all 0.3s ease;
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
 }
 
 .writeup-card:hover {
@@ -387,6 +390,11 @@ span {
     line-height: 1.6;
     margin-bottom: 1.2rem;
     min-height: 3.5rem;
+    flex: 1;
+}
+
+.card-bottom {
+    margin-top: auto;
 }
 
 .card-files {

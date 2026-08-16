@@ -143,10 +143,12 @@
                     </div>
                     <h3 class="card-title">${w.title}</h3>
                     <p class="card-desc">${getFirstLine(w.content)}</p>
-                    ${filesHtml}
-                    <button class="card-btn" style="border-color:${color}; color:${color}">
-                        View Writeup <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    <div class="card-bottom">
+                        ${filesHtml}
+                        <button class="card-btn" style="border-color:${color}; color:${color}">
+                            View Writeup <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
                 `;
                 card.querySelector('.card-btn').addEventListener('click', () => showWriteup(w.id));
                 grid.appendChild(card);
@@ -156,7 +158,7 @@
         function getFirstLine(content) {
             const lines = content.split('\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('**Flag') && !l.startsWith('---') && !l.startsWith('**Categor'));
             for (const line of lines) {
-                const clean = line.replace(/`[^`]*`/g, '').replace(/\[REDACTED\]/g, '').trim();
+                const clean = line.replace(/`[^`]*`/g, '').replace(/\[REDACTED\]/g, '').replace(/WHOAMI\{[^}]*\}/g, '').trim();
                 if (clean.length > 20) {
                     if (clean.length <= 180) return clean;
                     const cut = clean.substring(0, 180);
