@@ -158,22 +158,7 @@
         function getFirstLine(content) {
             const lines = content.split('\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('**Flag') && !l.startsWith('---') && !l.startsWith('**Categor'));
             for (const line of lines) {
-                let clean = line
-                    .replace(/^>\s*/, '')
-                    .replace(/`[^`]*`/g, '')
-                    .replace(/WHOAMI\{[^}]*\}/g, '')
-                    .replace(/\[REDACTED\]/g, '')
-                    .replace(/\[instance URL\]/g, '')
-                    .replace(/\[local path\]/g, '')
-                    .replace(/\s{2,}/g, ' ')
-                    .replace(/\.\s*\./g, '.')
-                    .replace(/\s+\./g, '.')
-                    .replace(/\(\s*\)/g, '')
-                    .replace(/;\s*$/, ';')
-                    .replace(/\.\s*$/, '.')
-                    .trim();
-                // Remove trailing incomplete fragments
-                clean = clean.replace(/\s*[;.,]\s*$/, '').trim();
+                let clean = line.trim();
                 if (clean.length > 20) {
                     if (clean.length <= 180) return clean;
                     const cut = clean.substring(0, 180);
