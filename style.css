@@ -45,7 +45,7 @@ body {
 }
 
 body.home-page {
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 /* Scrollbar */

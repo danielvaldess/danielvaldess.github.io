@@ -5,7 +5,7 @@
 // =============================================
 
 const SONGS = [
-    { src: "songs/under-pressure.mp3", cover: "songs/under-pressure.jpg", title: "Under Pressure", artist: "Queen & David Bowie" },
+    { src: "/songs/under-pressure.mp3", cover: "/songs/under-pressure.jpg", title: "Under Pressure", artist: "Queen & David Bowie" },
 ];
 
 // ── Inject HTML + Styles ─────────────────────────
