@@ -286,5 +286,283 @@ const WRITEUPS = [
       "plc_ladder"
     ],
     "desc": "PLC ladder mini-VM (ELF Linux x64). Recover the master key."
+  },
+  {
+    "id": "canary-wharf",
+    "title": "Canary Wharf",
+    "category": "Pwn",
+    "points": 0,
+    "slug": "canary-wharf",
+    "files": [
+      "bank",
+      "bank.c",
+      "libc.so.6",
+      "public.zip"
+    ],
+    "desc": "Banking terminal with full mitigations. Format string leaks canary, PIE and libc; ret2libc finishes the job."
+  },
+  {
+    "id": "deadbolt",
+    "title": "Deadbolt",
+    "category": "Crypto",
+    "points": 0,
+    "slug": "deadbolt",
+    "files": [
+      "public.zip"
+    ],
+    "desc": "Password-protected ZIP plus an AES-256-GCM vault whose PBKDF2 seed and salt are hardcoded in the Android client."
+  },
+  {
+    "id": "glass-houses",
+    "title": "Glass Houses",
+    "category": "Mobile",
+    "points": 0,
+    "slug": "glass-houses",
+    "files": [
+      "public.zip"
+    ],
+    "desc": "Android real-estate app with an exposed WebView bridge. The simulator returns an admin JWT."
+  },
+  {
+    "id": "ni8mare-lite",
+    "title": "Ni8mare Lite",
+    "category": "Web",
+    "points": 380,
+    "slug": "ni8mare-lite",
+    "files": [],
+    "desc": "LFI, XOR-derived session secret, forged admin JWT and a Python sandbox escape."
+  },
+  {
+    "id": "nonce-upon-a-time",
+    "title": "Nonce Upon a Time",
+    "category": "Crypto",
+    "points": 0,
+    "slug": "nonce-upon-a-time",
+    "files": [
+      "server.py"
+    ],
+    "desc": "ECDSA with a biased nonce. The Hidden Number Problem and LLL recover the private key."
+  },
+  {
+    "id": "phantom-decrypt",
+    "title": "Phantom Decrypt",
+    "category": "Mobile",
+    "points": 0,
+    "slug": "phantom-decrypt",
+    "files": [
+      "public.zip",
+      "vault_backup.enc",
+      "vault_decrypt.py"
+    ],
+    "desc": "Android vault with a hardcoded KDF seed. Decrypt the backup and replay the master password."
+  },
+  {
+    "id": "select-isnt-a-choice",
+    "title": "SELECT Isn't a Choice",
+    "category": "Web",
+    "points": 0,
+    "slug": "select-isnt-a-choice",
+    "files": [
+      "views.py",
+      "models.py",
+      "urls.py"
+    ],
+    "desc": "Django ORM filter injection through the _connector parameter, turned into a boolean oracle."
+  },
+  {
+    "id": "sheets",
+    "title": "Sheets",
+    "category": "Web",
+    "points": 0,
+    "slug": "sheets",
+    "files": [],
+    "desc": "XSS in a spreadsheet app, a cached admin API key and a pycel formula that reaches system()."
+  },
+  {
+    "id": "the-alignment-trap",
+    "title": "The Alignment Trap",
+    "category": "Pwn",
+    "points": 0,
+    "slug": "the-alignment-trap",
+    "files": [
+      "cloudstorage"
+    ],
+    "desc": "32-bit integer overflow in a custom allocator, tcache poisoning and House of Apple 2 on glibc 2.39."
+  },
+  {
+    "id": "the-password-is-swordfish",
+    "title": "The Password is Swordfish",
+    "category": "Pwn",
+    "points": 150,
+    "slug": "the-password-is-swordfish",
+    "files": [],
+    "desc": "Signed length check bypass on a static login binary. Straight ret2win."
+  },
+  {
+    "id": "whispers-in-the-wire",
+    "title": "Whispers in the Wire",
+    "category": "Mobile",
+    "points": 100,
+    "slug": "whispers-in-the-wire",
+    "files": [
+      "public.zip"
+    ],
+    "desc": "Hardcoded API key accepted by the admin message endpoint. Replay it and read the private threads."
+  },
+  {
+    "id": "epsilon-drift",
+    "title": "epsilon-drift",
+    "category": "Reversing",
+    "points": 0,
+    "slug": "epsilon-drift",
+    "files": [
+      "epsilon-drift.zip"
+    ],
+    "desc": "Bit-level validation of four IEEE-754 doubles where only a negative zero unlocks the flag."
+  },
+  {
+    "id": "last-execution",
+    "title": "Last Execution",
+    "category": "Reversing",
+    "points": 0,
+    "slug": "last-execution",
+    "files": [
+      "last_execution.img"
+    ],
+    "desc": "Cold image of a fictional EXE-9 processor: twisted constants, a custom emulator and a lying telemetry log."
+  },
+  {
+    "id": "night-batch",
+    "title": "Night Batch",
+    "category": "Reversing",
+    "points": 0,
+    "slug": "night-batch",
+    "files": [
+      "night-batch.zip"
+    ],
+    "desc": "GnuCOBOL validator with 23 modular checks recovered dynamically and solved with Z3."
+  },
+  {
+    "id": "obfuscated-flow",
+    "title": "Obfuscated Flow",
+    "category": "Reversing",
+    "points": 0,
+    "slug": "obfuscated-flow",
+    "files": [
+      "rev-obs-flow.zip"
+    ],
+    "desc": "Obfuscated state machine with modular constraints, discrete logs and a 2x2 linear system."
+  },
+  {
+    "id": "call-the-movers",
+    "title": "Call the Movers",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "call-the-movers",
+    "files": [
+      "Callthemovers.pcap"
+    ],
+    "desc": "Post-compromise PCAP: find the non-default SMB share used for lateral movement."
+  },
+  {
+    "id": "gotta-start-somewhere",
+    "title": "Gotta Start Somewhere",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "gotta-start-somewhere",
+    "files": [
+      "HanddrawnNetworkDiagram.jpg",
+      "NetworkDrawing_CVE_Details.docx"
+    ],
+    "desc": "Reconstruct an OT attack chain from a network diagram and a CVE list. Which port starts it?"
+  },
+  {
+    "id": "please-schedule-an-appointment",
+    "title": "Please Schedule an Appointment",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "please-schedule-an-appointment",
+    "files": [
+      "ScheduledTasks.zip"
+    ],
+    "desc": "Scheduled tasks and AppData from an OT workstation. Decode the PowerShell and find the exfiltration IP."
+  },
+  {
+    "id": "so-many-options",
+    "title": "So Many Options",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "so-many-options",
+    "files": [
+      "hives.zip"
+    ],
+    "desc": "SAM and SYSTEM hives. Crack operator01's cleartext password."
+  },
+  {
+    "id": "target-acquired",
+    "title": "Target Acquired",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "target-acquired",
+    "files": [
+      "TryAgain-TargetAcquired.pcap"
+    ],
+    "desc": "HTTP brute-force against an internal workstation. Identify the compromised host."
+  },
+  {
+    "id": "try-and-try-again",
+    "title": "Try and Try Again",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "try-and-try-again",
+    "files": [
+      "TryAgain-TargetAcquired.pcap"
+    ],
+    "desc": "Same capture, different question: which challenge-response mechanism protects the host?"
+  },
+  {
+    "id": "whats-simple-about-this",
+    "title": "What's Simple About This",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "whats-simple-about-this",
+    "files": [
+      "hives.zip"
+    ],
+    "desc": "Find the NTLM hash that corresponds to an empty password across the SAM accounts."
+  },
+  {
+    "id": "whats-your-address",
+    "title": "What's Your Address",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "whats-your-address",
+    "files": [
+      "HanddrawnNetworkDiagram.jpg",
+      "NetworkDrawing_CVE_Details.docx"
+    ],
+    "desc": "Second hop of the OT chain: match the diagram, the firewall rule and the CVE versions."
+  },
+  {
+    "id": "working-from-home",
+    "title": "Working from Home",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "working-from-home",
+    "files": [
+      "Workfromhome.pcap"
+    ],
+    "desc": "Remote access, SCADA polling and corporate browsing in one capture. Who authenticates to the HMI?"
+  },
+  {
+    "id": "whos-cutting-onions",
+    "title": "Who's Cutting Onions",
+    "category": "Forensics",
+    "points": 0,
+    "slug": "whos-cutting-onions",
+    "files": [
+      "ScheduledTasks.zip"
+    ],
+    "desc": "Follow-up to the scheduled task: apply the XOR key to the staged AppData file."
   }
 ];

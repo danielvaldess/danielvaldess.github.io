@@ -61,11 +61,13 @@
 
         const catIcons = {
             'Web': 'fa-globe', 'Forensics': 'fa-magnifying-glass', 'Misc': 'fa-puzzle-piece',
-            'Pentesting': 'fa-user-secret', 'Crypto': 'fa-lock', 'Binary': 'fa-microchip', 'General': 'fa-folder'
+            'Pentesting': 'fa-user-secret', 'Crypto': 'fa-lock', 'Binary': 'fa-microchip',
+            'Pwn': 'fa-bomb', 'Mobile': 'fa-mobile-screen', 'Reversing': 'fa-code', 'General': 'fa-folder'
         };
         const catColors = {
             'Web': '#e74c3c', 'Forensics': '#e67e22', 'Misc': '#9b59b6',
-            'Pentesting': '#2ecc71', 'Crypto': '#3498db', 'Binary': '#f39c12', 'General': '#95a5a6'
+            'Pentesting': '#2ecc71', 'Crypto': '#3498db', 'Binary': '#f39c12',
+            'Pwn': '#ff5c7a', 'Mobile': '#00c2a8', 'Reversing': '#7c6cf0', 'General': '#95a5a6'
         };
 
         const fileLabels = {
@@ -88,6 +90,16 @@
             'export_consola.txt': 'Console export', 'consola.zip': 'Console archive',
             'telemetry_decode': 'Telemetry decoder', 'blackout_control.pcap': 'Control capture',
             'turno_guard': 'Shift guard binary', 'plc_ladder': 'PLC ladder binary',
+            'bank': 'Bank binary', 'bank.c': 'Source code', 'libc.so.6': 'Provided libc',
+            'public.zip': 'Public package', 'server.py': 'Signing server',
+            'vault_backup.enc': 'Encrypted vault', 'vault_decrypt.py': 'Decryptor',
+            'views.py': 'Django views', 'models.py': 'Django models', 'urls.py': 'Django routes',
+            'cloudstorage': 'Challenge binary', 'epsilon-drift.zip': 'Challenge archive',
+            'last_execution.img': 'Cold image', 'night-batch.zip': 'Challenge archive',
+            'rev-obs-flow.zip': 'Challenge archive', 'Callthemovers.pcap': 'SMB capture',
+            'HanddrawnNetworkDiagram.jpg': 'Network diagram', 'NetworkDrawing_CVE_Details.docx': 'CVE list',
+            'ScheduledTasks.zip': 'Task export', 'hives.zip': 'SAM + SYSTEM',
+            'TryAgain-TargetAcquired.pcap': 'HTTP capture', 'Workfromhome.pcap': 'Mixed capture',
         };
 
         const categories = [...new Set(WRITEUPS.map(w => w.category))].sort();
@@ -100,8 +112,9 @@
         });
 
         function renderCards(filter) {
+            const rank = w => w.points || Number.MAX_SAFE_INTEGER;
             const list = (filter === 'all' ? [...WRITEUPS] : WRITEUPS.filter(w => w.category === filter))
-                .sort((a, b) => a.points - b.points);
+                .sort((a, b) => rank(a) - rank(b) || a.title.localeCompare(b.title));
             grid.innerHTML = '';
             list.forEach(w => {
                 const card = document.createElement('div');
@@ -113,7 +126,7 @@
                 card.innerHTML = `
                     <div class="card-header">
                         <span class="card-cat" style="color:${color}"><i class="fa-solid ${icon}"></i> ${w.category}</span>
-                        <span class="card-pts">${w.points} pts</span>
+                        <span class="card-pts">${w.points ? w.points + ' pts' : 'Walkthrough'}</span>
                     </div>
                     <h3 class="card-title">${w.title}</h3>
                     <p class="card-desc">${w.desc || 'Challenge walkthrough and analysis.'}</p>
@@ -152,7 +165,7 @@
             writeupContent.innerHTML = `
                 <div class="wup-header" style="border-bottom-color: ${currentColor}">
                     <span class="wup-cat" style="color:${currentColor}">
-                        <i class="fa-solid ${catIcons[w.category] || 'fa-folder'}"></i> ${w.category} · ${w.points} pts
+                        <i class="fa-solid ${catIcons[w.category] || 'fa-folder'}"></i> ${w.category} · ${w.points ? w.points + ' pts' : 'Walkthrough'}
                     </span>
                     <h2 class="wup-title">${w.title}</h2>
                     ${filesHtml}
@@ -175,6 +188,8 @@
         function renderMarkdown(md) {
             let html = md;
             html = html.replace(/\r\n/g, '\n');
+            // Drop the leading "# Title" line: the viewer header already shows it
+            html = html.replace(/^#\s+.+\n+/, '');
             // Protect code blocks and inline code from markdown processing
             const codeBlocks = [];
             html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {

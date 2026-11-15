@@ -31,8 +31,8 @@
 My personal portfolio as a cybersecurity technician. It has three parts:
 
 - **About me** — who I am, what I do, and a downloadable CV.
-- **Writeups** — **24 CTF/lab writeups** across 6 categories (Web, Pentesting,
-  Crypto, Forensics, Binary, Misc), filterable and rendered from Markdown.
+- **Writeups** — **49 CTF/lab writeups** across 9 categories (Web, Pentesting,
+  Crypto, Forensics, Binary, Misc, Pwn, Mobile, Reversing), filterable and rendered from Markdown.
 - **Song Box** — a slide-in music player with album art and controls.
 
 It is a **fully static site** — no framework, no build step — deployed to
@@ -44,7 +44,7 @@ It is a **fully static site** — no framework, no build step — deployed to
 
 ![Home](docs/screenshots/01-home.png)
 
-**Writeups** — filter by category and browse 24 writeups with points and lab files.
+**Writeups** — filter by category and browse 49 writeups with points and lab files.
 
 ![Writeups](docs/screenshots/03-writeups.png)
 
@@ -60,7 +60,7 @@ It is a **fully static site** — no framework, no build step — deployed to
 
 - Terminal-themed UI (`daninho@terminal`) with a monospace typeface.
 - Animated typing effect and responsive layout (mobile menu included).
-- **24 writeups** in 6 categories, filterable, loaded on demand from Markdown.
+- **49 writeups** in 9 categories, filterable, loaded on demand from Markdown.
 - Per-writeup metadata: category, points and referenced lab files.
 - **Song Box**: a music player with cover art, seek bar and playback controls.
 - One-click CV download (`documents/DV_CV.txt`).
@@ -73,7 +73,7 @@ index.html            Home / About (typing effect, social links, CV)
 style.css             Global styles (terminal theme, responsive)
 writeups/
   index.html          Writeups page: filters + in-page viewer
-  *.md                24 writeup documents
+  *.md                49 writeup documents
 scripts/
   writeups.js         WRITEUPS metadata (title, category, points, files, slug)
   songs.js            Song Box player + SONGS list
