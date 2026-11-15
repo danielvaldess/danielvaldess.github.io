@@ -137,16 +137,30 @@
                         </button>
                     </div>
                 `;
-                card.querySelector('.card-btn').addEventListener('click', () => showWriteup(w.id));
+                card.querySelector('.card-btn').addEventListener('click', () => { internalNav = true; showWriteup(w.id); });
                 grid.appendChild(card);
             });
         }
 
         let currentColor = '#00d4ff';
+        let currentId = null;
+        let internalNav = false;
+
+        function closeWriteup() {
+            currentId = null;
+            internalNav = false;
+            writeupView.style.display = 'none';
+            grid.style.display = '';
+            filterBar.style.display = '';
+            window.scrollTo(0, 0);
+        }
 
         async function showWriteup(id) {
             const w = WRITEUPS.find(x => x.id === id);
             if (!w) return;
+            if (currentId === id) return;
+            currentId = id;
+            if (location.hash !== '#' + id) location.hash = id;
             currentColor = catColors[w.category] || '#00d4ff';
 
             grid.style.display = 'none';
@@ -178,9 +192,11 @@
                 const resp = await fetch(`${w.slug}.md`);
                 if (!resp.ok) throw new Error('Not found');
                 const md = await resp.text();
+                if (currentId !== id) return;
                 writeupContent.querySelector('.wup-body').innerHTML = renderMarkdown(md);
                 writeupContent.querySelector('.wup-body').style.textAlign = '';
             } catch (e) {
+                if (currentId !== id) return;
                 writeupContent.querySelector('.wup-body').innerHTML = '<p style="color:#888;">Writeup not available.</p>';
             }
         }
@@ -260,10 +276,12 @@
         }
 
         backBtn.addEventListener('click', () => {
-            writeupView.style.display = 'none';
-            grid.style.display = '';
-            filterBar.style.display = '';
-            window.scrollTo(0, 0);
+            if (internalNav) {
+                history.back();
+            } else {
+                history.replaceState(null, '', location.pathname);
+                closeWriteup();
+            }
         });
 
         filterBar.addEventListener('click', e => {
@@ -276,9 +294,10 @@
         function handleHash() {
             const hash = window.location.hash.replace('#', '');
             if (hash) { showWriteup(hash); }
-            else { writeupView.style.display = 'none'; grid.style.display = ''; filterBar.style.display = ''; }
+            else { closeWriteup(); }
         }
         window.addEventListener('hashchange', handleHash);
+        window.addEventListener('popstate', handleHash);
 
         renderCards('all');
         handleHash();
