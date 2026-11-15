@@ -220,3 +220,16 @@ hiCTF{3x3c_9_r3m3mb3rs_4ll_but_th3_l4st_h4lt_l13s}
 ```
 hiCTF{3x3c_9_r3m3mb3rs_4ll_but_th3_l4st_h4lt_l13s}
 ```
+
+## Lesson
+
+A specification is not ground truth: the manual had three "twisted" constants and
+the telemetry log a tampered nibble. Validate an emulator against self-test
+commitments and known test vectors before trusting its output, and treat every
+log as potentially adversarial.
+
+---
+
+### Credits
+
+This writeup is part of **hiCTF** (HI Cyber Con 2026).

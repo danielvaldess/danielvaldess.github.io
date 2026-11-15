@@ -166,3 +166,16 @@ solution: `math control flow elliptic dlog`, with the final 8 hex digits
 ```
 hiCTF{m4th_c0ntr0l_fl0w_3ll1pt1c_dlog_4f7b2c9e}
 ```
+
+## Lesson
+
+An obfuscated dispatcher is still just a list of constraints. Classify them by
+type (linear system, discrete log, quadratic), solve each with the right tool and
+enumerate only printable candidates. The 3443 surviving pairs were narrowed to
+one by feeding them to the binary.
+
+---
+
+### Credits
+
+This writeup is part of **hiCTF** (HI Cyber Con 2026).

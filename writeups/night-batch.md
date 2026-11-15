@@ -166,3 +166,16 @@ hiCTF{c0b0l_p4ck3d_d3c1mal_n1ghtly_b4tch!}
 ```
 hiCTF{c0b0l_p4ck3d_d3c1mal_n1ghtly_b4tch!}
 ```
+
+## Lesson
+
+Hand-decoding 23 COBOL checks is slow and error-prone. Breaking on the comparison
+helper, forcing success, and sampling the value with unit vectors recovers the
+quadratic form in a few runs; a constraint solver then does the rest. Dynamic
+extraction beats static reverse engineering when the language runtime is hostile.
+
+---
+
+### Credits
+
+This writeup is part of **hiCTF** (HI Cyber Con 2026).

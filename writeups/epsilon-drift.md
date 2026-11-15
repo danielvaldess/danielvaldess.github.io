@@ -159,3 +159,16 @@ hiCTF{1eee754_s1gn3d_z3r0_1u1p_dr1ft_eps!}
 ```
 hiCTF{1eee754_s1gn3d_z3r0_1u1p_dr1ft_eps!}
 ```
+
+## Lesson
+
+IEEE-754 has two zeros and `ucomisd` treats them as equal, so a numeric check is
+not the same as a bit-pattern check. When a validator mixes both, compare the raw
+64-bit patterns. Also: verifying the decrypted plaintext against a hardcoded
+SHA-256 commitment before running it is what turns a guess into a proof.
+
+---
+
+### Credits
+
+This writeup is part of **hiCTF** (HI Cyber Con 2026).
