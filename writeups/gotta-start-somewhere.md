@@ -58,6 +58,6 @@ prerequisites before committing to a hop.
 
 ---
 
-### Source
+### Credits
 
-Offline document analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline document analysis (no live instance).

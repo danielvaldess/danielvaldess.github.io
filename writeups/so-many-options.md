@@ -68,6 +68,6 @@ only the obvious ones. Local recovery with `john` avoids the OpenCL dependency o
 
 ---
 
-### Source
+### Credits
 
-Offline file analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline file analysis (no live instance).

@@ -75,6 +75,6 @@ Windows task names mean nothing: read the `<Command>` and decode every
 
 ---
 
-### Source
+### Credits
 
-Offline file analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline file analysis (no live instance).

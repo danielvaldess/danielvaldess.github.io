@@ -47,6 +47,6 @@ device version. The Jump Server CVE is real but useless without a session.
 
 ---
 
-### Source
+### Credits
 
-Offline document analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline document analysis (no live instance).

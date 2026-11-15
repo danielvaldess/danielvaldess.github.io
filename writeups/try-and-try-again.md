@@ -65,6 +65,6 @@ used over HTTP, every credential in the capture is already compromised.
 
 ---
 
-### Source
+### Credits
 
-Offline PCAP analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline PCAP analysis (no live instance).

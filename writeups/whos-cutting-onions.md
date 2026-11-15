@@ -54,6 +54,6 @@ follow every path it touches, not only the network indicator.
 
 ---
 
-### Source
+### Credits
 
-Offline file analysis (no live instance).
+This writeup is part of the **Dragos CTF**. Offline file analysis (no live instance).
